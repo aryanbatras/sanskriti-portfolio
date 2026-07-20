@@ -1,21 +1,3 @@
-export interface WorkEntry {
-  role: string;
-  organization: string;
-  logo: string | null;
-  year: string;
-  description: string[];
-  image?: string;
-}
-
-export interface EducationEntry {
-  degree: string;
-  school: string;
-  logo: string | null;
-  year: string;
-  detail: string;
-  image?: string;
-}
-
 export const personalInfo = {
   name: "Sanskriti Gupta",
   title: "AI/ML Researcher & Writer",
@@ -26,28 +8,12 @@ export const personalInfo = {
 
   photo: "/sanskriti-gupta.png",
 
-  // Visual assets for each section
-  images: {
-    hero: "/images/warmth-sunset.jpg",
-    writingOne: "/images/writing-journal.jpg",
-    writingTwo: "/images/writing-desk.jpg",
-    quoteBg: "/images/writing-notebook.jpg",
-    journey: "/images/journey-path.jpg",
-    education: "/images/journey-students.jpg",
-    projectsBg: "/images/ml-network.jpg",
-    skillsBg: "/images/ml-circuit.jpg",
-    gamesBg: "/images/bg-warm-gradient.jpg",
-    paperBg: "/images/bg-paper-texture.jpg",
-    warmBg: "/images/bg-warm-texture.jpg",
-    minimalBg: "/images/bg-minimal-paper.jpg",
-  },
-
   introduction: `I build speech intelligibility models and deep learning systems. Currently a research intern at IIT Jammu, working on non-intrusive speech assessment using self-supervised Whisper representations and Spectro-Temporal Modulation features.`,
 
   about: [
     `I am a computer science and design student at Madhav Institute of Technology and Science, Gwalior. My research focuses on speech intelligibility prediction, deep learning, and the space where language meets code. I think of myself as a curious kid who never stopped asking why.`,
     `Before my research at IIT Jammu, I developed a machine learning pipeline to detect fraudulent job postings at 3Skill, and built a real-time image captioning application called VisionSense. I have also written technical content for Codeveda and creative pieces for FrameFlicks.`,
-    `Outside of AI research, I write poetry and short stories, solve data structures and algorithms problems (1652 LeetCode rating, 540+ problems solved), and I am always looking for the next meaningful challenge.`,
+    `Outside of AI research, I write poetry and short stories, solve data structures and algorithms problems, and I am always looking for the next meaningful challenge.`,
   ],
 
   writingIntro: `The thread that runs through everything I do is curiosity. I ask why until I reach the bottom of it. That question is what drove me from competitive programming to deep learning research to writing poetry. All of it is the same thing: trying to understand.`,
@@ -60,7 +26,6 @@ export const personalInfo = {
       organization: "IIT Jammu",
       logo: "/iitjammu_logo.jpeg",
       year: "Jun 2026 - Aug 2026",
-      image: "/images/ml-abstract-1.jpg",
       description: [
         "Developed a non-intrusive speech intelligibility prediction framework using self-supervised speech representations from Whisper and Wavelet Scattering Transform features.",
         "Engineered acoustic feature extraction pipelines with Gammatone filterbanks, Whisper embeddings, and PyTorch-based deep learning models for intelligibility assessment.",
@@ -72,7 +37,6 @@ export const personalInfo = {
       organization: "3Skill",
       logo: "/3_skill_logo.jpeg",
       year: "May 2026 - Jun 2026",
-      image: "/images/ml-data-flow.jpg",
       description: [
         "Built a machine learning pipeline to detect fraudulent job postings using structured job attributes and textual features extracted from job descriptions and company profiles.",
         "Performed data preprocessing, text cleaning, feature engineering, and TF-IDF vectorization across multiple classification models including Logistic Regression and Naive Bayes.",
@@ -83,9 +47,8 @@ export const personalInfo = {
       organization: "Codeveda",
       logo: "/code_veda_logo.jpeg",
       year: "Jun 2026 - Jul 2026",
-      image: "/images/writing-open.jpg",
       description: [
-        "Wrote technical content on AI and ML topics, including Large Language Models and their real-world applications. Freelance position focused on making complex ML concepts accessible.",
+        "Wrote technical content on AI and ML topics, including Large Language Models and their real-world applications.",
       ],
     },
     {
@@ -93,7 +56,6 @@ export const personalInfo = {
       organization: "FrameFlicks",
       logo: "/frame_flicks_logo.jpeg",
       year: "Jul 2025 - Present",
-      image: "/images/warmth-forest.jpg",
       description: [
         "Write poetry, humor pieces, and short stories. FrameFlicks is a creative outlet that keeps my writing sharp and my thinking flexible.",
       ],
@@ -112,7 +74,7 @@ export const personalInfo = {
       title: "VisionSense",
       tech: "Python, FastAPI, Hugging Face Transformers, BLIP, OpenCV",
       description:
-        "Image captioning web application using the BLIP vision-language transformer. FastAPI-based inference service enabling real-time image-to-text generation with a modular backend architecture for ML deployment.",
+        "Image captioning web application using the BLIP vision-language transformer. FastAPI-based inference service enabling real-time image-to-text generation with modular ML deployment architecture.",
       url: "https://github.com/sanskriti231",
     },
     {
@@ -134,42 +96,15 @@ export const personalInfo = {
   skills: [
     {
       category: "AI & Machine Learning",
-      items: [
-        "NLP",
-        "Computer Vision",
-        "Deep Learning",
-        "Neural Networks",
-        "PyTorch",
-        "TensorFlow",
-        "Scikit-learn",
-        "Speech Processing",
-      ],
+      items: ["NLP", "Computer Vision", "Deep Learning", "Neural Networks", "PyTorch", "TensorFlow", "Scikit-learn", "Speech Processing"],
     },
     {
       category: "Languages & Core CS",
-      items: [
-        "Python",
-        "C++",
-        "SQL",
-        "Data Structures",
-        "Algorithms",
-        "OOP",
-        "System Design",
-      ],
+      items: ["Python", "C++", "SQL", "Data Structures", "Algorithms", "OOP", "System Design"],
     },
     {
       category: "Developer Tools",
-      items: [
-        "FastAPI",
-        "REST APIs",
-        "MongoDB",
-        "GitHub",
-        "Linux",
-        "Google Cloud",
-        "Hugging Face",
-        "Kaggle",
-        "Jupyter Notebook",
-      ],
+      items: ["FastAPI", "REST APIs", "MongoDB", "GitHub", "Linux", "Google Cloud", "Hugging Face", "Kaggle", "Jupyter Notebook"],
     },
   ],
 
@@ -180,7 +115,6 @@ export const personalInfo = {
       logo: "/madhav_institute_of_technology_and_science_gole_ka_mandir_po_residency_gwalior_474005_logo.jpeg",
       year: "2023 - 2027",
       detail: "SGPA: 8.55",
-      image: "/images/journey-students.jpg",
     },
     {
       degree: "Grade 12 (CBSE)",
@@ -188,7 +122,6 @@ export const personalInfo = {
       logo: "/kendriya_vidyala.jpeg",
       year: "2022",
       detail: "91.6%",
-      image: null,
     },
     {
       degree: "Grade 10 (ICSE)",
@@ -196,7 +129,6 @@ export const personalInfo = {
       logo: null,
       year: "2020",
       detail: "95.8% (Top 3 in district)",
-      image: null,
     },
   ],
 
