@@ -139,14 +139,14 @@ const chapters = [
     title: "A Soul Made of Stories",
     image: "/animated/Sanskriti_looking_at_camera_202607210812.jpeg",
     imageAlt: "Sanskriti looking directly at the camera with a warm, confident smile",
-    text: "I see myself in characters who observe quietly and act with purpose. Riley, who feels deeply. Hiro, who builds solutions at a small desk. Violet, who is stronger than she appears.",
+    text: "A curious kid who collected questions, built a career around answering them, and discovered that the most important thing you can do with a mind is to keep wondering. This is just the beginning.",
     quote: {
       text: "The most important thing you can do with a mind is to keep wondering",
       source: "on what I believe",
     },
     imgRot: "2",
     imgZ: 11,
-    noteContent: "Pixar called. I am the main character.",
+    noteContent: "Always a writer. ♥️ Curious kid.",
     noteRot: "4",
     noteColor: stickyColors[3],
   },
@@ -316,7 +316,7 @@ function ChapterCluster({
           </h3>
 
           {/* Handwritten text — no background, no border, pageless */}
-          <p className="handwritten text-lg md:text-xl text-charcoal/70 leading-relaxed mb-8 max-w-lg">
+          <p className="handwritten text-xl md:text-2xl lg:text-3xl text-charcoal/70 leading-relaxed mb-8 max-w-2xl">
             {chapter.text}
           </p>
 
