@@ -38,7 +38,7 @@ export default function WorkEntries() {
     <section id="work" ref={containerRef} className="editorial-section">
       <div className="max-w-4xl mx-auto">
         <div>
-          <h2 className="section-heading mb-14">
+          <h2 className="section-heading mb-14 font-display-alt">
             Work <span className="text-pink">&amp;</span> Research
           </h2>
         </div>
@@ -81,8 +81,8 @@ export default function WorkEntries() {
         </div>
 
         {/* Education — pageless flow */}
-        <div className="mt-0">
-          <h3 className="section-heading text-2xl md:text-3xl mb-10">
+        <div className="mt-24 md:mt-32">
+          <h3 className="section-heading text-2xl md:text-3xl mb-10 font-display-alt">
             Education
           </h3>
 

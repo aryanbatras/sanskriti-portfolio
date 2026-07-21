@@ -17,6 +17,8 @@
   --color-charcoal: #333333;
 
   --font-display: "Playfair Display", Georgia, serif;
+  --font-display-alt: "Fraunces", Georgia, serif;
+  --font-mask: "Fraunces", Georgia, serif;
   --font-body: "Newsreader", Georgia, serif;
   --font-mono: "Fragment Mono", "SF Mono", monospace;
 }

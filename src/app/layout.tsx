@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Newsreader, Fragment_Mono, Caveat } from "next/font/google";
+import { Playfair_Display, Newsreader, Fragment_Mono, Caveat, Fraunces } from "next/font/google";
 import "./globals.css";
 
 const playfairDisplay = Playfair_Display({
@@ -27,6 +27,13 @@ const caveat = Caveat({
   variable: "--font-handwritten",
   display: "swap",
 });
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display-alt",
+  display: "swap",
+});
+
 
 export const metadata: Metadata = {
   title: "Sanskriti Gupta — AI/ML Researcher",
@@ -58,7 +65,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfairDisplay.variable} ${newsreader.variable} ${fragmentMono.variable} ${caveat.variable}`}
+      className={`${playfairDisplay.variable} ${newsreader.variable} ${fragmentMono.variable} ${caveat.variable} ${fraunces.variable}`}
     >
       <body>{children}</body>
     </html>

@@ -457,7 +457,7 @@ export default function MemoriesStory() {
           <div className="inline-block relative">
             {/* Title — hand-drawn feel */}
             <h2
-              className="handwritten text-5xl md:text-7xl lg:text-8xl text-ink leading-none mb-4"
+              className="font-display-alt text-5xl md:text-7xl lg:text-8xl text-ink leading-none mb-4"
               style={{ transform: "rotate(-0.5deg)" }}
             >
               A Clipboard of Memories
