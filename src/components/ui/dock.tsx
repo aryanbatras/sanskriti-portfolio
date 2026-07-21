@@ -12,6 +12,7 @@ import {
 import type { MotionProps } from "motion/react";
 import { cn } from "@/lib/utils";
 import GlassSurface from "@/components/ui/glass-surface";
+import useIsMobile from "@/lib/useIsMobile";
 
 export interface DockProps extends VariantProps<typeof dockVariants> {
   className?: string;
@@ -44,6 +45,10 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     ref
   ) => {
     const mouseX = useMotionValue(Infinity);
+    const isMobile = useIsMobile();
+    const effSize = isMobile ? Math.round(iconSize / 1.25) : iconSize;
+    const effMag = isMobile ? Math.round(iconMagnification / 2) : iconMagnification;
+    const effDist = isMobile ? Math.round(iconDistance / 2) : iconDistance;
 
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
@@ -54,15 +59,45 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
           return React.cloneElement(child, {
             ...child.props,
             mouseX: mouseX,
-            size: iconSize,
-            magnification: iconMagnification,
+            size: effSize,
+            magnification: effMag,
             disableMagnification: disableMagnification,
-            distance: iconDistance,
+            distance: effDist,
           });
         }
         return child;
       });
     };
+
+    if (isMobile) {
+      return (
+        <motion.div
+          ref={ref}
+          onMouseMove={(e) => mouseX.set(e.pageX)}
+          onMouseLeave={() => mouseX.set(Infinity)}
+          {...props}
+          className={cn(
+            "mx-auto flex w-max items-center justify-center rounded-2xl bg-white/20 backdrop-blur-md border border-white/25 px-2 py-1.5",
+            {
+              "items-start": direction === "top",
+              "items-center": direction === "middle",
+              "items-end": direction === "bottom",
+            },
+            className
+          )}
+        >
+          <div
+            className={cn("flex items-center justify-center gap-2", {
+              "items-start": direction === "top",
+              "items-center": direction === "middle",
+              "items-end": direction === "bottom",
+            })}
+          >
+            {renderChildren()}
+          </div>
+        </motion.div>
+      );
+    }
 
     return (
       <motion.div
