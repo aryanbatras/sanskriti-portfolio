@@ -8,7 +8,6 @@ import WorkEntries from "@/components/WorkEntries";
 import ProjectEntries from "@/components/ProjectEntries";
 import NotesBlock from "@/components/NotesBlock";
 import ContactBlock from "@/components/ContactBlock";
-import MarioGame from "@/components/MarioGame";
 
 export default function Home() {
   return (
@@ -24,7 +23,6 @@ export default function Home() {
         <ProjectEntries />
         <NotesBlock />
         <ContactBlock />
-        <MarioGame />
       </div>
     </SmoothScroll>
   );

@@ -1,16 +1,82 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { personalInfo } from "@/lib/data";
+import SecretRpg from "./SecretRpg";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
+// ── Triple Treat SFX sound system ────────────────────────────────────
+const SFX = "/Triple Treat SFX";
+function useSoundEffects() {
+  const cacheRef = useRef<Record<string, HTMLAudioElement>>({});
+
+  const play = useCallback((name: string, volume = 0.3) => {
+    const a = cacheRef.current[name];
+    if (a) {
+      a.currentTime = 0;
+      a.volume = volume;
+      a.play().catch(() => {});
+    }
+  }, []);
+
+  // Preload sounds on first interaction
+  const preload = useCallback(() => {
+    if (Object.keys(cacheRef.current).length > 0) return;
+    const sounds: Record<string, string> = {
+      hover:  `${SFX}/Percussion SFX/Pluck FX-RCM.wav`,
+      click:  `${SFX}/Success:Power-Up SFX/Power Up FX 2-RCM.wav`,
+      pop:    `${SFX}/Pop:Bubble SFX/Pop FX 1-RCM.wav`,
+      sparkle:`${SFX}/Transition SFX/Slide Up FX-RCM.wav`,
+      secret: `${SFX}/Mysterious SFX/Mysterious FX 1-RCM.wav`,
+    };
+    for (const [key, src] of Object.entries(sounds)) {
+      const a = new Audio();
+      a.src = src;
+      a.preload = "auto";
+      cacheRef.current[key] = a;
+    }
+  }, []);
+
+  return { play, preload };
+}
+
 export default function ContactBlock() {
   const containerRef = useRef<HTMLElement>(null);
+  const { play, preload } = useSoundEffects();
+  const [showRpg, setShowRpg] = useState(false);
+  const secretSectionRef = useRef<HTMLDivElement | null>(null);
+
+  // Auto-play sparkle on first scroll reveal
+  useEffect(() => {
+    const el = secretSectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          setTimeout(() => { play("sparkle", 0.2); }, 600);
+          obs.disconnect();
+          break;
+        }
+      }
+    }, { threshold: 0.5 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [play]);
+
+  const handleStartGame = useCallback(() => {
+    preload();
+    play("click", 0.4);
+    setShowRpg(true);
+  }, [play, preload]);
+
+  const handleCloseRpg = useCallback(() => {
+    setShowRpg(false);
+  }, []);
 
   useGSAP(
     () => {
@@ -141,28 +207,85 @@ export default function ContactBlock() {
           </div>
         </div>
 
-        {/* Footer portrait — pinned hover */}
-        <div className="contact-reveal mt-16 flex justify-center">
-          <div className="relative w-40 md:w-48 h-auto overflow-hidden pinned-item pinned-tr">
-            <Image
-              src="/images/wondering-sitting-on-coach.jpeg"
-              alt="Always wondering"
-              width={768}
-              height={1376}
-              className="object-cover w-full h-auto"
-              sizes="160px"
-              loading="lazy"
-            />
-            <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
-              <Image
-                src="/red_pin.png"
-                alt=""
-                width={28}
-                height={28}
-                className="object-contain w-full h-full"
-              />
+        {/* ═══ SECRET SECTION: Pinned Image + Press Start ═══ */}
+        <div ref={secretSectionRef} className="contact-reveal mt-16">
+          {!showRpg ? (
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 justify-center">
+              {/* LEFT: Always wondering pinned image */}
+              <div className="relative w-40 md:w-48 h-auto overflow-hidden pinned-item pinned-tr shrink-0">
+                <Image
+                  src="/images/wondering-sitting-on-coach.jpeg"
+                  alt="Always wondering"
+                  width={768}
+                  height={1376}
+                  className="object-cover w-full h-auto"
+                  sizes="160px"
+                  loading="lazy"
+                />
+                <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
+                  <Image
+                    src="/red_pin.png"
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
+              </div>
+
+              {/* RIGHT: "You found a secret!" + Press Start button */}
+              <div className="flex flex-col items-center md:items-start justify-center gap-4 py-4">
+                <style>{`
+                  @keyframes pulse-glow {
+                    0%, 100% { box-shadow: 0 0 15px rgba(236,72,153,0.3); }
+                    50% { box-shadow: 0 0 30px rgba(236,72,153,0.6), 0 0 60px rgba(168,85,247,0.2); }
+                  }
+                  @keyframes blink {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0; }
+                  }
+                `}</style>
+
+                <p
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-pink-200 text-xs md:text-sm leading-relaxed text-center md:text-left"
+                  style={{ fontFamily: '"Press Start 2P", monospace' }}
+                >
+                  🎯 You found<br />a secret!
+                </p>
+
+                <button
+                  onClick={handleStartGame}
+                  onMouseEnter={() => { preload(); play("hover", 0.2); }}
+                  className="relative group cursor-pointer"
+                  style={{ animation: "pulse-glow 2s ease-in-out infinite" }}
+                >
+                  {/* 3D pixel bevel */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-pink-700 to-purple-900 rounded-lg translate-y-[4px]" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg group-hover:from-pink-500 group-hover:to-purple-500 transition-all duration-200" />
+                  {/* Button inner face */}
+                  <div className="relative px-8 py-3.5 md:px-10 md:py-4 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg overflow-hidden active:translate-y-[2px] active:transition-all duration-75"
+                    style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.15)" }}>
+                    <span
+                      className="text-white text-[10px] md:text-xs tracking-widest relative z-10"
+                      style={{ fontFamily: '"Press Start 2P", monospace', textShadow: "0 1px 2px rgba(0,0,0,0.3)" }}
+                    >
+                      ▶  PRESS START
+                    </span>
+                  </div>
+                </button>
+
+                <p
+                  className="text-white/20 text-[8px]"
+                  style={{ fontFamily: '"Press Start 2P", monospace' }}
+                >
+                  <span style={{ animation: "blink 1s step-end infinite" }}>▌</span> ENTER the story
+                </p>
+              </div>
             </div>
-          </div>
+          ) : (
+            /* RPG Story Game */
+            <SecretRpg onClose={handleCloseRpg} />
+          )}
         </div>
       </div>
     </section>
