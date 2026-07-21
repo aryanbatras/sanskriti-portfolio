@@ -44,7 +44,6 @@ export default function NotesBlock() {
           >
             Skills <span className="text-pink">&amp;</span> Recognition
           </h2>
-          {/* Tiny red pin — top-right of heading */}
           <div className="absolute -top-2 -right-4 w-5 h-5 md:w-6 md:h-6 opacity-60">
             <Image
               src="/red_pin.png"
@@ -135,7 +134,6 @@ export default function NotesBlock() {
                 sizes="(max-width: 768px) 192px, 224px"
                 loading="lazy"
               />
-              {/* Red pin — top-right corner */}
               <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
                 <Image
                   src="/red_pin.png"
@@ -146,6 +144,53 @@ export default function NotesBlock() {
                 />
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* ── LeetCode Stats ── */}
+        <div className="mt-20 md:mt-28">
+          <div className="relative inline-block mb-10">
+            <h3
+              className="section-heading text-2xl md:text-3xl font-display-alt"
+              style={{ transform: "rotate(-0.3deg)" }}
+            >
+              LeetCode <span className="text-pink">Stats</span>
+            </h3>
+            <div className="absolute -top-2 -right-4 w-5 h-5 md:w-6 md:h-6 opacity-60">
+              <Image
+                src="/red_pin.png"
+                alt=""
+                width={24}
+                height={24}
+                className="object-contain w-full h-full"
+              />
+            </div>
+          </div>
+
+          <div className="notes-reveal">
+            <div className="relative max-w-4xl mx-auto overflow-hidden pinned-item pinned-tl">
+              <Image
+                src="/my-leetcode.png"
+                alt="Sanskriti Gupta LeetCode profile — 1,652 contest rating, 457 problems solved, top 17.88%"
+                width={1040}
+                height={720}
+                className="object-cover w-full h-auto"
+                sizes="(max-width: 1024px) 100vw, 896px"
+                loading="lazy"
+              />
+              <div className="absolute top-2 left-2 z-10 w-6 h-6 md:w-7 md:h-7">
+                <Image
+                  src="/red_pin.png"
+                  alt=""
+                  width={28}
+                  height={28}
+                  className="object-contain w-full h-full"
+                />
+              </div>
+            </div>
+            <p className="text-center mt-6 text-charcoal/50 text-sm font-mono tracking-wide">
+              Rating <span className="text-pink">1,652</span> &middot; 457 solved &middot; Top 17.88% &middot; 197 active days
+            </p>
           </div>
         </div>
       </div>

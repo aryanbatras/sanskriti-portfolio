@@ -51,12 +51,12 @@ export default function WorkEntries() {
               className="work-entry entry group"
             >              <div className="flex items-start gap-4">
                 {job.logo && (
-                  <div className="relative w-10 h-10 shrink-0 rounded-full overflow-hidden bg-pink-light flex items-center justify-center group-hover:bg-pink-light transition-colors duration-300">
+                  <div className="relative w-10 h-10 shrink-0 rounded-full overflow-hidden">
                     <Image
                       src={job.logo}
                       alt={job.organization}
                       fill
-                      className="object-contain p-2"
+                      className="object-cover rounded-full"
                       sizes="40px"
                     />
                   </div>
@@ -94,12 +94,12 @@ export default function WorkEntries() {
             >
               <div className="flex items-start gap-4">
                   {edu.logo && (
-                    <div className="relative w-9 h-9 shrink-0 rounded-full overflow-hidden bg-pink-light flex items-center justify-center">
+                    <div className="relative w-9 h-9 shrink-0 rounded-full overflow-hidden">
                       <Image
                         src={edu.logo}
                         alt={edu.school}
                         fill
-                        className="object-contain p-2"
+                        className="object-cover rounded-full"
                         sizes="36px"
                       />
                     </div>

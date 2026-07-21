@@ -223,9 +223,85 @@ export function runStreetFight(
       });
     }
 
+    function makeBtn(text: string, onDown: () => void, onUp: () => void): HTMLButtonElement {
+      const b = document.createElement("button");
+      b.textContent = text;
+      b.style.cssText =
+        "background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);" +
+        "color:#fff;font-size:16px;border-radius:10px;padding:10px 12px;" +
+        "touch-action:none;cursor:pointer;user-select:none;-webkit-user-select:none;" +
+        "font-family:'Press Start 2P',monospace;min-width:44px;min-height:44px;" +
+        "display:flex;align-items:center;justify-content:center;box-shadow:0 0 8px rgba(0,0,0,0.5);";
+      b.addEventListener("touchstart", (e) => { e.preventDefault(); onDown(); });
+      b.addEventListener("touchend", (e) => { e.preventDefault(); onUp(); });
+      b.addEventListener("touchcancel", (e) => { e.preventDefault(); onUp(); });
+      b.addEventListener("mousedown", () => onDown());
+      b.addEventListener("mouseup", () => onUp());
+      b.addEventListener("mouseleave", () => onUp());
+      return b;
+    }
+
+    function addMobileControls(container: HTMLElement) {
+      const pad = document.createElement("div");
+      pad.style.cssText =
+        "position:fixed;bottom:10px;left:5px;display:grid;grid-template-columns:48px 48px 48px;" +
+        "grid-template-rows:48px 48px;gap:4px;z-index:1000;pointer-events:auto;";
+
+      // Empty top-left, Up, empty top-right
+      const empty1 = document.createElement("div"); empty1.style.width = "48px";
+      const upBtn = makeBtn("▲", () => { keys["ArrowUp"] = true; }, () => { keys["ArrowUp"] = false; });
+      const empty2 = document.createElement("div"); empty2.style.width = "48px";
+
+      // Left, Down, Right
+      const leftBtn = makeBtn("◀", () => { keys["ArrowLeft"] = true; state.facingX = -1; }, () => { keys["ArrowLeft"] = false; });
+      const downBtn = makeBtn("▼", () => { keys["ArrowDown"] = true; }, () => { keys["ArrowDown"] = false; });
+      const rightBtn = makeBtn("▶", () => { keys["ArrowRight"] = true; state.facingX = 1; }, () => { keys["ArrowRight"] = false; });
+
+      pad.appendChild(empty1); pad.appendChild(upBtn); pad.appendChild(empty2);
+      pad.appendChild(leftBtn); pad.appendChild(downBtn); pad.appendChild(rightBtn);
+      container.appendChild(pad);
+
+      // Action buttons (right side)
+      const actions = document.createElement("div");
+      actions.style.cssText =
+        "position:fixed;bottom:10px;right:5px;display:flex;gap:6px;z-index:1000;pointer-events:auto;";
+
+      const punchBtn = makeBtn("👊",
+        () => { keys["a"] = true; },
+        () => { keys["a"] = false; keys["A"] = false; },
+      );
+      punchBtn.style.background = "rgba(239,68,68,0.35)";
+      punchBtn.style.borderColor = "rgba(239,68,68,0.6)";
+      punchBtn.style.fontSize = "18px";
+      punchBtn.style.padding = "10px 18px";
+      punchBtn.title = "PUNCH";
+
+      const throwBtn = makeBtn("📱",
+        () => { if (state.items.length >= 1 && state.result === "none") { keys[" "] = true; } },
+        () => { keys[" "] = false; },
+      );
+      throwBtn.style.background = "rgba(250,204,21,0.35)";
+      throwBtn.style.borderColor = "rgba(250,204,21,0.6)";
+      throwBtn.style.fontSize = "18px";
+      throwBtn.style.padding = "10px 18px";
+      throwBtn.title = "THROW";
+
+      actions.appendChild(punchBtn);
+      actions.appendChild(throwBtn);
+      container.appendChild(actions);
+
+      return [pad, actions];
+    }
+
     function start() {
       // Spawn initial pickups
       for (let i = 0; i < 8; i++) spawnPickup();
+
+      // Mobile controls container
+      let mobileControls: HTMLElement[] = [];
+      if (isMobile()) {
+        mobileControls = addMobileControls(overlay);
+      }
 
       const kd = (e: KeyboardEvent) => {
         keys[e.key] = true;
@@ -241,6 +317,32 @@ export function runStreetFight(
       };
       window.addEventListener("keydown", kd);
       window.addEventListener("keyup", ku);
+
+      // Define throw function at start() scope (function decl is hoisted, so both loop and mobile controls can use it)
+      function throwFirstItem(slot: number) {
+        if (state.result !== "none") return;
+        const thrownItem = state.items.splice(slot - 1, 1)[0];
+        let nearest: FightEnemy | null = null;
+        let nearDist = Infinity;
+        for (const e of state.enemies) {
+          if (e.hp <= 0) continue;
+          const d = Math.hypot(e.x - state.playerX, e.y - state.playerY);
+          if (d < nearDist) { nearDist = d; nearest = e; }
+        }
+        const targetX = nearest ? nearest.x : state.playerX + state.facingX * 100;
+        const targetY = nearest ? nearest.y : state.playerY;
+        const emoji =
+          thrownItem === "phone"  ? "📱" :
+          thrownItem === "coffee" ? "☕" :
+          thrownItem === "laptop" ? "💻" :
+          thrownItem === "brain"  ? "🧠" : "📦";
+        state.projectiles.push({
+          x: state.playerX, y: state.playerY, targetX, targetY,
+          progress: 0, speed: 0.06, emoji, hit: false,
+        });
+        fightSfx("swipe");
+        keys[String(slot)] = false;
+      }
 
       const loop = () => {
         state.invincible = Math.max(0, state.invincible - 1);
@@ -315,30 +417,6 @@ export function runStreetFight(
         }
         if (keys[" "] && state.items.length >= 1 && state.result === "none") {
           throwFirstItem(1); keys[" "] = false;
-        }
-
-        function throwFirstItem(slot: number) {
-          const thrownItem = state.items.splice(slot - 1, 1)[0];
-          let nearest: FightEnemy | null = null;
-          let nearDist = Infinity;
-          for (const e of state.enemies) {
-            if (e.hp <= 0) continue;
-            const d = Math.hypot(e.x - state.playerX, e.y - state.playerY);
-            if (d < nearDist) { nearDist = d; nearest = e; }
-          }
-          const targetX = nearest ? nearest.x : state.playerX + state.facingX * 100;
-          const targetY = nearest ? nearest.y : state.playerY;
-          const emoji =
-            thrownItem === "phone"  ? "📱" :
-            thrownItem === "coffee" ? "☕" :
-            thrownItem === "laptop" ? "💻" :
-            thrownItem === "brain"  ? "🧠" : "📦";
-          state.projectiles.push({
-            x: state.playerX, y: state.playerY, targetX, targetY,
-            progress: 0, speed: 0.06, emoji, hit: false,
-          });
-          fightSfx("swipe");
-          keys[String(slot)] = false;
         }
 
         // ── Punch ──
@@ -439,6 +517,7 @@ export function runStreetFight(
             window.removeEventListener("keydown", kd);
             window.removeEventListener("keyup", ku);
             window.removeEventListener("resize", onResize);
+            for (const el of mobileControls) { if (el.parentNode) el.parentNode.removeChild(el); }
             document.body.removeChild(overlay);
             resolve({ won: state.result === "win", items: state.items });
           }, 1200);

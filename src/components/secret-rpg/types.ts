@@ -62,17 +62,6 @@ export type MiniGameRunner = (
   playerItems: string[],
 ) => Promise<MiniGameResult>;
 
-// ─── Save Data ──────────────────────────────────────────────────────
-
-export interface SaveData {
-  sceneId: string;
-  minigameWon: Record<string, boolean>;
-  playerItems: string[];
-  savedAt: number;
-}
-
-export const SAVE_KEY = "secret-rpg-save";
-
 // ─── Constants ──────────────────────────────────────────────────────
 
 export const FIGHT_W = 600;
@@ -86,6 +75,7 @@ export const ASSETS: Record<string, string> = {
   pencil:   "/new_game_assets/Pencil_Enemy.png",
   bug:      "/new_game_assets/Bug_Enemy.png",
   coffeeMug: "/new_game_assets/CoffeeMug_Enemy.png",
+  professor: "/new_game_assets/mp_character_animation_asset_pack_v1.0/Exported PNGs/Male/Character 1/Clothes 1/Character1M_1_talk_0.png",
 };
 
 export const SFX_PATH = "/Triple Treat SFX";
@@ -97,4 +87,6 @@ export const FALLBACK_MAP: Record<string, string> = {
   codeType: "libraryB",
   logicPuzzle: "bugEntrance",
   quoteFight: "bugEntrance",
+  professorFight: "professorEncounter",
+
 };

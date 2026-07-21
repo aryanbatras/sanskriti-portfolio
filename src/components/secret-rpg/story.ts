@@ -280,9 +280,61 @@ The glowing bookshelf calls to her. Whatever's behind it... she can face it.
 +1000 CONFIDENCE RESTORED! ✨`,
     img: S,
     choices: [
-      { text: "✨  Investigate the glowing shelf!", next: "victory" },
+      { text: "✨  Investigate the glowing shelf!", next: "professorEncounter" },
     ],
     effects: "power",
+  },
+
+  professorEncounter: {
+    id: "professorEncounter",
+    text: `Sanskriti steps behind the glowing bookshelf. The world shifts — warm candlelight, old books, the smell of coffee and ink.
+
+A man sits behind a mahogany desk. Grey-streaked beard, kind eyes behind round glasses, a worn tweed blazer. This is PROFESSOR SHARMA, the legendary CS professor.
+
+He looks up and smiles. "Ah. The one who defeated the Bug Enemy. I've been expecting you."
+
+Sanskriti blinks. "You... have?"
+
+"Of course. Every semester, a student finds this place. It's a rite of passage. But to earn the SEAT — that perfect study spot by the window — you must pass one final test."
+
+He stands up, cracks his knuckles, and pulls a CRUMPLED research paper from his drawer.
+
+"Defend your thesis. Against ME."
+
+The room darkens. Papers swirl. Professor Sharma teleports to the other side of the room, striking a fighting pose.
+
+This is the FINAL BOSS. He has 5 HP — more than any enemy you've faced. But he's slower, giving you time to think.
+
+Use your items wisely. Throw your phone, your laptop, your coffee. Punch when he gets close. The BRAIN power-up awaits the victor!`,
+    img: S,
+    choices: [
+      { text: "⚔  Challenge Professor Sharma! (BOSS FIGHT)", next: "professorFight" },
+    ],
+    effects: "mystery",
+  },
+
+  professorFight: {
+    id: "professorFight",
+    text: `The final battle was LEGENDARY.
+
+Sanskriti dodged flying research papers, threw her coffee mug at the professor's head, and landed a textbook-perfect punch right as he was explaining a bug in her code.
+
+Professor Sharma staggers back, laughing. "WELL PLAYED!"
+
+With a final THWACK of 'Introduction to Algorithms,' he goes down — but he's smiling.
+
+"You've earned it," he says, pulling a glowing BRAIN keychain from his pocket. It pulses with warm pink light — the legendary BRAIN POWER-UP, representing her AI/ML knowledge.
+
+Sanskriti catches it. A surge of energy flows through her. She feels invincible.
+
+"Now go," the Professor says, vanishing into the shadows. "That study spot isn't going to claim itself."
+
++🧠 BRAIN POWER-UP ACQUIRED! +999 CONFIDENCE!`,
+    img: S,
+    choices: [
+      { text: "✨  Claim your study spot!", next: "victory" },
+    ],
+    effects: "win",
   },
 
   victory: {
@@ -293,17 +345,19 @@ Sanskriti sits down, places her coffee to the right, opens her MacBook, and pull
 
 "The journey of a thousand lines of code begins with a single 'Hello, World.'"
 
-📖✨ She made it. Day 1: Complete.
+📖✨ She made it. Day 1: Complete!
 
 The semester awaits. Bugs will come and go. Pencils will sharpen and break. Coffee will be spilled and drunk.
 
-And Sanskriti? She's just getting started.
+She looks down at the BRAIN keychain on her bag. It glows softly.
 
-(P.S. The pencil enemies? They were just undergrads in disguise. The bugs? Real bugs. Someone should call IT.)`,
+(P.S. The pencil enemies? They were just undergrads in disguise. The bugs? Real bugs. And Professor Sharma? He'll be back for the final exam.)`,
     img: S,
     choices: [
       { text: "🎉  Finish (Play Again?)", next: "start", sound: "win" },
     ],
     effects: "win",
   },
+
+
 };

@@ -20,7 +20,16 @@ const techColors: Record<string, string> = {
   OpenCV: "bg-stone text-ink",
   "Scikit-learn": "bg-pink-light text-pink-dark",
   NLP: "bg-pink-light text-pink-dark",
-  "Game Logic": "bg-stone text-ink",
+  CNN: "bg-pink-light text-pink-dark",
+  Java: "bg-stone text-ink",
+  PHP: "bg-stone text-ink",
+  CSS: "bg-stone text-ink",
+  HTML: "bg-stone text-ink",
+  Jupyter: "bg-pink-light text-pink-dark",
+  Pygame: "bg-stone text-ink",
+  "Web Technologies": "bg-stone text-ink",
+  ML: "bg-pink-light text-pink-dark",
+  JavaScript: "bg-stone text-ink",
 };
 
 function getTechColor(tech: string): string {

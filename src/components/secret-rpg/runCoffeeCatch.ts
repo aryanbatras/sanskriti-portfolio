@@ -67,6 +67,82 @@ interface FallingItem {
   active: boolean;
 }
 
+// ─── Mobile detection ───────────────────────────────────────────────
+let _isMobileCached: boolean | null = null;
+function isMobile(): boolean {
+  if (_isMobileCached !== null) return _isMobileCached;
+  _isMobileCached = ("ontouchstart" in window && navigator.maxTouchPoints > 0) || window.innerWidth < 768;
+  return _isMobileCached;
+}
+
+// ─── Button maker ───────────────────────────────────────────────────
+function makeBtn(
+  text: string,
+  onDown: () => void,
+  onUp: () => void,
+): HTMLElement {
+  const btn = document.createElement("div");
+  btn.style.cssText =
+    "display:flex;align-items:center;justify-content:center;" +
+    "min-width:44px;min-height:44px;padding:8px 14px;" +
+    "background:rgba(255,255,255,0.15);border-radius:10px;" +
+    "border:2px solid rgba(255,255,255,0.25);" +
+    "color:#fff;font-size:16px;user-select:none;" +
+    "touch-action:none;cursor:pointer;" +
+    "font-family:'Press Start 2P',monospace;" +
+    "transition:background 0.1s";
+  btn.textContent = text;
+  btn.addEventListener("touchstart", (e) => { e.preventDefault(); onDown(); }, { passive: false });
+  btn.addEventListener("touchend", (e) => { e.preventDefault(); onUp(); }, { passive: false });
+  btn.addEventListener("touchcancel", (e) => { e.preventDefault(); onUp(); }, { passive: false });
+  btn.addEventListener("mousedown", () => onDown());
+  btn.addEventListener("mouseup", () => onUp());
+  btn.addEventListener("mouseleave", () => onUp());
+  return btn;
+}
+
+// ─── Mobile controls ────────────────────────────────────────────────
+let _mobileControlsCoffee: HTMLElement[] = [];
+
+function addMobileControls(container: HTMLElement, keys: Record<string, boolean>) {
+  if (!isMobile()) return;
+
+  // ── D-pad (Left / Right) ──
+  const pad = document.createElement("div");
+  pad.style.cssText =
+    "position:absolute;bottom:10px;left:10px;" +
+    "display:flex;gap:8px;align-items:center;z-index:1000";
+
+  const btnL = makeBtn("◀", () => { keys["ArrowLeft"] = true; }, () => { keys["ArrowLeft"] = false; });
+  const btnR = makeBtn("▶", () => { keys["ArrowRight"] = true; }, () => { keys["ArrowRight"] = false; });
+
+  const spacer = document.createElement("div");
+  spacer.style.cssText = "width:12px;height:1px";
+
+  pad.appendChild(btnL);
+  pad.appendChild(spacer);
+  pad.appendChild(btnR);
+  container.appendChild(pad);
+  _mobileControlsCoffee.push(pad);
+
+  // ── Dodge button ──
+  const actions = document.createElement("div");
+  actions.style.cssText =
+    "position:absolute;bottom:10px;right:10px;" +
+    "display:flex;gap:8px;z-index:1000";
+
+  const btnDodge = makeBtn(
+    "👊",
+    () => { keys["Dodge"] = true; },
+    () => { keys["Dodge"] = false; },
+  );
+  btnDodge.style.background = "rgba(250,204,21,0.25)";
+  btnDodge.style.borderColor = "rgba(250,204,21,0.5)";
+  actions.appendChild(btnDodge);
+  container.appendChild(actions);
+  _mobileControlsCoffee.push(actions);
+}
+
 // ─── Coffee Catch Mini-Game ─────────────────────────────────────────
 // Player moves left/right at bottom, catches falling coffee cups (☕)
 // and dodges falling pencils (✏️). Catch 5 coffees to win, 3 pencils = lose.
@@ -95,11 +171,14 @@ export function runCoffeeCatch(
     // ── State ──
     const playerW = 60;
     const playerX = FIGHT_W / 2 - playerW / 2;
+    let dodgeCooldown = 0;
+    let dodgeDir = 1;
     const state = {
       playerX,
       caught: 0,
       hearts: 3,
       invincible: 0,
+      dodgeFX: { x: 0, y: 0, timer: 0 },
       items: [] as FallingItem[],
       hitFlashes: [] as HitFlash[],
       particles: [] as Particle[],
@@ -119,13 +198,45 @@ export function runCoffeeCatch(
     window.addEventListener("keydown", kd);
     window.addEventListener("keyup", ku);
 
+    // Add mobile controls
+    _mobileControlsCoffee = [];
+    addMobileControls(overlay, keys);
+
     const loop = () => {
       state.invincible = Math.max(0, state.invincible - 1);
+      dodgeCooldown = Math.max(0, dodgeCooldown - 1);
+      if (state.dodgeFX.timer > 0) state.dodgeFX.timer--;
 
       // ── Player movement ──
       if (keys["ArrowLeft"]) state.playerX -= 4;
       if (keys["ArrowRight"]) state.playerX += 4;
       state.playerX = Math.max(0, Math.min(FIGHT_W - playerW, state.playerX));
+
+      // ── Dodge action ──
+      if (keys["Dodge"] && dodgeCooldown <= 0) {
+        keys["Dodge"] = false;
+        dodgeCooldown = 30;
+        state.invincible = 20;
+        // Quick shift in current movement direction (or default right)
+        dodgeDir = keys["ArrowLeft"] ? -1 : 1;
+        state.playerX += dodgeDir * 60;
+        state.playerX = Math.max(0, Math.min(FIGHT_W - playerW, state.playerX));
+        state.dodgeFX = { x: state.playerX + playerW / 2, y: FIGHT_H - 50, timer: 12 };
+        // Dodge particles
+        const colors = ["#facc15", "#fbbf24", "#fff8e1"];
+        for (let i = 0; i < 6; i++) {
+          state.particles.push({
+            x: state.playerX + playerW / 2 + (Math.random() - 0.5) * 30,
+            y: FIGHT_H - 50,
+            vx: -dodgeDir * (2 + Math.random() * 3),
+            vy: -2 + Math.random() * 2,
+            life: 10 + Math.floor(Math.random() * 8),
+            maxLife: 18,
+            size: 3 + Math.floor(Math.random() * 3),
+            color: colors[Math.floor(Math.random() * colors.length)],
+          });
+        }
+      }
 
       // ── Spawn items (scaled by difficulty) ──
       state.spawnTimer++;
@@ -258,6 +369,20 @@ export function runCoffeeCatch(
       if (!blink) ctx.fillText("🧑‍🎓", state.playerX + playerW / 2, FIGHT_H - 50);
       ctx.shadowBlur = 0;
 
+      // ── Dodge flash ──
+      if (state.dodgeFX.timer > 0) {
+        const alpha = state.dodgeFX.timer / 12;
+        ctx.save();
+        ctx.globalAlpha = alpha * 0.4;
+        ctx.fillStyle = "#facc15";
+        ctx.shadowColor = "#facc15";
+        ctx.shadowBlur = 20;
+        ctx.beginPath();
+        ctx.arc(state.dodgeFX.x, state.dodgeFX.y, 30, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
       // Ground indicator
       ctx.fillStyle = "rgba(255,255,255,0.08)";
       ctx.fillRect(0, FIGHT_H - 45, FIGHT_W, 2);
@@ -321,6 +446,10 @@ export function runCoffeeCatch(
           window.removeEventListener("keydown", kd);
           window.removeEventListener("keyup", ku);
           window.removeEventListener("resize", onResize);
+          for (const el of _mobileControlsCoffee) {
+            if (el.parentNode) el.parentNode.removeChild(el);
+          }
+          _mobileControlsCoffee = [];
           document.body.removeChild(overlay);
           resolve({ won: state.result === "win" });
         }, 1500);

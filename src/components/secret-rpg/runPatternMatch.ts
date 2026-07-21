@@ -1,5 +1,96 @@
 import { FIGHT_W, FIGHT_H, MiniGameConfig, MiniGameResult } from "./types";
 
+// ─── Mobile detection ───────────────────────────────────────────────
+let _isMobileCached: boolean | null = null;
+function isMobile(): boolean {
+  if (_isMobileCached !== null) return _isMobileCached;
+  _isMobileCached = ("ontouchstart" in window && navigator.maxTouchPoints > 0) || window.innerWidth < 768;
+  return _isMobileCached;
+}
+
+// ─── Button maker ───────────────────────────────────────────────────
+function makeBtn(
+  text: string,
+  onDown: () => void,
+  onUp: () => void,
+): HTMLElement {
+  const btn = document.createElement("div");
+  btn.style.cssText =
+    "display:flex;align-items:center;justify-content:center;" +
+    "min-width:44px;min-height:44px;width:48px;height:48px;" +
+    "background:rgba(255,255,255,0.15);border-radius:10px;" +
+    "border:2px solid rgba(255,255,255,0.25);" +
+    "color:#fff;font-size:18px;user-select:none;" +
+    "touch-action:none;cursor:pointer;" +
+    "font-family:'Press Start 2P',monospace;" +
+    "transition:background 0.08s";
+  btn.textContent = text;
+  btn.addEventListener("touchstart", (e) => { e.preventDefault(); onDown(); }, { passive: false });
+  btn.addEventListener("touchend", (e) => { e.preventDefault(); onUp(); }, { passive: false });
+  btn.addEventListener("touchcancel", (e) => { e.preventDefault(); onUp(); }, { passive: false });
+  btn.addEventListener("mousedown", () => onDown());
+  btn.addEventListener("mouseup", () => onUp());
+  btn.addEventListener("mouseleave", () => onUp());
+  return btn;
+}
+
+// ─── Mobile controls ────────────────────────────────────────────────
+let _mobileControlsPattern: HTMLElement[] = [];
+
+function addMobileControls(
+  container: HTMLElement,
+  onDirection: (dir: string) => void,
+) {
+  if (!isMobile()) return;
+
+  const pad = document.createElement("div");
+  pad.style.cssText =
+    "position:absolute;bottom:20px;left:50%;transform:translateX(-50%);" +
+    "display:grid;grid-template-columns:48px 48px 48px;grid-template-rows:48px 48px 48px;" +
+    "gap:4px;justify-items:center;align-items:center;z-index:1000";
+
+  // Grid positions: [row][col]
+  // [empty]  [↑]  [empty]
+  // [←]      [·]  [→]
+  // [empty]  [↓]  [empty]
+
+  const blank = () => {
+    const d = document.createElement("div");
+    d.style.cssText = "width:48px;height:48px";
+    return d;
+  };
+
+  const btnUp = makeBtn("↑", () => onDirection("ArrowUp"), () => {});
+  btnUp.style.background = "rgba(74,222,128,0.2)";
+  btnUp.style.borderColor = "rgba(74,222,128,0.4)";
+  const btnLeft = makeBtn("←", () => onDirection("ArrowLeft"), () => {});
+  const btnRight = makeBtn("→", () => onDirection("ArrowRight"), () => {});
+  const btnDown = makeBtn("↓", () => onDirection("ArrowDown"), () => {});
+  btnDown.style.background = "rgba(74,222,128,0.2)";
+  btnDown.style.borderColor = "rgba(74,222,128,0.4)";
+
+  // Center dot
+  const dot = document.createElement("div");
+  dot.style.cssText =
+    "width:48px;height:48px;display:flex;align-items:center;justify-content:center;" +
+    "color:rgba(255,255,255,0.2);font-size:14px;" +
+    "font-family:'Press Start 2P',monospace";
+  dot.textContent = "·";
+
+  pad.appendChild(blank());
+  pad.appendChild(btnUp);
+  pad.appendChild(blank());
+  pad.appendChild(btnLeft);
+  pad.appendChild(dot);
+  pad.appendChild(btnRight);
+  pad.appendChild(blank());
+  pad.appendChild(btnDown);
+  pad.appendChild(blank());
+
+  container.appendChild(pad);
+  _mobileControlsPattern.push(pad);
+}
+
 // ─── Pattern Match Mini-Game ────────────────────────────────────────
 // A sequence of arrow directions plays. Repeat it with arrow keys.
 // 3 rounds to win (seq length 2 → 3 → 4 → victory).
@@ -51,13 +142,10 @@ export function runPatternMatch(
     };
     genSeq(2);
 
-    const kd = (e: KeyboardEvent) => {
+    // Shared direction handler: used by both keyboard and mobile buttons
+    const processDirection = (dir: string) => {
       if (state.result !== "none") return;
       if (state.showing) return;
-
-      const dir = KEY_MAP[e.key];
-      if (!dir) return;
-      e.preventDefault();
 
       // Flash the pressed arrow
       state.flash = dir;
@@ -83,7 +171,18 @@ export function runPatternMatch(
       }
     };
 
+    const kd = (e: KeyboardEvent) => {
+      const dir = KEY_MAP[e.key];
+      if (!dir) return;
+      e.preventDefault();
+      processDirection(dir);
+    };
+
     window.addEventListener("keydown", kd);
+
+    // Add mobile D-pad controls
+    _mobileControlsPattern = [];
+    addMobileControls(overlay, processDirection);
 
     const loop = () => {
       const W = ctx.canvas.width;
@@ -158,7 +257,7 @@ export function runPatternMatch(
       ctx.textAlign = "center";
       const hint = state.showing
         ? "WATCH THE PATTERN..."
-        : "REPEAT WITH ← ↑ → ↓";
+        : isMobile() ? "TAP THE ARROWS" : "REPEAT WITH ← ↑ → ↓";
       ctx.fillText(hint, FIGHT_W / 2, FIGHT_H - 40);
 
       // Mini pencil icon
@@ -205,6 +304,10 @@ export function runPatternMatch(
           cancelAnimationFrame(animId);
           window.removeEventListener("keydown", kd);
           window.removeEventListener("resize", onResize);
+          for (const el of _mobileControlsPattern) {
+            if (el.parentNode) el.parentNode.removeChild(el);
+          }
+          _mobileControlsPattern = [];
           document.body.removeChild(overlay);
           resolve({ won: state.result === "win" });
         }, 1800);

@@ -5,7 +5,7 @@ import { Choice, FALLBACK_MAP } from "./types";
 import { STORY } from "./story";
 import { MINI_GAMES, runMiniGame } from "./minigames";
 import { preloadRpgSounds } from "./sounds";
-import { saveProgress, loadProgress, clearProgress, formatSaveTime } from "./save";
+
 
 // ═════════════════════════════════════════════════════════════════════
 //  PROPS
@@ -20,31 +20,15 @@ interface SecretRpgProps {
 // ═════════════════════════════════════════════════════════════════════
 
 export default function SecretRpg({ onClose }: SecretRpgProps) {
-  // ── Restore from save or start fresh ──
-  const savedGame = loadProgress();
-
-  const [sceneId, setSceneId] = useState(savedGame?.sceneId || "start");
+  const [sceneId, setSceneId] = useState("start");
   const [typedText, setTypedText] = useState("");
   const [textDone, setTextDone] = useState(false);
   const [show, setShow] = useState(true);
   const [inMinigame, setInMinigame] = useState(false);
-  const [minigameWon, setMinigameWon] = useState<Record<string, boolean>>(
-    savedGame?.minigameWon || {},
-  );
-  const [playerItems, setPlayerItems] = useState<string[]>(
-    savedGame?.playerItems || [],
-  );
-  const [saveTimestamp, setSaveTimestamp] = useState<number | null>(
-    savedGame?.savedAt || null,
-  );
+  const [minigameWon, setMinigameWon] = useState<Record<string, boolean>>({});
+  const [playerItems, setPlayerItems] = useState<string[]>([]);
   const playRef = useRef<((n: string, v?: number) => void) | null>(null);
   const typeTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  // ── Auto-save on state changes ──
-  useEffect(() => {
-    saveProgress({ sceneId, minigameWon, playerItems, savedAt: Date.now() });
-    setSaveTimestamp(Date.now());
-  }, [sceneId, minigameWon, playerItems]);
 
   // Initialize sounds once
   useEffect(() => {
@@ -110,11 +94,9 @@ export default function SecretRpg({ onClose }: SecretRpgProps) {
       if (playRef.current) playRef.current(choice.sound || "select", 0.3);
 
       if (choice.next === "start") {
-        clearProgress();
         setMinigameWon({});
         setPlayerItems([]);
         setSceneId("start");
-        setSaveTimestamp(null);
         return;
       }
 
@@ -146,7 +128,7 @@ export default function SecretRpg({ onClose }: SecretRpgProps) {
     [playerItems],
   );
 
-  // Keyboard shortcuts for choices: 1, 2, 3 = choices; C = Continue; S = Start fresh
+  // Keyboard shortcuts for choices: 1, 2, 3
   useEffect(() => {
     if (inMinigame || !textDone) return;
     if (scene.choices.length === 0) return;
@@ -156,32 +138,12 @@ export default function SecretRpg({ onClose }: SecretRpgProps) {
       if (num >= 1 && num <= scene.choices.length) {
         e.preventDefault();
         handleChoice(scene.choices[num - 1]);
-        return;
-      }
-      if ((e.key === "c" || e.key === "C") && sceneId === "start" && saveTimestamp) {
-        e.preventDefault();
-        const saved = loadProgress();
-        if (saved) {
-          setSceneId(saved.sceneId);
-          setMinigameWon(saved.minigameWon);
-          setPlayerItems(saved.playerItems);
-          playSfx("confirm", 0.4);
-        }
-        return;
-      }
-      if ((e.key === "s" || e.key === "S") && sceneId === "start" && saveTimestamp) {
-        e.preventDefault();
-        clearProgress();
-        setMinigameWon({});
-        setPlayerItems([]);
-        setSaveTimestamp(null);
-        playSfx("select", 0.3);
       }
     };
 
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [inMinigame, textDone, scene, sceneId, saveTimestamp, handleChoice, playSfx]);
+  }, [inMinigame, textDone, scene, handleChoice]);
 
   if (!show) return null;
 
@@ -350,60 +312,6 @@ export default function SecretRpg({ onClose }: SecretRpgProps) {
             className="space-y-2"
             style={{ animation: "fade-in 0.3s ease-out" }}
           >
-            {/* At the start screen, show Continue button if save exists */}
-            {sceneId === "start" && saveTimestamp && (
-              <div className="mb-3">
-                <button
-                  onClick={() => {
-                    const saved = loadProgress();
-                    if (saved) {
-                      setSceneId(saved.sceneId);
-                      setMinigameWon(saved.minigameWon);
-                      setPlayerItems(saved.playerItems);
-                      playSfx("confirm", 0.4);
-                    }
-                  }}
-                  className="w-full text-left px-4 py-3 bg-gradient-to-r from-pink-600/30 to-purple-600/30 border border-pink-500/50 hover:border-pink-400 rounded-lg transition-all duration-200 active:scale-[0.98] group"
-                >
-                  <span
-                    className="text-pink-200 group-hover:text-pink-100 text-xs"
-                    style={{ fontFamily: '"Press Start 2P", monospace' }}
-                  >
-                    ▶  Continue where you left off
-                  </span>
-                  <span
-                    className="text-[7px] text-white/30 block mt-1"
-                    style={{ fontFamily: '"Press Start 2P", monospace' }}
-                  >
-                    💾 Saved {saveTimestamp ? formatSaveTime(saveTimestamp) : ""}
-                  </span>
-                </button>
-              </div>
-            )}
-
-            {/* New game button when on start screen with save */}
-            {sceneId === "start" && saveTimestamp && (
-              <div className="mb-3">
-                <button
-                  onClick={() => {
-                    clearProgress();
-                    setMinigameWon({});
-                    setPlayerItems([]);
-                    setSaveTimestamp(null);
-                    playSfx("select", 0.3);
-                  }}
-                  className="w-full text-left px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-lg transition-all duration-200 active:scale-[0.98] group"
-                >
-                  <span
-                    className="text-white/50 group-hover:text-white/70 text-[9px]"
-                    style={{ fontFamily: '"Press Start 2P", monospace' }}
-                  >
-                    🆕  Start fresh
-                  </span>
-                </button>
-              </div>
-            )}
-
             {scene.choices.map((choice, i) => (
               <button
                 key={i}
@@ -422,17 +330,6 @@ export default function SecretRpg({ onClose }: SecretRpgProps) {
           </div>
         )}
 
-        {/* Save indicator (subtle) */}
-        {saveTimestamp && !inMinigame && textDone && (
-          <div className="text-center mt-2">
-            <span
-              className="text-[6px] text-white/15"
-              style={{ fontFamily: '"Press Start 2P", monospace' }}
-            >
-              💾 Saved {formatSaveTime(saveTimestamp)}
-            </span>
-          </div>
-        )}
       </div>
     </div>
   );

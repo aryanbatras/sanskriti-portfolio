@@ -72,10 +72,10 @@ export const personalInfo = {
     },
     {
       title: "VisionSense",
-      tech: "Python, FastAPI, Hugging Face Transformers, BLIP, OpenCV",
+      tech: "JavaScript, Image-to-Description",
       description:
-        "Image captioning web application using the BLIP vision-language transformer. FastAPI-based inference service enabling real-time image-to-text generation with modular ML deployment architecture.",
-      url: "https://github.com/sanskriti231",
+        "Image-to-description application that converts images into meaningful text descriptions using computer vision and language models.",
+      url: "https://github.com/sanskriti231/VisionSense",
     },
     {
       title: "Fraud Detection Pipeline",
@@ -85,11 +85,74 @@ export const personalInfo = {
       url: null,
     },
     {
-      title: "Zombie Survival Game",
-      tech: "Python, Game Logic",
+      title: "PDF to Summary",
+      tech: "HTML",
       description:
-        "A text-based zombie survival simulation demonstrating game logic design, state management, and conditional branching.",
-      url: "https://github.com/sanskriti231",
+        "An interactive learning tool that converts PDF documents into concise summaries, making studying and research more efficient.",
+      url: "https://github.com/sanskriti231/pdf-to-summary",
+    },
+    {
+      title: "Binary Classification — Cats vs Dogs",
+      tech: "Python, CNN",
+      description:
+        "Convolutional Neural Network to classify images as cats or dogs, demonstrating deep learning fundamentals in computer vision.",
+      url: "https://github.com/sanskriti231/binary-classification-cats-vs-dogs",
+    },
+    {
+      title: "Classify Digits",
+      tech: "Jupyter Notebook",
+      description:
+        "Handwritten digit classification using machine learning techniques on the MNIST dataset.",
+      url: "https://github.com/sanskriti231/classifyDigits",
+    },
+    {
+      title: "Slide Tile",
+      tech: "Python",
+      description:
+        "A sliding tile puzzle game implementing search algorithms and heuristic-based problem solving.",
+      url: "https://github.com/sanskriti231/slide-tile",
+    },
+    {
+      title: "Linear & Logistic Regression",
+      tech: "Python, ML",
+      description:
+        "Implementation of Linear and Logistic Regression machine learning algorithms from scratch without using scikit-learn.",
+      url: "https://github.com/sanskriti231/Implementation-of-Linear-and-Logistic-Regression",
+    },
+    {
+      title: "Weather Application",
+      tech: "CSS, Web Technologies",
+      description:
+        "A weather application built as a web technologies project, displaying real-time weather data with a clean interface.",
+      url: "https://github.com/sanskriti231/Weather-Application",
+    },
+    {
+      title: "Tic Tac Toe — Minimax",
+      tech: "Python, Pygame",
+      description:
+        "Interactive desktop game with a computer opponent using the Minimax algorithm for optimal play, with an intuitive Pygame interface.",
+      url: "https://github.com/sanskriti231/tic-tac-toe-minimax",
+    },
+    {
+      title: "Chess Game",
+      tech: "Java",
+      description:
+        "A chess game implementation in Java with full game logic and piece movement rules.",
+      url: "https://github.com/sanskriti231/Chess-game",
+    },
+    {
+      title: "Online Crime Report Management",
+      tech: "PHP",
+      description:
+        "College project for online crime report management — a web-based system for filing and tracking crime reports.",
+      url: "https://github.com/sanskriti231/Online-Crime-Report-management-System",
+    },
+    {
+      title: "Snake Game",
+      tech: "Python",
+      description:
+        "The classic snake game — a terminal-based implementation demonstrating game loops and state management.",
+      url: "https://github.com/sanskriti231/Snake-game",
     },
   ],
 

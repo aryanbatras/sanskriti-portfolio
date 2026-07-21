@@ -52,6 +52,17 @@ export const MINI_GAMES: Record<string, MiniGameConfig> = {
     type: "quoteType",
     difficulty: 1,
   },
+
+  // ═════ BOSS FIGHT: The Professor ═══════════════════════════════
+  // Final boss! 5 HP, slow but tanky. Grants "brain" as special loot.
+  professorFight: {
+    type: "streetFight",
+    enemies: [{ type: "professor", hp: 5 }],
+    speedMult: 0.7,
+    hpMult: 1,
+    grantItem: "brain",
+    difficulty: 3,
+  },
 };
 
 // ─── Runner: dispatches to the right mini-game function ─────────────
