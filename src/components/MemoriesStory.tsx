@@ -27,9 +27,6 @@ const chapters = [
     title: "The Girl Who Kept Asking Why",
     image: "/animated/Woman_examining_clock_gears_202607210832.jpeg",
     imageAlt: "Sanskriti holding a small gear between her fingers, examining it closely, a disassembled clock on the desk before her",
-    text: [
-      `I took things apart to see how they worked. Clocks, remote controls, sentences that meant two things. The question "why?" became the thread through everything — from poetry to Python, from competitive programming to deep learning research.`,
-    ],
     quote: {
       text: "Curiosity is not a trait — it is a way of seeing the world",
       source: "on what drives everything I do",
@@ -45,9 +42,6 @@ const chapters = [
     title: "The Little Topper",
     image: "/animated/Student_smiling_at_textbook_202607210801.jpeg",
     imageAlt: "A younger Sanskriti sitting at a school desk, smiling softly at an open textbook, a gold medal ribbon draped over the corner",
-    text: [
-      `95.8% in ICSE — top 3 in the district. 91.6% in CBSE. My mother raised me with warmth and resilience, and I wanted to make her proud. Those years taught me discipline, and that the pressure of being "the best" doesn't go away — it just changes shape.`,
-    ],
     quote: {
       text: "Excellence is not a destination — it is the discipline of showing up every day",
       source: "on what school taught me",
@@ -63,9 +57,6 @@ const chapters = [
     title: "The College Years",
     image: "/animated/Girl_sitting_with_laptop_college.jpeg",
     imageAlt: "Sanskriti at a college desk, staring at a laptop screen with focused determination",
-    text: [
-      `B.Tech in Computer Science and Design at MITS Gwalior. Seven subjects a semester, a Reinforcement Learning course that pushed every limit, and a DSA study group that changed my trajectory. I learned to teach, to present, and to show up even when it was uncomfortable.`,
-    ],
     quote: {
       text: "Teaching is the best way to truly understand something",
       source: "on why I lead study groups",
@@ -81,9 +72,6 @@ const chapters = [
     title: "The Curious Scientist",
     image: "/animated/Girl_sitting_at_desk_202607210810.jpeg",
     imageAlt: "Sanskriti sitting at a desk, focused on her work, surrounded by notes and ideas",
-    text: [
-      `Research intern at IIT Jammu — non-intrusive speech intelligibility prediction using deep learning. Whisper embeddings, Spectro-Temporal Modulation features, PyTorch. Before this: a fraud detection pipeline, an image captioning app, and a game built on A* pathfinding.`,
-    ],
     quote: {
       text: "Every project is a new problem — and I enjoy the process of solving it",
       source: "on what motivates my work",
@@ -99,9 +87,6 @@ const chapters = [
     title: "The Writer",
     image: "/animated/Writer_thinking_with_pen_202607210810.jpeg",
     imageAlt: "Sanskriti leaning back in her chair, pen touching her chin, eyes looking upward — mid-thought",
-    text: [
-      `Writing came before research. Poems, short stories, technical articles — the thread connecting them is the ability to make the complicated accessible. At FrameFlicks I write humor and poetry. At Codeveda I wrote about large language models. Same skill, different canvas.`,
-    ],
     quote: {
       text: "Good writing is honest, precise, and says more than it appears to",
       source: "on what makes words effective",
@@ -117,9 +102,6 @@ const chapters = [
     title: "The One Who Understands",
     image: "/animated/Woman_listening_with_understanding_202607210811.jpeg",
     imageAlt: "Sanskriti sitting on a wooden bench, soft gentle expression, listening with understanding",
-    text: [
-      `I listen well. When someone opens up, I pay attention — not to respond, but to understand. I notice when people are being too hard on themselves, and I say what they need to hear. The best friendships are built on mutual respect, not on being useful to each other.`,
-    ],
     quote: {
       text: "People are not defined by a single moment — they are defined by how they keep going",
       source: "on growth and resilience",
@@ -135,9 +117,6 @@ const chapters = [
     title: "The Dreamer",
     image: "/animated/Dreamer_looking_at_distance_202607210812.jpeg",
     imageAlt: "Sanskriti standing beside a desk, holding a book open but looking into the distance — dreaming",
-    text: [
-      `I want to build things that matter — a startup that makes education accessible, research that advances how machines understand language, writing that resonates. The specifics will change. The drive will not.`,
-    ],
     quote: {
       text: "Always up for a meaningful challenge and a cup of coffee",
       source: "me, always",
@@ -153,9 +132,6 @@ const chapters = [
     title: "A Soul Made of Stories",
     image: "/animated/Sanskriti_looking_at_camera_202607210812.jpeg",
     imageAlt: "Sanskriti looking directly at the camera with a warm, confident smile",
-    text: [
-      `I see myself in characters who observe quietly and act with purpose. Riley, who feels deeply. Hiro, who builds solutions at a small desk. Violet, who is stronger than she appears. Characters who win by understanding, not by force.`,
-    ],
     quote: {
       text: "The most important thing you can do with a mind is to keep wondering",
       source: "on what I believe",
@@ -248,13 +224,12 @@ function ChapterCluster({
       className="memory-chapter relative"
       style={{ transform: `rotate(${clusterRot}deg)` }}
     >
-      {/* Inner cluster — images alternate left/right based on chapter */}
-      <div className={`relative flex flex-col ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} md:items-start md:gap-8 lg:gap-12`}>
-        {/* ── Left / Image cluster ── */}
-        <div className="relative shrink-0 w-full md:w-72 lg:w-80 mb-8 md:mb-0 z-10">
+      <div className={`relative flex flex-col ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} md:items-center md:gap-10 lg:gap-16`}>
+        {/* ── Image cluster ── */}
+        <div className="relative shrink-0 w-full md:w-80 lg:w-96 mb-8 md:mb-0 z-10">
           {/* Chapter image — tilted, pinned, rotates around the pin on hover */}
           <div
-            className={`cluster-item ${imgPin.includes("right") ? "pinned-tr" : "pinned-tl"} relative w-full aspect-[9/16] overflow-hidden bg-paper`}
+            className={`cluster-item ${imgPin.includes("right") ? "pinned-tr" : "pinned-tl"} relative w-full aspect-[3/4] overflow-hidden bg-paper`}
             style={{
               transform: `rotate(${chapter.imgRot}deg)`,
               zIndex: chapter.imgZ,
@@ -265,11 +240,9 @@ function ChapterCluster({
               alt={chapter.imageAlt}
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 320px"
+              sizes="(max-width: 768px) 100vw, 384px"
               loading="lazy"
             />
-            {/* Light gradient overlay for label readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
             {/* Red pin */}
             <div className={`absolute ${imgPin} z-20 w-7 h-7 md:w-8 md:h-8`}>
               <Image
@@ -292,7 +265,7 @@ function ChapterCluster({
             </div>
           </div>
 
-          {/* Sticky note — overlapping from the image corner, pin always top-center */}
+          {/* Sticky note — overlapping from the image corner */}
           <div
             ref={(el) => {
               if (!el) return;
@@ -324,41 +297,22 @@ function ChapterCluster({
           </div>
         </div>
 
-        {/* ── Right / Text cluster ── */}
-        <div className="relative flex-1 min-w-0 z-10">
-          {/* Title — handwritten style */}
+        {/* ── Right / Title + Quote ── */}
+        <div className="relative flex-1 min-w-0 z-10 flex flex-col justify-center">
+          {/* Title */}
           <h3
-            className="handwritten text-3xl md:text-4xl lg:text-5xl text-ink leading-tight mb-6"
+            className="handwritten text-3xl md:text-4xl lg:text-5xl text-ink leading-tight mb-8"
             style={{ transform: `rotate(${-parseFloat(clusterRot)}deg)` }}
           >
             {chapter.title}
           </h3>
 
-          {/* Torn paper text blocks */}
-          <div className="space-y-5">
-            {chapter.text.map((paragraph, j) => (
-              <div
-                key={j}
-                className="torn-edge bg-paper p-4 md:p-5 rounded-sm"
-                style={{
-                  transform: `rotate(${(j % 2 === 0 ? "" : "-")}0.5deg)`,
-                }}
-              >
-                <p className="body-text text-base md:text-lg leading-relaxed text-charcoal">
-                  {paragraph}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Pull quote as a sticky note */}
-          <div className="mt-8 md:mt-10">
-            <QuoteSticky
-              quote={chapter.quote}
-              rotVal={`${(idx % 2 === 0 ? "-" : "")}${1.5 + (idx % 3)}`}
-              colorClass={[stickyColors[0], stickyColors[1], stickyColors[2], stickyColors[3]][(idx + 1) % 4]}
-            />
-          </div>
+          {/* Pull quote sticky */}
+          <QuoteSticky
+            quote={chapter.quote}
+            rotVal={`${(idx % 2 === 0 ? "-" : "")}${1.5 + (idx % 3)}`}
+            colorClass={[stickyColors[0], stickyColors[1], stickyColors[2], stickyColors[3]][(idx + 1) % 4]}
+          />
         </div>
       </div>
     </div>
