@@ -127,19 +127,19 @@ export function runQuoteType(
       ctx.scale(sx, sy);
 
       // Pink glowing border
-      ctx.strokeStyle = "rgba(236,72,153,0.2)";
+      ctx.strokeStyle = "rgba(99,102,241,0.2)";
       ctx.lineWidth = 1;
       ctx.strokeRect(20, 20, FIGHT_W - 40, FIGHT_H - 40);
 
       // Title
-      ctx.fillStyle = "rgba(236,72,153,0.4)";
+      ctx.fillStyle = "rgba(99,102,241,0.4)";
       ctx.font = '9px "Press Start 2P", monospace';
       ctx.textAlign = "left";
       ctx.fillText("> QUOTE.EXE — MOTIVATION BOOST", 40, 50);
 
       // Progress
       const pct = Math.max(0, state.correctCount) / 5;
-      ctx.fillStyle = "rgba(236,72,153,0.3)";
+      ctx.fillStyle = "rgba(99,102,241,0.3)";
       ctx.fillRect(40, 60, FIGHT_W - 80, 6);
       ctx.fillStyle = "#ec4899";
       ctx.fillRect(40, 60, (FIGHT_W - 80) * pct, 6);
@@ -155,7 +155,7 @@ export function runQuoteType(
         ctx.fillStyle = "#f472b6";
         ctx.font = 'bold 28px "Courier New", monospace';
         ctx.textAlign = "center";
-        ctx.shadowColor = "rgba(236,72,153,0.4)";
+        ctx.shadowColor = "rgba(99,102,241,0.4)";
         ctx.shadowBlur = 15;
         ctx.fillText(target, FIGHT_W / 2, 185);
         ctx.shadowBlur = 0;

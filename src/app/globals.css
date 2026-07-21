@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ─── Design System v6.0 ─────────────────────────────
- * Barbie Pink · White · Black
+ * Rose · White · Black
  * Playfair Display headings · Newsreader body
  * Fragment Mono for accents
  * Pageless · Borderless · Immersive
@@ -11,9 +11,9 @@
   --color-paper: #FFFFFF;
   --color-ink: #1A1A1A;
   --color-stone: #E5E5E5;
-  --color-pink: #E0218A;
-  --color-pink-light: #FFF0F5;
-  --color-pink-dark: #C2185B;
+  --color-pink: #E11D48;
+  --color-pink-light: #FFF1F2;
+  --color-pink-dark: #BE123C;
   --color-charcoal: #333333;
 
   --font-display: "Playfair Display", Georgia, serif;
@@ -385,8 +385,8 @@ body {
   width: 2px;
   background: repeating-linear-gradient(
     to bottom,
-    #C2185B 0px,
-    #C2185B 3px,
+    #BE123C 0px,
+    #BE123C 3px,
     transparent 3px,
     transparent 6px
   );

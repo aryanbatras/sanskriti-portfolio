@@ -197,12 +197,12 @@ export function runPatternMatch(
       ctx.scale(sx, sy);
 
       // Border glow
-      ctx.strokeStyle = "rgba(236,72,153,0.15)";
+      ctx.strokeStyle = "rgba(99,102,241,0.15)";
       ctx.lineWidth = 1;
       ctx.strokeRect(20, 20, FIGHT_W - 40, FIGHT_H - 40);
 
       // Title
-      ctx.fillStyle = "rgba(236,72,153,0.5)";
+      ctx.fillStyle = "rgba(99,102,241,0.5)";
       ctx.font = '10px "Press Start 2P", monospace';
       ctx.textAlign = "left";
       ctx.fillText("> PATTERN.EXE", 40, 50);

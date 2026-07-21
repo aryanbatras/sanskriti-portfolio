@@ -151,7 +151,7 @@ export function runLogicPuzzle(
       ctx.scale(sx, sy);
 
       // Brain glow
-      ctx.shadowColor = "rgba(236,72,153,0.15)";
+      ctx.shadowColor = "rgba(99,102,241,0.15)";
       ctx.shadowBlur = 30;
       ctx.font = "64px sans-serif";
       ctx.textAlign = "center";

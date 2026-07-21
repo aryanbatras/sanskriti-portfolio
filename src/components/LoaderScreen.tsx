@@ -40,13 +40,13 @@ export default function LoaderScreen({ onFinish }: LoaderScreenProps) {
       className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: "#000000" }}
     >
-      {/* ── Subtle pink glow in center ── */}
+      {/* ── Subtle indigo glow in center ── */}
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(224,33,138,0.08) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(225,29,72,0.08) 0%, transparent 70%)",
           }}
         />
       </div>

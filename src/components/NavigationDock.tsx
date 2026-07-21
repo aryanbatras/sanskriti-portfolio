@@ -105,7 +105,7 @@ export default function NavigationDock() {
                   <motion.div
                     animate={
                       isActive
-                        ? { color: "#E0218A" }
+                        ? { color: "#E11D48" }
                         : isHovered
                           ? { color: "#1A1A1A" }
                           : { color: "#888888" }

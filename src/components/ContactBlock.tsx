@@ -237,8 +237,8 @@ export default function ContactBlock() {
               <div className="flex flex-col items-center md:items-start justify-center gap-4 py-4">
                 <style>{`
                   @keyframes pulse-glow {
-                    0%, 100% { box-shadow: 0 0 15px rgba(236,72,153,0.3); }
-                    50% { box-shadow: 0 0 30px rgba(236,72,153,0.6), 0 0 60px rgba(168,85,247,0.2); }
+                    0%, 100% { box-shadow: 0 0 15px rgba(225,29,72,0.3); }
+                    50% { box-shadow: 0 0 30px rgba(225,29,72,0.6), 0 0 60px rgba(244,63,94,0.2); }
                   }
                   @keyframes blink {
                     0%, 100% { opacity: 1; }
@@ -247,7 +247,7 @@ export default function ContactBlock() {
                 `}</style>
 
                 <p
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-pink-200 text-xs md:text-sm leading-relaxed text-center md:text-left"
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-red-300 to-rose-200 text-xs md:text-sm leading-relaxed text-center md:text-left"
                   style={{ fontFamily: '"Press Start 2P", monospace' }}
                 >
                   🎯 You found<br />a secret!
@@ -260,10 +260,10 @@ export default function ContactBlock() {
                   style={{ animation: "pulse-glow 2s ease-in-out infinite" }}
                 >
                   {/* 3D pixel bevel */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-pink-700 to-purple-900 rounded-lg translate-y-[4px]" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg group-hover:from-pink-500 group-hover:to-purple-500 transition-all duration-200" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-rose-700 to-red-900 rounded-lg translate-y-[4px]" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-rose-600 to-red-600 rounded-lg group-hover:from-rose-500 group-hover:to-red-500 transition-all duration-200" />
                   {/* Button inner face */}
-                  <div className="relative px-8 py-3.5 md:px-10 md:py-4 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg overflow-hidden active:translate-y-[2px] active:transition-all duration-75"
+                  <div className="relative px-8 py-3.5 md:px-10 md:py-4 bg-gradient-to-r from-rose-600 to-red-600 rounded-lg overflow-hidden active:translate-y-[2px] active:transition-all duration-75"
                     style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.15)" }}>
                     <span
                       className="text-white text-[10px] md:text-xs tracking-widest relative z-10"
