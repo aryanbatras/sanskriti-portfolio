@@ -126,7 +126,7 @@ export default function ProjectEntries() {
 
           {/* Portrait with red pin — bottom-left */}
           <div className="project-entry shrink-0 mt-8 md:mt-0 flex justify-center md:justify-end items-start">
-            <div className="relative w-48 md:w-56 h-auto overflow-hidden bg-paper">
+            <div className="relative w-48 md:w-56 h-auto overflow-hidden bg-paper pinned-item pinned-tr">
               <Image
                 src="/images/student-drawing-ml.jpeg"
                 alt="ML student sketching ideas"

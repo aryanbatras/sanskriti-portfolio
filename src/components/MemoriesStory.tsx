@@ -28,12 +28,11 @@ const chapters = [
     image: "/animated/Woman_examining_clock_gears_202607210832.jpeg",
     imageAlt: "Sanskriti holding a small gear between her fingers, examining it closely, a disassembled clock on the desk before her",
     text: [
-      `I was the kind of child who took things apart just to see how they worked. Not out of destruction — out of wonder. The inside of a clock, the logic of a remote control, the way a sentence could mean two different things — I had to know how everything fit together.`,
-      `I kept asking why. And that question became the thread running through everything I ever did — from poetry to Python, from LeetCode to speech models. It was never about proving something to the world. It was about satisfying a quiet, relentless hunger.`,
+      `I took things apart to see how they worked. Clocks, remote controls, sentences that meant two things. The question "why?" became the thread through everything — from poetry to Python, from competitive programming to deep learning research.`,
     ],
     quote: {
-      text: "I think of myself as a curious kid who never stopped asking why",
-      source: "me, always",
+      text: "Curiosity is not a trait — it is a way of seeing the world",
+      source: "on what drives everything I do",
     },
     imgRot: "-3",
     imgZ: 10,
@@ -47,12 +46,11 @@ const chapters = [
     image: "/animated/Student_smiling_at_textbook_202607210801.jpeg",
     imageAlt: "A younger Sanskriti sitting at a school desk, smiling softly at an open textbook, a gold medal ribbon draped over the corner",
     text: [
-      `Before the research papers and the LeetCode ratings, there was a little girl who topped her class without even trying. 95.8% in ICSE — top 3 in the entire district. 91.6% in CBSE. My mother raised me with warmth and resilience, and I wanted to make her proud.`,
-      `But being the best at everything came with a hidden cost. When you start at the top, there's only one direction that feels like failure. The expectations I carried would one day become the heaviest weight I'd ever bear.`,
+      `95.8% in ICSE — top 3 in the district. 91.6% in CBSE. My mother raised me with warmth and resilience, and I wanted to make her proud. Those years taught me discipline, and that the pressure of being "the best" doesn't go away — it just changes shape.`,
     ],
     quote: {
-      text: "The expectations I carried would one day become the heaviest weight I'd ever bear",
-      source: "on growing up as the star student",
+      text: "Excellence is not a destination — it is the discipline of showing up every day",
+      source: "on what school taught me",
     },
     imgRot: "2",
     imgZ: 8,
@@ -64,13 +62,12 @@ const chapters = [
     id: "chapter-college",
     title: "The College Years",
     image: "/animated/Girl_sitting_with_laptop_college.jpeg",
-    imageAlt: "Sanskriti at a college desk, staring at a laptop screen with tired determination",
+    imageAlt: "Sanskriti at a college desk, staring at a laptop screen with focused determination",
     text: [
-      `At Madhav Institute of Technology and Science, Gwalior, I chose Computer Science and Design — a degree that matched my dual nature. Logic and creativity. Code and art. The program blends design thinking with core computer science, and I loved every bit of it.`,
-      `College hit me harder than I expected. Seven subjects a semester, a mandatory Reinforcement Learning course that tested every assumption I had, and a DSA group that changed everything. I loved teaching, loved explaining concepts, and discovered that showing up — even when it's terrifying — is who I am.`,
+      `B.Tech in Computer Science and Design at MITS Gwalior. Seven subjects a semester, a Reinforcement Learning course that pushed every limit, and a DSA study group that changed my trajectory. I learned to teach, to present, and to show up even when it was uncomfortable.`,
     ],
     quote: {
-      text: "I love teaching because explaining something is the best way to truly understand it",
+      text: "Teaching is the best way to truly understand something",
       source: "on why I lead study groups",
     },
     imgRot: "-1",
@@ -85,12 +82,11 @@ const chapters = [
     image: "/animated/Girl_sitting_at_desk_202607210810.jpeg",
     imageAlt: "Sanskriti sitting at a desk, focused on her work, surrounded by notes and ideas",
     text: [
-      `At IIT Jammu, I work on non-intrusive speech intelligibility prediction — teaching machines to understand how well speech is understood. It's deep learning at the intersection of language, signal processing, and human perception.`,
-      `But I didn't start there. I built a fraud detection pipeline, an image captioning app using BLIP transformers, and a zombie survival game using A* algorithm — all because each one was a new puzzle I couldn't resist solving.`,
+      `Research intern at IIT Jammu — non-intrusive speech intelligibility prediction using deep learning. Whisper embeddings, Spectro-Temporal Modulation features, PyTorch. Before this: a fraud detection pipeline, an image captioning app, and a game built on A* pathfinding.`,
     ],
     quote: {
-      text: "Every project is a new puzzle — and I can't resist solving it",
-      source: "on what drives my work",
+      text: "Every project is a new problem — and I enjoy the process of solving it",
+      source: "on what motivates my work",
     },
     imgRot: "2",
     imgZ: 5,
@@ -102,14 +98,13 @@ const chapters = [
     id: "chapter-writer",
     title: "The Writer",
     image: "/animated/Writer_thinking_with_pen_202607210810.jpeg",
-    imageAlt: "Sanskriti leaning back in her chair, pen touching her chin, eyes looking upward with a soft amused smile — mid-thought",
+    imageAlt: "Sanskriti leaning back in her chair, pen touching her chin, eyes looking upward — mid-thought",
     text: [
-      `Before I was a researcher, I was a writer. Poems. Short stories. Comic pieces. Words that danced between languages, between heart and logic. Writing was my first language.`,
-      `At FrameFlicks, I write humor and poetry. At Codeveda, I wrote technical content about LLMs and AI. Both use the same muscle — the ability to take something complex and make it feel human.`,
+      `Writing came before research. Poems, short stories, technical articles — the thread connecting them is the ability to make the complicated accessible. At FrameFlicks I write humor and poetry. At Codeveda I wrote about large language models. Same skill, different canvas.`,
     ],
     quote: {
-      text: "The best writing is small, honest, and hits harder than it should",
-      source: "on what makes words powerful",
+      text: "Good writing is honest, precise, and says more than it appears to",
+      source: "on what makes words effective",
     },
     imgRot: "-1",
     imgZ: 8,
@@ -123,12 +118,11 @@ const chapters = [
     image: "/animated/Woman_listening_with_understanding_202607210811.jpeg",
     imageAlt: "Sanskriti sitting on a wooden bench, soft gentle expression, listening with understanding",
     text: [
-      `I have a gift for understanding people. When a friend opens up about their insecurities, I don't judge. I listen. And then I say exactly what they need to hear. Because I know that humor heals better than sympathy ever could.`,
-      `I believe you should never try to be useful to your friends — be a good friend, but never feel like you need to earn your place. People grow, people change, and the best thing you can do is let them.`,
+      `I listen well. When someone opens up, I pay attention — not to respond, but to understand. I notice when people are being too hard on themselves, and I say what they need to hear. The best friendships are built on mutual respect, not on being useful to each other.`,
     ],
     quote: {
-      text: "No one should be labeled permanently. People grow, people change",
-      source: "on seeing the best in others",
+      text: "People are not defined by a single moment — they are defined by how they keep going",
+      source: "on growth and resilience",
     },
     imgRot: "-3",
     imgZ: 9,
@@ -142,8 +136,7 @@ const chapters = [
     image: "/animated/Dreamer_looking_at_distance_202607210812.jpeg",
     imageAlt: "Sanskriti standing beside a desk, holding a book open but looking into the distance — dreaming",
     text: [
-      `I want to build a startup someday. I have ideas — a chatbot that becomes the personality of any book, a platform for teaching, a social app that actually connects people. I talk about them with a spark in my eyes and a joke on my lips.`,
-      `I am a collection of contradictions — ambitious and lazy, confident and doubtful, loud and quiet, silly and profound. And that's exactly what makes me who I am.`,
+      `I want to build things that matter — a startup that makes education accessible, research that advances how machines understand language, writing that resonates. The specifics will change. The drive will not.`,
     ],
     quote: {
       text: "Always up for a meaningful challenge and a cup of coffee",
@@ -159,14 +152,13 @@ const chapters = [
     id: "chapter-pixar",
     title: "A Soul Made of Stories",
     image: "/animated/Sanskriti_looking_at_camera_202607210812.jpeg",
-    imageAlt: "Sanskriti looking directly at the camera with a warm knowing smile — confident and warm",
+    imageAlt: "Sanskriti looking directly at the camera with a warm, confident smile",
     text: [
-      `When someone asked me what vibe I wanted for my portfolio, I didn't say "professional" or "minimalist." I said: "Can you keep the vibe of animated movies? Disney, Pixar, DreamWorks." Because that request reveals more about me than any resume bullet point ever could.`,
-      `If Pixar made a film about me, it would be called "The Girl Who Asked Why." About a curious kid who collected questions like treasures, who built a world around her thirst for understanding. That's me. That's always been me.`,
+      `I see myself in characters who observe quietly and act with purpose. Riley, who feels deeply. Hiro, who builds solutions at a small desk. Violet, who is stronger than she appears. Characters who win by understanding, not by force.`,
     ],
     quote: {
-      text: "I am a girl collecting questions. Every unanswered question becomes a glowing little puzzle piece.",
-      source: "me, if Pixar wrote my story",
+      text: "The most important thing you can do with a mind is to keep wondering",
+      source: "on what I believe",
     },
     imgRot: "2",
     imgZ: 11,
@@ -186,13 +178,38 @@ function QuoteSticky({
   rotVal: string;
   colorClass: string;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleEnter = () => {
+    if (!ref.current) return;
+    gsap.to(ref.current, {
+      rotation: parseFloat(rotVal) + 3,
+      duration: 0.4,
+      ease: "back.out(1.7)",
+      overwrite: "auto",
+    });
+  };
+
+  const handleLeave = () => {
+    if (!ref.current) return;
+    gsap.to(ref.current, {
+      rotation: parseFloat(rotVal),
+      duration: 0.3,
+      ease: "power2.out",
+      overwrite: "auto",
+    });
+  };
+
   return (
     <div
-      className={`memory-quote ${colorClass} sticky-note inline-block px-5 py-4 md:px-6 md:py-5`}
+      ref={ref}
+      className={`memory-quote ${colorClass} sticky-note inline-block px-5 py-4 md:px-6 md:py-5 cursor-pointer`}
       style={{
+        transformOrigin: "top center",
         transform: `rotate(${rotVal}deg)`,
-        ["--note-rot" as string]: `${rotVal}deg`,
       }}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
     >
       {/* Pin at top center */}
       <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-10 w-5 h-5">
@@ -223,11 +240,8 @@ function ChapterCluster({
   chapter: (typeof chapters)[0];
   idx: number;
 }) {
-  const imgPin = pinCorners[idx % 4];
+  const imgPin = pinCorners[idx % 2];
   const clusterRot = `${(idx % 2 === 0 ? "-" : "")}${1 + (idx % 3)}`;
-
-  /* transform-origin matches the pin corner so rotation pivots from the pin */
-  const imgTransformOrigin = ["top right", "top left", "bottom right", "bottom left"][idx % 4];
 
   return (
     <div
@@ -240,11 +254,9 @@ function ChapterCluster({
         <div className="relative shrink-0 w-full md:w-72 lg:w-80 mb-8 md:mb-0 z-10">
           {/* Chapter image — tilted, pinned, rotates around the pin on hover */}
           <div
-            className="cluster-item relative w-full aspect-[9/16] overflow-hidden bg-paper"
+            className={`cluster-item ${imgPin.includes("right") ? "pinned-tr" : "pinned-tl"} relative w-full aspect-[9/16] overflow-hidden bg-paper`}
             style={{
               transform: `rotate(${chapter.imgRot}deg)`,
-              transformOrigin: imgTransformOrigin,
-              ["--img-rot" as string]: `${chapter.imgRot}deg`,
               zIndex: chapter.imgZ,
             }}
           >
@@ -282,11 +294,19 @@ function ChapterCluster({
 
           {/* Sticky note — overlapping from the image corner, pin always top-center */}
           <div
-            className={`hidden md:block absolute -bottom-4 -right-4 z-20 ${chapter.noteColor} sticky-note max-w-[180px]`}
-            style={{
-              transform: `rotate(${chapter.noteRot}deg)`,
-              ["--note-rot" as string]: `${chapter.noteRot}deg`,
+            ref={(el) => {
+              if (!el) return;
+              const rot = parseFloat(chapter.noteRot);
+              el.style.transformOrigin = "top center";
+              el.style.transform = `rotate(${rot}deg)`;
+              el.onmouseenter = () => {
+                gsap.to(el, { rotation: rot + 3, duration: 0.4, ease: "back.out(1.7)", overwrite: "auto" });
+              };
+              el.onmouseleave = () => {
+                gsap.to(el, { rotation: rot, duration: 0.3, ease: "power2.out", overwrite: "auto" });
+              };
             }}
+            className={`hidden md:block absolute -bottom-4 -right-4 z-20 ${chapter.noteColor} sticky-note max-w-[180px] cursor-pointer`}
           >
             <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-10 w-5 h-5">
               <Image
@@ -424,9 +444,6 @@ export default function MemoriesStory() {
               />
             </div>
           </div>
-
-          {/* Decorative string thread */}
-          <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 string-thread opacity-20" />
         </div>
 
         {/* ── Chapters as Pinterest clusters ── */}
@@ -438,14 +455,21 @@ export default function MemoriesStory() {
 
         {/* ── Closing section ── */}
         <div className="mt-28 md:mt-40 text-center relative">
-          {/* Decorative string */}
-          <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 string-thread opacity-20" />
-
           <div className="max-w-2xl mx-auto relative">
             {/* Closing sticky note */}
             <div
-              className="sticky-note inline-block px-8 py-6 md:px-12 md:py-8"
-              style={{ transform: "rotate(0.5deg)" }}
+              ref={(el) => {
+                if (!el) return;
+                el.style.transformOrigin = "top center";
+                el.style.transform = "rotate(0.5deg)";
+                el.onmouseenter = () => {
+                  gsap.to(el, { rotation: 6, duration: 0.5, ease: "back.out(2.5)", overwrite: "auto" });
+                };
+                el.onmouseleave = () => {
+                  gsap.to(el, { rotation: 0.5, duration: 0.4, ease: "elastic.out(1, 0.4)", overwrite: "auto" });
+                };
+              }}
+              className="sticky-note inline-block px-8 py-6 md:px-12 md:py-8 cursor-pointer"
             >
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 z-10">
                 <Image

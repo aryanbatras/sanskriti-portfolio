@@ -125,7 +125,7 @@ export default function NotesBlock() {
 
           {/* Portrait with red pin — bottom-right */}
           <div className="notes-reveal shrink-0 mt-10 md:mt-0 flex justify-center md:justify-end items-start">
-            <div className="relative w-48 md:w-56 h-auto overflow-hidden bg-pink-light">
+            <div className="relative w-48 md:w-56 h-auto overflow-hidden bg-pink-light pinned-item pinned-tr">
               <Image
                 src="/images/sanskriti_gupta_smiling_standing_straight-professionally.jpeg"
                 alt="Sanskriti Gupta"

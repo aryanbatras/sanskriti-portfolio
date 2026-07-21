@@ -273,7 +273,61 @@ body {
   pointer-events: none;
 }
 
-/* Sticky note */
+/* ── Pinned item physics: rotate around the pin on hover ── */
+.pinned-item {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Pin at top-right → pivot from top-right */
+.pinned-tr { transform-origin: top right !important; }
+.pinned-tr:hover { transform: rotate(4deg) !important; }
+
+/* Pin at top-left → pivot from top-left */
+.pinned-tl { transform-origin: top left !important; }
+.pinned-tl:hover { transform: rotate(-4deg) !important; }
+
+/* Pin at top-center → pivot from top-center (sticky notes) */
+.pinned-tc { transform-origin: top center !important; }
+.pinned-tc:hover { transform: rotate(3deg) !important; }
+
+/* Sticky note — pin always top-center */
+.sticky-note {
+  position: relative;
+  background: #FFFBEA;
+  padding: 1rem 1.25rem;
+  transform-origin: top center !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sticky-note:hover {
+  transform: rotate(3deg) !important;
+}
+
+/* Overlapping cluster — images in clipboard section */
+.cluster-item {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cluster-item.pinned-tr { transform-origin: top right !important; }
+.cluster-item.pinned-tr:hover { transform: rotate(4deg) !important; }
+.cluster-item.pinned-tl { transform-origin: top left !important; }
+.cluster-item.pinned-tl:hover { transform: rotate(-4deg) !important; }
+
+/* Pin at top-right → pivot from top-right */
+.pinned-tr { transform-origin: top right; }
+.pinned-tr:hover { transform: rotate(4deg); }
+
+/* Pin at top-left → pivot from top-left */
+.pinned-tl { transform-origin: top left; }
+.pinned-tl:hover { transform: rotate(-4deg); }
+
+/* Pin at top-center → pivot from top-center (sticky notes) */
+.pinned-tc { transform-origin: top center; }
+.pinned-tc:hover { transform: rotate(3deg); }
+
+/* Sticky note — same physics, pin always top-center */
 .sticky-note {
   position: relative;
   background: #FFFBEA;
@@ -283,7 +337,7 @@ body {
 }
 
 .sticky-note:hover {
-  transform: rotate(calc(var(--note-rot, 0deg) + 3deg));
+  transform: rotate(3deg);
 }
 
 .sticky-note-pink {
@@ -315,14 +369,14 @@ body {
 .rotate-n5 { transform: rotate(5deg); }
 .rotate-5 { transform: rotate(-5deg); }
 
-/* Overlapping cluster */
+/* Overlapping cluster — images in clipboard section */
 .cluster-item {
   position: relative;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .cluster-item:hover {
-  transform: rotate(calc(var(--img-rot, 0deg) + 3deg)) !important;
+  transform: rotate(4deg) !important;
 }
 
 /* String thread effect */
