@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Newsreader, Fragment_Mono, Caveat, Fraunces } from "next/font/google";
+import { Playfair_Display, Newsreader, Fragment_Mono, Caveat, Fraunces, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import ClientRoot from "@/components/ClientRoot";
 
@@ -35,6 +35,13 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
+const pressStart2P = Press_Start_2P({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-pixel",
+  display: "swap",
+});
+
 
 export const metadata: Metadata = {
   title: "Sanskriti Gupta — AI/ML Researcher",
@@ -66,7 +73,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfairDisplay.variable} ${newsreader.variable} ${fragmentMono.variable} ${caveat.variable} ${fraunces.variable}`}
+      className={`${playfairDisplay.variable} ${newsreader.variable} ${fragmentMono.variable} ${caveat.variable} ${fraunces.variable} ${pressStart2P.variable}`}
     >
       <body>
         <ClientRoot>{children}</ClientRoot>
