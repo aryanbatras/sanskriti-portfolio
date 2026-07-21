@@ -1,7 +1,7 @@
 export const navSections = [
-  { id: "writing", label: "Writing" },
-  { id: "work", label: "Work" },
-  { id: "projects", label: "Projects" },
-  { id: "notes", label: "Notes" },
-  { id: "contact", label: "Contact" },
+  { path: "/", label: "Home" },
+  { path: "/memories", label: "Memories" },
+  { path: "/projects", label: "Projects" },
+  { path: "/skills", label: "Skills" },
+  { path: "/contact", label: "Contact" },
 ] as const;

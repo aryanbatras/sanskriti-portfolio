@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Newsreader, Fragment_Mono, Caveat, Fraunces, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import ClientRoot from "@/components/ClientRoot";
+import NavigationDock from "@/components/NavigationDock";
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default function RootLayout({
     >
       <body>
         <ClientRoot>{children}</ClientRoot>
+        <NavigationDock />
       </body>
     </html>
   );

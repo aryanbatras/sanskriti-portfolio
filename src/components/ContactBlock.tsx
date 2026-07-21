@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { personalInfo } from "@/lib/data";
-import SecretRpg from "./SecretRpg";
+import SecretRpg from "./secret-rpg";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
