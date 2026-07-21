@@ -56,7 +56,7 @@ export default function ProjectEntries() {
   );
 
   return (
-    <section id="projects" ref={containerRef} className="editorial-section bg-pink-light bg-dot-subtle">
+    <section id="projects" ref={containerRef} className="editorial-section bg-corkboard">
       <div className="max-w-6xl mx-auto">
         <div className="relative inline-block mb-14">
           <h2
@@ -126,7 +126,7 @@ export default function ProjectEntries() {
 
           {/* Portrait with red pin — bottom-left */}
           <div className="project-entry shrink-0 mt-8 md:mt-0 flex justify-center md:justify-end items-start">
-            <div className="relative w-48 md:w-56 h-auto rounded-2xl overflow-hidden bg-paper">
+            <div className="relative w-48 md:w-56 h-auto overflow-hidden bg-paper">
               <Image
                 src="/images/student-drawing-ml.jpeg"
                 alt="ML student sketching ideas"
@@ -136,8 +136,8 @@ export default function ProjectEntries() {
                 sizes="(max-width: 768px) 192px, 224px"
                 loading="lazy"
               />
-              {/* Red pin — bottom-left corner */}
-              <div className="absolute bottom-1 left-1 z-10 w-6 h-6 md:w-7 md:h-7">
+              {/* Red pin — top-right corner */}
+              <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
                 <Image
                   src="/red_pin.png"
                   alt=""
@@ -155,10 +155,8 @@ export default function ProjectEntries() {
           {personalInfo.projects.slice(2).map((project, i) => (
             <div
               key={i}
-              className="project-entry group relative bg-paper rounded-xl p-6 md:p-8 transition-all duration-300 "
+              className="project-entry group relative bg-paper p-6 md:p-8 transition-all duration-300"
             >
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-pink rounded-t-xl scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-
               <div className="entry-title text-xl md:text-2xl mb-1">
                 {project.title}
               </div>

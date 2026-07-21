@@ -35,7 +35,7 @@ export default function NotesBlock() {
   );
 
   return (
-    <section id="notes" ref={containerRef} className="editorial-section bg-abstract-rose">
+    <section id="notes" ref={containerRef} className="editorial-section bg-paper">
       <div className="max-w-6xl mx-auto">
         <div className="relative inline-block mb-14">
           <h2
@@ -125,7 +125,7 @@ export default function NotesBlock() {
 
           {/* Portrait with red pin — bottom-right */}
           <div className="notes-reveal shrink-0 mt-10 md:mt-0 flex justify-center md:justify-end items-start">
-            <div className="relative w-48 md:w-56 h-auto rounded-2xl overflow-hidden bg-pink-light">
+            <div className="relative w-48 md:w-56 h-auto overflow-hidden bg-pink-light">
               <Image
                 src="/images/sanskriti_gupta_smiling_standing_straight-professionally.jpeg"
                 alt="Sanskriti Gupta"
@@ -135,8 +135,8 @@ export default function NotesBlock() {
                 sizes="(max-width: 768px) 192px, 224px"
                 loading="lazy"
               />
-              {/* Red pin — bottom-right corner */}
-              <div className="absolute bottom-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
+              {/* Red pin — top-right corner */}
+              <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
                 <Image
                   src="/red_pin.png"
                   alt=""

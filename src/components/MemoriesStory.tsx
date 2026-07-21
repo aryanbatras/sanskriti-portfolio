@@ -12,8 +12,6 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 const pinCorners = [
   "top-2 right-2",
   "top-2 left-2",
-  "bottom-2 right-2",
-  "bottom-2 left-2",
 ];
 
 const stickyColors = [
@@ -24,9 +22,6 @@ const stickyColors = [
 ];
 
 const chapters = [
-  /* ══════════════════════════════════════════════════
-   * CHAPTER 01 — THE BEGINNING
-   * ══════════════════════════════════════════════════ */
   {
     id: "chapter-beginning",
     title: "The Girl Who Kept Asking Why",
@@ -34,8 +29,7 @@ const chapters = [
     imageAlt: "Sanskriti holding a small gear between her fingers, examining it closely, a disassembled clock on the desk before her",
     text: [
       `I was the kind of child who took things apart just to see how they worked. Not out of destruction — out of wonder. The inside of a clock, the logic of a remote control, the way a sentence could mean two different things — I had to know how everything fit together.`,
-      `I kept asking why. And that question became the thread running through everything I ever did. From poetry to Python. From LeetCode to speech models. It was never about proving something to the world. It was about satisfying a quiet, relentless hunger — the kind that wakes you up at 2 AM with a new idea and won't let you sleep until you've explored it.`,
-      `I don't see the world as it is. I see it as a series of questions waiting to be answered. And the more I learn, the more I realize how much I don't know. That's not discouraging to me. That's the best part.`,
+      `I kept asking why. And that question became the thread running through everything I ever did — from poetry to Python, from LeetCode to speech models. It was never about proving something to the world. It was about satisfying a quiet, relentless hunger.`,
     ],
     quote: {
       text: "I think of myself as a curious kid who never stopped asking why",
@@ -47,18 +41,14 @@ const chapters = [
     noteRot: "4",
     noteColor: stickyColors[0],
   },
-  /* ══════════════════════════════════════════════════
-   * CHAPTER 02 — CHILDHOOD
-   * ══════════════════════════════════════════════════ */
   {
     id: "chapter-childhood",
     title: "The Little Topper",
     image: "/animated/Student_smiling_at_textbook_202607210801.jpeg",
     imageAlt: "A younger Sanskriti sitting at a school desk, smiling softly at an open textbook, a gold medal ribbon draped over the corner",
     text: [
-      `Before the research papers and the LeetCode ratings, there was a little girl who topped her class without even trying. 95.8% in ICSE — top 3 in the entire district. 91.6% in CBSE. I was good at everything in school. That's not arrogance. That's just how it was. My mother raised me with warmth and resilience, and I wanted to make her proud.`,
-      `I grew up taking things apart — toys, gadgets, the logic of how the world worked. My school years were a parade of gold medals and quiet accomplishments. I was the star student, the teacher's pet, the one everyone expected great things from. And I wore that crown lightly, because I genuinely loved learning.`,
-      `But being the best at everything came with a hidden cost. When you start at the top, there's only one direction that feels like failure. I didn't know it then, but the expectations I carried would one day become the heaviest weight I'd ever bear.`,
+      `Before the research papers and the LeetCode ratings, there was a little girl who topped her class without even trying. 95.8% in ICSE — top 3 in the entire district. 91.6% in CBSE. My mother raised me with warmth and resilience, and I wanted to make her proud.`,
+      `But being the best at everything came with a hidden cost. When you start at the top, there's only one direction that feels like failure. The expectations I carried would one day become the heaviest weight I'd ever bear.`,
     ],
     quote: {
       text: "The expectations I carried would one day become the heaviest weight I'd ever bear",
@@ -70,18 +60,14 @@ const chapters = [
     noteRot: "-3",
     noteColor: stickyColors[1],
   },
-  /* ══════════════════════════════════════════════════
-   * CHAPTER 03 — COLLEGE LIFE
-   * ══════════════════════════════════════════════════ */
   {
     id: "chapter-college",
     title: "The College Years",
     image: "/animated/Girl_sitting_with_laptop_college.jpeg",
-    imageAlt: "Sanskriti at a messy college desk, elbows on the surface, staring at a laptop screen with tired determination",
+    imageAlt: "Sanskriti at a college desk, staring at a laptop screen with tired determination",
     text: [
-      `At Madhav Institute of Technology and Science, Gwalior, I chose Computer Science and Design — a degree that perfectly matched my dual nature. Logic and creativity. Code and art. Architecture and expression. The program blends design thinking with core computer science — architecture, design patterns, and low-level systems — the best of both worlds.`,
-      `College hit me harder than I expected. Seven subjects a semester — operating systems, graphics, cyber security, data science, compiler design, economics. A mandatory Reinforcement Learning course that tested every assumption I had about what I could handle. NPTEL exams. Endless practicals. The first few weeks were overwhelming. But I kept going.`,
-      `I discovered the DSA group — a community of competitive programmers who met daily to solve problems. I loved teaching, loved explaining concepts, loved the thrill of a difficult question. Presenting in front of peers was terrifying at first. But I did it anyway. Because that's who I am — someone who shows up even when it's uncomfortable.`,
+      `At Madhav Institute of Technology and Science, Gwalior, I chose Computer Science and Design — a degree that matched my dual nature. Logic and creativity. Code and art. The program blends design thinking with core computer science, and I loved every bit of it.`,
+      `College hit me harder than I expected. Seven subjects a semester, a mandatory Reinforcement Learning course that tested every assumption I had, and a DSA group that changed everything. I loved teaching, loved explaining concepts, and discovered that showing up — even when it's terrifying — is who I am.`,
     ],
     quote: {
       text: "I love teaching because explaining something is the best way to truly understand it",
@@ -93,18 +79,14 @@ const chapters = [
     noteRot: "3",
     noteColor: stickyColors[2],
   },
-  /* ══════════════════════════════════════════════════
-   * CHAPTER 04 — THE SCIENTIST
-   * ══════════════════════════════════════════════════ */
   {
     id: "chapter-scientist",
     title: "The Curious Scientist",
-    image: "/abstract/abstract-1.jpg",
-    imageAlt: "Abstract warm fluid — waiting for the scientist portrait",
+    image: "/animated/Girl_sitting_at_desk_202607210810.jpeg",
+    imageAlt: "Sanskriti sitting at a desk, focused on her work, surrounded by notes and ideas",
     text: [
-      `At IIT Jammu, I work on non-intrusive speech intelligibility prediction — teaching machines to understand how well speech is understood. It's deep learning at the intersection of language, signal processing, and human perception. I use Whisper embeddings and Spectro-Temporal Modulation features to build models that listen the way humans do.`,
-      `But I didn't start there. I built a fraud detection pipeline at 3Skill, an image captioning app called VisionSense using BLIP transformers, and a zombie survival game using A* algorithm — all because each one was a new puzzle I couldn't resist solving.`,
-      `A friend once said that everything I like is basically one giant puzzle. LeetCode. Research. Reinforcement learning. Speech models. Sliding puzzles. Fraud detection. Whisper embeddings. Writing poems. They're right. All of it begins with the same question: "How does this work?" And I need to find out.`,
+      `At IIT Jammu, I work on non-intrusive speech intelligibility prediction — teaching machines to understand how well speech is understood. It's deep learning at the intersection of language, signal processing, and human perception.`,
+      `But I didn't start there. I built a fraud detection pipeline, an image captioning app using BLIP transformers, and a zombie survival game using A* algorithm — all because each one was a new puzzle I couldn't resist solving.`,
     ],
     quote: {
       text: "Every project is a new puzzle — and I can't resist solving it",
@@ -116,18 +98,14 @@ const chapters = [
     noteRot: "-3",
     noteColor: stickyColors[3],
   },
-  /* ══════════════════════════════════════════════════
-   * CHAPTER 05 — THE WRITER
-   * ══════════════════════════════════════════════════ */
   {
     id: "chapter-writer",
     title: "The Writer",
     image: "/animated/Writer_thinking_with_pen_202607210810.jpeg",
     imageAlt: "Sanskriti leaning back in her chair, pen touching her chin, eyes looking upward with a soft amused smile — mid-thought",
     text: [
-      `Before I was a researcher, I was a writer. Poems. Short stories. Comic pieces. Words that danced between languages, between heart and logic. Writing was my first language. I write because I feel deeply, observe closely, and think honestly.`,
-      `At FrameFlicks, I write humor and poetry. At Codeveda, I wrote technical content about LLMs and AI. Both use the same muscle — the ability to take something complex and make it feel human. Whether it's a poem about mirrors or an article about retrieval-augmented generation, the goal is the same: connect.`,
-      `Someone once told me that my lines are small, honest, and hit harder than they should. I think that's the best compliment a writer can receive.`,
+      `Before I was a researcher, I was a writer. Poems. Short stories. Comic pieces. Words that danced between languages, between heart and logic. Writing was my first language.`,
+      `At FrameFlicks, I write humor and poetry. At Codeveda, I wrote technical content about LLMs and AI. Both use the same muscle — the ability to take something complex and make it feel human.`,
     ],
     quote: {
       text: "The best writing is small, honest, and hits harder than it should",
@@ -139,64 +117,14 @@ const chapters = [
     noteRot: "3",
     noteColor: stickyColors[0],
   },
-  /* ══════════════════════════════════════════════════
-   * CHAPTER 06 — THE PUZZLE SOLVER
-   * ══════════════════════════════════════════════════ */
-  {
-    id: "chapter-contester",
-    title: "The Puzzle Solver",
-    image: "/abstract/abstract-3.jpg",
-    imageAlt: "Abstract warm tones — waiting for the competitive programmer portrait",
-    text: [
-      `I have a LeetCode rating of 1652 and 540+ problems solved. I don't just code — I compete. Codeforces. CodeChef. LeetCode contests. Each one is a playground for my mind. Consistency compounds — show up every week, and the ratings follow.`,
-      `Having friends to compete with makes it better. When they outperform me, it stings — but that sting becomes fuel. It forces me to learn more, solve harder problems, and come back stronger next time. There's a unique thrill in watching your rating climb after a week of focused practice.`,
-      `I have spent 2+ years mastering C++ through competitive programming and OOP. I ranked 742 in a LeetCode contest once. I track ratings, celebrate small wins, and keep coming back. Not for the badge. For the puzzle.`,
-    ],
-    quote: {
-      text: "Disappointment is fuel — it forces me to learn more for the next time",
-      source: "on turning setbacks into motivation",
-    },
-    imgRot: "3",
-    imgZ: 12,
-    noteContent: "540+ problems. 1652 rating.",
-    noteRot: "-4",
-    noteColor: stickyColors[1],
-  },
-  /* ══════════════════════════════════════════════════
-   * CHAPTER 07 — STRUGGLES
-   * ══════════════════════════════════════════════════ */
-  {
-    id: "chapter-struggle",
-    title: "The Girl Behind the Screen",
-    image: "/abstract/abstract-5.jpg",
-    imageAlt: "Abstract warm emotions — waiting for the struggles portrait",
-    text: [
-      `There were moments at IIT Jammu when the research papers felt impossibly dense, when being away from home felt heavier than expected, and when I questioned whether I truly belonged in this space. Procrastination, decision fatigue, and the weight of my own expectations — they all showed up at once.`,
-      `Transitioning from being the top student in school to finding my footing in a demanding research environment was humbling. There were days when I wondered if I had peaked too early. The gap between where I was and where I wanted to be felt enormous.`,
-      `But here's the thing about me: I always get back up. I break down overwhelming projects into smaller, manageable parts. I build routines and stick to them. I order a cold coffee, take a breath, and try again. I don't stay down — because there are too many questions left to answer.`,
-    ],
-    quote: {
-      text: "I don't stay down — there are too many questions left to answer",
-      source: "on resilience through difficulty",
-    },
-    imgRot: "-2",
-    imgZ: 7,
-    noteContent: "it is okay to fall. get back up.",
-    noteRot: "5",
-    noteColor: stickyColors[2],
-  },
-  /* ══════════════════════════════════════════════════
-   * CHAPTER 08 — RELATIONSHIPS
-   * ══════════════════════════════════════════════════ */
   {
     id: "chapter-relationships",
     title: "The One Who Understands",
     image: "/animated/Woman_listening_with_understanding_202607210811.jpeg",
-    imageAlt: "Sanskriti sitting on a wooden bench, turned slightly to her right, soft gentle expression, hands resting loosely — listening with understanding",
+    imageAlt: "Sanskriti sitting on a wooden bench, soft gentle expression, listening with understanding",
     text: [
-      `I have a gift for understanding people. When a friend opens up about their insecurities, I don't judge. I listen. And then I say exactly what they need to hear. I once told a friend in his lowest moment: "You're a gift of God. I'm a more expensive one though." Because I know that humor heals better than sympathy ever could.`,
-      `I believe you should never try to be useful to your friends — be a good friend, but never feel like you need to earn your place. I see through people's defenses. I notice when someone is being too hard on themselves. I call them out, gently. No one should be labeled permanently. People grow, people change, and the best thing you can do is let them.`,
-      `I crave connection but guard my vulnerability. The truth is, I give more than I take. I remember the small things. I show up. And when someone called me "sweet" — in the most genuine sense of the word — I think that was the first time I believed a compliment about who I am, not what I do.`,
+      `I have a gift for understanding people. When a friend opens up about their insecurities, I don't judge. I listen. And then I say exactly what they need to hear. Because I know that humor heals better than sympathy ever could.`,
+      `I believe you should never try to be useful to your friends — be a good friend, but never feel like you need to earn your place. People grow, people change, and the best thing you can do is let them.`,
     ],
     quote: {
       text: "No one should be labeled permanently. People grow, people change",
@@ -206,20 +134,16 @@ const chapters = [
     imgZ: 9,
     noteContent: "a friend who actually listens",
     noteRot: "-2",
-    noteColor: stickyColors[3],
+    noteColor: stickyColors[1],
   },
-  /* ══════════════════════════════════════════════════
-   * CHAPTER 09 — THE DREAMER
-   * ══════════════════════════════════════════════════ */
   {
     id: "chapter-dreamer",
     title: "The Dreamer",
     image: "/animated/Dreamer_looking_at_distance_202607210812.jpeg",
-    imageAlt: "Sanskriti standing beside a desk, holding a book open but looking into the distance, one hand resting on a small globe — dreaming",
+    imageAlt: "Sanskriti standing beside a desk, holding a book open but looking into the distance — dreaming",
     text: [
-      `I want to build a startup someday. I have ideas — a chatbot that becomes the personality of any book, a platform for teaching, a social app that actually connects people. I talk about them with a spark in my eyes and a joke on my lips, because dreams feel less fragile when you can laugh about them.`,
-      `I want to be highly paid. I also want to write. I want to be a teacher. I also want to disappear into research. I want to travel to Spain. I also want to sit in the library at 2 AM with a good paper and a cup of coffee. I want all of it. And I refuse to believe I have to choose.`,
-      `I am a collection of contradictions — lazy and ambitious, confident and doubtful, loud and quiet, silly and profound. And that's exactly what makes me who I am. A girl who is always up for a meaningful challenge and a cup of code.`,
+      `I want to build a startup someday. I have ideas — a chatbot that becomes the personality of any book, a platform for teaching, a social app that actually connects people. I talk about them with a spark in my eyes and a joke on my lips.`,
+      `I am a collection of contradictions — ambitious and lazy, confident and doubtful, loud and quiet, silly and profound. And that's exactly what makes me who I am.`,
     ],
     quote: {
       text: "Always up for a meaningful challenge and a cup of coffee",
@@ -229,30 +153,26 @@ const chapters = [
     imgZ: 9,
     noteContent: "startup dreams + poetry soul",
     noteRot: "-2",
-    noteColor: stickyColors[0],
+    noteColor: stickyColors[2],
   },
-  /* ══════════════════════════════════════════════════
-   * CHAPTER 10 — ANIMATED MOVIES  (FINALE)
-   * ══════════════════════════════════════════════════ */
   {
     id: "chapter-pixar",
     title: "A Soul Made of Stories",
     image: "/animated/Sanskriti_looking_at_camera_202607210812.jpeg",
-    imageAlt: "Sanskriti looking directly at the camera with a warm knowing smile, one eyebrow slightly raised, pen in hand — confident and warm",
+    imageAlt: "Sanskriti looking directly at the camera with a warm knowing smile — confident and warm",
     text: [
-      `When someone asked me what vibe I wanted for my portfolio, I didn't say "professional" or "minimalist." I said: "Can you keep the vibe of animated movies? Disney, Pixar, DreamWorks, Universal Pictures." Because that request reveals more about me than any resume bullet point ever could.`,
-      `I see myself in Riley from Inside Out — the quiet observer who feels everything deeply. In Hiro Hamada from Big Hero 6 — the young engineer at a small desk with big ideas. In Violet Parr from The Incredibles — reserved, thoughtful, stronger than I look. In Hiccup from How to Train Your Dragon — someone who doesn't win by fighting harder, but by understanding better.`,
-      `If Pixar made a film about me, it would be called "The Girl Who Asked Why." And it would be about a curious kid who collected questions like treasures, who built a world around her thirst for understanding, who discovered that the most beautiful thing you can do with a mind is to keep wondering. That's me. That's always been me.`,
+      `When someone asked me what vibe I wanted for my portfolio, I didn't say "professional" or "minimalist." I said: "Can you keep the vibe of animated movies? Disney, Pixar, DreamWorks." Because that request reveals more about me than any resume bullet point ever could.`,
+      `If Pixar made a film about me, it would be called "The Girl Who Asked Why." About a curious kid who collected questions like treasures, who built a world around her thirst for understanding. That's me. That's always been me.`,
     ],
     quote: {
-      text: "I am a girl collecting questions. Every unanswered question becomes a glowing little puzzle piece. As I explore, those pieces connect into constellations above my desk.",
+      text: "I am a girl collecting questions. Every unanswered question becomes a glowing little puzzle piece.",
       source: "me, if Pixar wrote my story",
     },
     imgRot: "2",
     imgZ: 11,
     noteContent: "Pixar called. I am the main character.",
     noteRot: "4",
-    noteColor: stickyColors[1],
+    noteColor: stickyColors[3],
   },
 ];
 
@@ -269,8 +189,22 @@ function QuoteSticky({
   return (
     <div
       className={`memory-quote ${colorClass} sticky-note inline-block px-5 py-4 md:px-6 md:py-5`}
-      style={{ transform: `rotate(${rotVal}deg)` }}
+      style={{
+        transform: `rotate(${rotVal}deg)`,
+        ["--note-rot" as string]: `${rotVal}deg`,
+      }}
     >
+      {/* Pin at top center */}
+      <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-10 w-5 h-5">
+        <Image
+          src="/red_pin.png"
+          alt=""
+          width={20}
+          height={20}
+          className="object-contain w-full h-full"
+          loading="lazy"
+        />
+      </div>
       <p className="handwritten text-lg md:text-xl leading-relaxed text-ink">
         &ldquo;{quote.text}&rdquo;
       </p>
@@ -290,8 +224,10 @@ function ChapterCluster({
   idx: number;
 }) {
   const imgPin = pinCorners[idx % 4];
-  const notePin = pinCorners[(idx + 2) % 4];
   const clusterRot = `${(idx % 2 === 0 ? "-" : "")}${1 + (idx % 3)}`;
+
+  /* transform-origin matches the pin corner so rotation pivots from the pin */
+  const imgTransformOrigin = ["top right", "top left", "bottom right", "bottom left"][idx % 4];
 
   return (
     <div
@@ -302,10 +238,15 @@ function ChapterCluster({
       <div className={`relative flex flex-col ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} md:items-start md:gap-8 lg:gap-12`}>
         {/* ── Left / Image cluster ── */}
         <div className="relative shrink-0 w-full md:w-72 lg:w-80 mb-8 md:mb-0 z-10">
-          {/* Chapter image — tilted, pinned, full image visible */}
+          {/* Chapter image — tilted, pinned, rotates around the pin on hover */}
           <div
             className="cluster-item relative w-full aspect-[9/16] overflow-hidden bg-paper"
-            style={{ transform: `rotate(${chapter.imgRot}deg)`, zIndex: chapter.imgZ }}
+            style={{
+              transform: `rotate(${chapter.imgRot}deg)`,
+              transformOrigin: imgTransformOrigin,
+              ["--img-rot" as string]: `${chapter.imgRot}deg`,
+              zIndex: chapter.imgZ,
+            }}
           >
             <Image
               src={chapter.image}
@@ -339,12 +280,15 @@ function ChapterCluster({
             </div>
           </div>
 
-          {/* Sticky note — overlapping from the image corner */}
+          {/* Sticky note — overlapping from the image corner, pin always top-center */}
           <div
             className={`hidden md:block absolute -bottom-4 -right-4 z-20 ${chapter.noteColor} sticky-note max-w-[180px]`}
-            style={{ transform: `rotate(${chapter.noteRot}deg)` }}
+            style={{
+              transform: `rotate(${chapter.noteRot}deg)`,
+              ["--note-rot" as string]: `${chapter.noteRot}deg`,
+            }}
           >
-            <div className={`absolute ${notePin} z-10 w-5 h-5`}>
+            <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-10 w-5 h-5">
               <Image
                 src="/red_pin.png"
                 alt=""
@@ -378,7 +322,6 @@ function ChapterCluster({
                 className="torn-edge bg-paper p-4 md:p-5 rounded-sm"
                 style={{
                   transform: `rotate(${(j % 2 === 0 ? "" : "-")}0.5deg)`,
-                  boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
                 }}
               >
                 <p className="body-text text-base md:text-lg leading-relaxed text-charcoal">

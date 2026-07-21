@@ -8,14 +8,6 @@ import { personalInfo } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-function splitChars(text: string) {
-  return text.split("").map((char, i) => (
-    <span key={i} className="char" style={{ display: "inline-block" }}>
-      {char === " " ? "\u00A0" : char}
-    </span>
-  ));
-}
-
 /**
  * VideoStory — Hero with text-mask zoom (no fade).
  *
@@ -34,13 +26,6 @@ export default function VideoStory() {
   const overlayTlRef = useRef<gsap.core.Timeline | null>(null);
 
   const nameRef = useRef<HTMLDivElement>(null);
-  const taglineRef = useRef<HTMLDivElement>(null);
-
-  const nameChars = useMemo(() => splitChars(personalInfo.name), []);
-  const taglineChars = useMemo(
-    () => splitChars("Research intern at IIT Jammu"),
-    [],
-  );
 
   // ── SVG text mask  ──────────────────────────────────────────
   //   rect fill="black"  → everything hidden (white bg shows)
@@ -69,13 +54,11 @@ export default function VideoStory() {
 
       const dur = video.duration || 2.833;
       const MAX_ZOOM = 18000;
-      const scrollDistance = 15000;
+      const scrollDistance = 7500;
 
-      // ── Phases ──────────────────────────────────────────────
-      const ZOOM_END = 0.75;
-      const VIDEO_START = 0.25;
-      const OVERLAY_START = 0.70; // text overlays start after zoom fully settles
-      const TAGS_AT = 0.6 / dur;
+      // ── Phases (zoom takes full scroll — pin releases when zoom ends) ──
+      const VIDEO_START = 0.30;
+      const OVERLAY_START = 0.35;
 
       // ── Init mask ──────────────────────────────────────────
       maskEl.style.setProperty("-webkit-mask-image", svgMaskUrl);
@@ -87,51 +70,17 @@ export default function VideoStory() {
       maskEl.style.setProperty("-webkit-mask-size", "100%");
       maskEl.style.setProperty("mask-size", "100%");
 
-      // ── Init text overlays (hidden) ────────────────────────
-      gsap.set(nameRef.current, { autoAlpha: 0 });
-      gsap.set(taglineRef.current, { autoAlpha: 0 });
-      gsap.set(
-        nameRef.current?.querySelectorAll(".char") ?? ([] as gsap.TweenTarget),
-        { opacity: 0, y: 20 },
-      );
-      gsap.set(
-        taglineRef.current?.querySelectorAll(".char") ??
-          ([] as gsap.TweenTarget),
-        { opacity: 0, y: 12 },
-      );
+      // ── Init text overlay (hidden) ────────────────────────
+      gsap.set(nameRef.current, { autoAlpha: 0, y: 20 });
 
-      // ── Timeline for text overlays ─────────────────────────
-      const nameChars =
-        nameRef.current?.querySelectorAll(".char") ??
-        ([] as gsap.TweenTarget);
-      const taglineChars =
-        taglineRef.current?.querySelectorAll(".char") ??
-        ([] as gsap.TweenTarget);
-
+      // ── Simple fade-in-up for the name ─────────────────────
       const overlayTl = gsap.timeline({ paused: true });
-      overlayTl
-        .to(nameRef.current, { autoAlpha: 1, duration: 0.001 }, 0)
-        .to(
-          nameChars,
-          {
-            opacity: 1, y: 0, duration: 0.05, stagger: 0.006,
-            ease: "power2.out", overwrite: "auto",
-          },
-          0,
-        )
-        .to(
-          taglineRef.current,
-          { autoAlpha: 1, duration: 0.08, ease: "power2.out" },
-          TAGS_AT,
-        )
-        .to(
-          taglineChars,
-          {
-            opacity: 1, y: 0, duration: 0.03, stagger: 0.004,
-            ease: "power1.out", overwrite: "auto",
-          },
-          TAGS_AT + 0.02,
-        );
+      overlayTl.to(nameRef.current, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      });
       overlayTlRef.current = overlayTl;
 
       // ── Exponential scale ease (manual — same curve as GSAP's expoScale(0.5, 7, "none")) ─
@@ -150,18 +99,13 @@ export default function VideoStory() {
         onUpdate: (self) => {
           const p = self.progress;
 
-          // ── Zoom: mask-size 100% → 5000% (pure zoom, no fade) ─
-          if (p <= ZOOM_END) {
-            const t = ZOOM_END > 0 ? p / ZOOM_END : 1;
-            // ExpoScale — slow at first (text readable), exponential acceleration
-            const raw = expoEase(t);                 // 0.5 → 7
+          // ── Zoom: mask-size 100% → 18000% (takes full scroll) ─
+          {
+            const raw = expoEase(p);                 // 0.5 → 7
             const normalized = (raw - 0.5) / (7 - 0.5); // 0 → 1
             const scale = 100 + normalized * (MAX_ZOOM - 100);
             maskEl.style.setProperty("-webkit-mask-size", `${scale}%`);
             maskEl.style.setProperty("mask-size", `${scale}%`);
-          } else {
-            maskEl.style.setProperty("-webkit-mask-size", `${MAX_ZOOM}%`);
-            maskEl.style.setProperty("mask-size", `${MAX_ZOOM}%`);
           }
 
           // ── Video: scroll-driven seeking ────────────────────
@@ -225,19 +169,9 @@ export default function VideoStory() {
         className="absolute top-8 left-5 md:top-16 md:left-10 pointer-events-none max-w-4xl z-20"
       >
         <h1 className="text-[var(--color-ink)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display-alt leading-none tracking-tight">
-          {nameChars}
+          {personalInfo.name}
         </h1>
       </div>
-
-      <div
-        ref={taglineRef}
-        className="absolute bottom-8 right-5 md:bottom-16 md:right-10 max-w-md text-right pointer-events-none z-20"
-      >
-        <p className="text-[var(--color-ink)]/80 text-sm md:text-base lg:text-lg font-light tracking-wider uppercase">
-          {taglineChars}
-        </p>
-      </div>
-
 
     </section>
   );
