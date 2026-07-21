@@ -31,7 +31,6 @@ export default function VideoStory() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const maskRef = useRef<HTMLDivElement>(null);
-  const progressRef = useRef<HTMLDivElement>(null);
   const overlayTlRef = useRef<gsap.core.Timeline | null>(null);
 
   const nameRef = useRef<HTMLDivElement>(null);
@@ -69,12 +68,11 @@ export default function VideoStory() {
       if (!video || !maskEl) return;
 
       const dur = video.duration || 2.833;
-      const isMobile = window.innerWidth < 768;
-      const MAX_ZOOM = isMobile ? 18000 : 5000; // 2× more zoom on mobile
-      const scrollDistance = 8000;
+      const MAX_ZOOM = 18000;
+      const scrollDistance = 15000;
 
       // ── Phases ──────────────────────────────────────────────
-      const ZOOM_END = isMobile ? 0.75 : 0.65; // slightly more scroll for deeper zoom on mobile
+      const ZOOM_END = 0.75;
       const VIDEO_START = 0.25;
       const OVERLAY_START = 0.70; // text overlays start after zoom fully settles
       const TAGS_AT = 0.6 / dur;
@@ -184,10 +182,7 @@ export default function VideoStory() {
             overlayTl.progress(0);
           }
 
-          // ── Progress bar ────────────────────────────────────
-          if (progressRef.current) {
-            progressRef.current.style.transform = `scaleX(${p})`;
-          }
+
         },
       });
 
@@ -243,14 +238,7 @@ export default function VideoStory() {
         </p>
       </div>
 
-      {/* ── Progress bar ────────────────────────────────────── */}
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-black/10 pointer-events-none z-20">
-        <div
-          ref={progressRef}
-          className="h-full w-full origin-left"
-          style={{ backgroundColor: "#E0218A", transform: "scaleX(0)" }}
-        />
-      </div>
+
     </section>
   );
 }
