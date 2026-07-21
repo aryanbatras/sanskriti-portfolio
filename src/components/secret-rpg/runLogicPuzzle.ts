@@ -1,4 +1,4 @@
-import { FIGHT_W, FIGHT_H, MiniGameConfig, MiniGameResult } from "./types";
+import { FIGHT_W, FIGHT_H, MiniGameConfig, MiniGameResult, getGameScale } from "./types";
 
 // ─── Questions ──────────────────────────────────────────────────────
 
@@ -141,14 +141,14 @@ export function runLogicPuzzle(
     const loop = () => {
       const W = ctx.canvas.width;
       const H = ctx.canvas.height;
-      const sx = W / FIGHT_W;
-      const sy = H / FIGHT_H;
+      const { scale, offsetX, offsetY } = getGameScale(W, H);
 
       ctx.fillStyle = "#0a0a1a";
       ctx.fillRect(0, 0, W, H);
 
       ctx.save();
-      ctx.scale(sx, sy);
+      ctx.translate(offsetX, offsetY);
+      ctx.scale(scale, scale);
 
       // Brain glow
       ctx.shadowColor = "rgba(99,102,241,0.15)";
@@ -225,23 +225,23 @@ export function runLogicPuzzle(
         ctx.fillStyle = "rgba(0,0,0,0.7)";
         ctx.fillRect(0, 0, W, H);
         ctx.fillStyle = "#fbbf24";
-        ctx.font = `bold ${Math.min(20 * sx, 20 * sy)}px "Press Start 2P", monospace`;
+        ctx.font = `bold ${20 * scale}px "Press Start 2P", monospace`;
         ctx.textAlign = "center";
-        ctx.fillText("🧠 BRILLIANT! 🧠", W / 2, H / 2 - 10 * sy);
+        ctx.fillText("🧠 BRILLIANT! 🧠", W / 2, H / 2 - 10 * scale);
         ctx.fillStyle = "#e2e8f0";
-        ctx.font = `${Math.min(10 * sx, 10 * sy)}px "Press Start 2P", monospace`;
-        ctx.fillText("IQ +999! Bug defeated!", W / 2, H / 2 + 25 * sy);
+        ctx.font = `${10 * scale}px "Press Start 2P", monospace`;
+        ctx.fillText("IQ +999! Bug defeated!", W / 2, H / 2 + 25 * scale);
       }
       if (state.result === "lose") {
         ctx.fillStyle = "rgba(0,0,0,0.7)";
         ctx.fillRect(0, 0, W, H);
         ctx.fillStyle = "#ef4444";
-        ctx.font = `bold ${Math.min(18 * sx, 18 * sy)}px "Press Start 2P", monospace`;
+        ctx.font = `bold ${18 * scale}px "Press Start 2P", monospace`;
         ctx.textAlign = "center";
-        ctx.fillText("🤔 NOT QUITE", W / 2, H / 2 - 10 * sy);
+        ctx.fillText("🤔 NOT QUITE", W / 2, H / 2 - 10 * scale);
         ctx.fillStyle = "#e2e8f0";
-        ctx.font = `${Math.min(9 * sx, 9 * sy)}px "Press Start 2P", monospace`;
-        ctx.fillText("Need 2/3 correct! Try again!", W / 2, H / 2 + 25 * sy);
+        ctx.font = `${9 * scale}px "Press Start 2P", monospace`;
+        ctx.fillText("Need 2/3 correct! Try again!", W / 2, H / 2 + 25 * scale);
       }
 
       animId = requestAnimationFrame(loop);

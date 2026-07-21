@@ -1,4 +1,4 @@
-import { FIGHT_W, FIGHT_H, MiniGameConfig, MiniGameResult } from "./types";
+import { FIGHT_W, FIGHT_H, MiniGameConfig, MiniGameResult, getGameScale } from "./types";
 
 // ─── Motivational Quotes ───────────────────────────────────────────
 
@@ -113,18 +113,71 @@ export function runQuoteType(
 
     window.addEventListener("keydown", kd);
 
+    // Mobile keyboard input
+    const isMobile = ("ontouchstart" in window && navigator.maxTouchPoints > 0) || window.innerWidth < 768;
+    let mobileInput: HTMLInputElement | null = null;
+    let mobileSubmitBtn: HTMLDivElement | null = null;
+    if (isMobile) {
+      mobileInput = document.createElement("input");
+      mobileInput.type = "text";
+      mobileInput.setAttribute("autocomplete", "off");
+      mobileInput.setAttribute("autocorrect", "off");
+      mobileInput.setAttribute("autocapitalize", "characters");
+      mobileInput.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;z-index:10000;";
+      overlay.appendChild(mobileInput);
+      setTimeout(() => mobileInput?.focus(), 300);
+
+      mobileInput.addEventListener("input", () => {
+        if (state.result !== "none") return;
+        state.typed = mobileInput!.value.toUpperCase().replace(/[^A-Z0-9']/g, "").slice(0, 20);
+      });
+
+      mobileSubmitBtn = document.createElement("div");
+      mobileSubmitBtn.style.cssText =
+        "position:fixed;bottom:20px;right:20px;z-index:10000;" +
+        "background:rgba(236,72,153,0.3);border:2px solid rgba(236,72,153,0.5);" +
+        "color:#fff;padding:14px 28px;border-radius:12px;" +
+        "font-family:'Press Start 2P',monospace;font-size:12px;cursor:pointer;" +
+        "touch-action:none;user-select:none;min-width:44px;min-height:44px;" +
+        "display:flex;align-items:center;justify-content:center;";
+      mobileSubmitBtn.textContent = "SUBMIT ▶";
+      mobileSubmitBtn.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        if (state.result !== "none") return;
+        const target = words[state.currentWordIndex];
+        if (state.typed.toUpperCase() === target) {
+          state.correctCount++;
+          state.currentWordIndex++;
+          state.typed = "";
+          if (mobileInput) mobileInput.value = "";
+          state.flashMessage = "✅";
+          state.flashTimer = 15;
+          if (state.correctCount >= 5) state.result = "win";
+        } else {
+          state.mistakes++;
+          state.typed = "";
+          if (mobileInput) mobileInput.value = "";
+          state.flashMessage = "❌";
+          state.flashTimer = 15;
+          if (state.mistakes >= 3) state.result = "lose";
+        }
+        setTimeout(() => mobileInput?.focus(), 50);
+      });
+      overlay.appendChild(mobileSubmitBtn);
+    }
+
     const loop = () => {
       const W = ctx.canvas.width;
       const H = ctx.canvas.height;
-      const sx = W / FIGHT_W;
-      const sy = H / FIGHT_H;
+      const { scale, offsetX, offsetY } = getGameScale(W, H);
 
       // Warm gradient background
       ctx.fillStyle = "#0a0a1a";
       ctx.fillRect(0, 0, W, H);
 
       ctx.save();
-      ctx.scale(sx, sy);
+      ctx.translate(offsetX, offsetY);
+      ctx.scale(scale, scale);
 
       // Pink glowing border
       ctx.strokeStyle = "rgba(99,102,241,0.2)";
@@ -213,23 +266,23 @@ export function runQuoteType(
         ctx.fillStyle = "rgba(0,0,0,0.7)";
         ctx.fillRect(0, 0, W, H);
         ctx.fillStyle = "#fbbf24";
-        ctx.font = `bold ${Math.min(18 * sx, 18 * sy)}px "Press Start 2P", monospace`;
+        ctx.font = `bold ${18 * scale}px "Press Start 2P", monospace`;
         ctx.textAlign = "center";
-        ctx.fillText("💪 MOTIVATION RESTORED! 💪", W / 2, H / 2 - 10 * sy);
+        ctx.fillText("💪 MOTIVATION RESTORED! 💪", W / 2, H / 2 - 10 * scale);
         ctx.fillStyle = "#e2e8f0";
-        ctx.font = `${Math.min(10 * sx, 10 * sy)}px "Press Start 2P", monospace`;
-        ctx.fillText("You've got this! Quote completed!", W / 2, H / 2 + 25 * sy);
+        ctx.font = `${10 * scale}px "Press Start 2P", monospace`;
+        ctx.fillText("You've got this! Quote completed!", W / 2, H / 2 + 25 * scale);
       }
       if (state.result === "lose") {
         ctx.fillStyle = "rgba(0,0,0,0.7)";
         ctx.fillRect(0, 0, W, H);
         ctx.fillStyle = "#ef4444";
-        ctx.font = `bold ${Math.min(16 * sx, 16 * sy)}px "Press Start 2P", monospace`;
+        ctx.font = `bold ${16 * scale}px "Press Start 2P", monospace`;
         ctx.textAlign = "center";
-        ctx.fillText("😤 KEEP TRYING!", W / 2, H / 2 - 10 * sy);
+        ctx.fillText("😤 KEEP TRYING!", W / 2, H / 2 - 10 * scale);
         ctx.fillStyle = "#e2e8f0";
-        ctx.font = `${Math.min(9 * sx, 9 * sy)}px "Press Start 2P", monospace`;
-        ctx.fillText("3 mistakes — need more practice!", W / 2, H / 2 + 25 * sy);
+        ctx.font = `${9 * scale}px "Press Start 2P", monospace`;
+        ctx.fillText("3 mistakes — need more practice!", W / 2, H / 2 + 25 * scale);
       }
 
       animId = requestAnimationFrame(loop);
@@ -243,6 +296,8 @@ export function runQuoteType(
           cancelAnimationFrame(animId);
           window.removeEventListener("keydown", kd);
           window.removeEventListener("resize", onResize);
+          if (mobileInput && mobileInput.parentNode) mobileInput.parentNode.removeChild(mobileInput);
+          if (mobileSubmitBtn && mobileSubmitBtn.parentNode) mobileSubmitBtn.parentNode.removeChild(mobileSubmitBtn);
           document.body.removeChild(overlay);
           resolve({ won: state.result === "win" });
         }, 1800);

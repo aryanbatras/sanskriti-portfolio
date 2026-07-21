@@ -88,5 +88,13 @@ export const FALLBACK_MAP: Record<string, string> = {
   logicPuzzle: "bugEntrance",
   quoteFight: "bugEntrance",
   professorFight: "professorEncounter",
-
 };
+
+export function getGameScale(W: number, H: number) {
+  const sx = W / FIGHT_W;
+  const sy = H / FIGHT_H;
+  const scale = Math.min(sx, sy);
+  const offsetX = (W - FIGHT_W * scale) / 2;
+  const offsetY = (H - FIGHT_H * scale) / 2;
+  return { scale, offsetX, offsetY };
+}

@@ -7,6 +7,7 @@ import {
   ENEMY_SPEED,
   ATTACK_COOLDOWN,
   ASSETS,
+  getGameScale,
 } from "./types";
 import { fightSfx } from "./sounds";
 
@@ -544,11 +545,11 @@ function render(
 ) {
   const W = ctx.canvas.width;
   const H = ctx.canvas.height;
-  const sx = W / FIGHT_W;
-  const sy = H / FIGHT_H;
+  const { scale, offsetX, offsetY } = getGameScale(W, H);
 
   ctx.save();
-  ctx.scale(sx, sy);
+  ctx.translate(offsetX, offsetY);
+  ctx.scale(scale, scale);
 
   if (state.shakeTimer > 0) {
     const intensity = state.shakeTimer * 0.6;
@@ -729,21 +730,21 @@ function render(
   if (state.result === "win") {
     ctx.fillStyle = "rgba(0,0,0,0.7)"; ctx.fillRect(0, 0, W, H);
     ctx.fillStyle = "#fbbf24";
-    ctx.font = `bold ${Math.min(22 * sx, 22 * sy)}px "Press Start 2P", monospace`;
+    ctx.font = `bold ${22 * scale}px "Press Start 2P", monospace`;
     ctx.textAlign = "center";
-    ctx.fillText("🎉 VICTORY! 🎉", W / 2, H / 2 - 10 * sy);
+    ctx.fillText("🎉 VICTORY! 🎉", W / 2, H / 2 - 10 * scale);
     ctx.fillStyle = "#e2e8f0";
-    ctx.font = `${Math.min(11 * sx, 11 * sy)}px "Press Start 2P", monospace`;
-    ctx.fillText("Enemy defeated!", W / 2, H / 2 + 25 * sy);
+    ctx.font = `${11 * scale}px "Press Start 2P", monospace`;
+    ctx.fillText("Enemy defeated!", W / 2, H / 2 + 25 * scale);
   }
   if (state.result === "lose") {
     ctx.fillStyle = "rgba(0,0,0,0.7)"; ctx.fillRect(0, 0, W, H);
     ctx.fillStyle = "#ef4444";
-    ctx.font = `bold ${Math.min(20 * sx, 20 * sy)}px "Press Start 2P", monospace`;
+    ctx.font = `bold ${20 * scale}px "Press Start 2P", monospace`;
     ctx.textAlign = "center";
-    ctx.fillText("💥 DEFEATED", W / 2, H / 2 - 10 * sy);
+    ctx.fillText("💥 DEFEATED", W / 2, H / 2 - 10 * scale);
     ctx.fillStyle = "#e2e8f0";
-    ctx.font = `${Math.min(10 * sx, 10 * sy)}px "Press Start 2P", monospace`;
-    ctx.fillText("Try a different approach", W / 2, H / 2 + 25 * sy);
+    ctx.font = `${10 * scale}px "Press Start 2P", monospace`;
+    ctx.fillText("Try a different approach", W / 2, H / 2 + 25 * scale);
   }
 }
