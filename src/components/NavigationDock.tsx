@@ -68,7 +68,10 @@ export default function NavigationDock() {
   const navigate = useCallback(
     (path: string) => {
       if (path === pathname) return;
-      window.scrollTo(0, 0);
+      if (path === "/contact") {
+        window.location.href = path;
+        return;
+      }
       router.push(path);
     },
     [pathname, router]
