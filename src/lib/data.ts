@@ -18,7 +18,7 @@ export const personalInfo = {
 
   writingIntro: `The thread that runs through everything I do is curiosity. I ask why until I reach the bottom of it. That question is what drove me from competitive programming to deep learning research to writing poetry. All of it is the same thing: trying to understand.`,
 
-  pullQuote: `Why fit in when you were born to stand out?`,
+  pullQuote: `Always up for a challenge and a cup of coffee`,
 
   work: [
     {

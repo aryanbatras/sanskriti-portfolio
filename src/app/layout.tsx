@@ -1,11 +1,31 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display } from "next/font/google";
+import { Playfair_Display, Newsreader, Fragment_Mono, Caveat } from "next/font/google";
 import "./globals.css";
 
-const dmSerifDisplay = DM_Serif_Display({
-  weight: "400",
-  variable: "--font-dm-serif-display",
+const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const newsreader = Newsreader({
+  weight: ["400", "500"],
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const fragmentMono = Fragment_Mono({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-handwritten",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -36,7 +56,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSerifDisplay.variable}`}>
+    <html
+      lang="en"
+      className={`${playfairDisplay.variable} ${newsreader.variable} ${fragmentMono.variable} ${caveat.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

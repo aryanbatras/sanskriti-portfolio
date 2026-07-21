@@ -1,30 +1,24 @@
 @import "tailwindcss";
 
-/* ─── Design System v3.0 ─────────────────────────────
- * Clean, image-free editorial design.
- * Abstract backgrounds created through CSS alone.
- * 
- * Principles:
- * - NO BORDERS ANYWHERE (Apple design requirement)
- * - Warm cream background + dusty pink accent
- * - Serif typography (editorial, literary, storybook)
- * - GSAP useGSAP() hook (scoped, auto-cleanup)
- * - Lenis smooth scroll
- * - CSS abstract backgrounds instead of downloaded images
+/* ─── Design System v6.0 ─────────────────────────────
+ * Barbie Pink · White · Black
+ * Playfair Display headings · Newsreader body
+ * Fragment Mono for accents
+ * Pageless · Borderless · Immersive
  * ──────────────────────────────────────────────────── */
 
 @theme inline {
-  --color-paper: #FAF7F2;
-  --color-ink: #2A2420;
-  --color-stone: #EBE3DC;
-  --color-pink: #C47979;
-  --color-pink-light: #F5EBEB;
-  --color-pink-dark: #8A5555;
-  --color-charcoal: #3D3530;
+  --color-paper: #FFFFFF;
+  --color-ink: #1A1A1A;
+  --color-stone: #E5E5E5;
+  --color-pink: #E0218A;
+  --color-pink-light: #FFF0F5;
+  --color-pink-dark: #C2185B;
+  --color-charcoal: #333333;
 
-  --font-serif: Georgia, "Times New Roman", serif;
-  --font-display: "DM Serif Display", Georgia, serif;
-  --font-mono: "SF Mono", "JetBrains Mono", "Fira Code", monospace;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Newsreader", Georgia, serif;
+  --font-mono: "Fragment Mono", "SF Mono", monospace;
 }
 
 /* ─── Base ────────────────────────────────────────── */
@@ -38,7 +32,7 @@ html {
 body {
   background: var(--color-paper);
   color: var(--color-ink);
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -48,43 +42,29 @@ body {
   color: var(--color-ink);
 }
 
-/* ─── CSS Abstract Backgrounds ────────────────────── */
-/* These replace downloaded images — pure CSS, always load, convey emotion through color */
+/* ─── Abstract Backgrounds ────────────────────────── */
 
 .bg-abstract-warm {
-  background:
-    radial-gradient(ellipse 80% 60% at 10% 20%, rgba(196, 121, 121, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 90% 80%, rgba(196, 121, 121, 0.04) 0%, transparent 50%),
-    var(--color-paper);
+  background-color: #FFFBFD;
 }
 
 .bg-abstract-soft {
-  background:
-    radial-gradient(ellipse 70% 40% at 30% 10%, rgba(245, 235, 235, 0.8) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 60% at 70% 90%, rgba(196, 121, 121, 0.03) 0%, transparent 40%),
-    var(--color-paper);
+  background-color: var(--color-pink-light);
 }
 
 .bg-abstract-rose {
   background:
-    radial-gradient(ellipse 90% 40% at 50% 0%, rgba(196, 121, 121, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 70% at 80% 100%, rgba(245, 235, 235, 0.6) 0%, transparent 50%),
-    var(--color-paper);
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,0.015) 1px, transparent 0) 0 0 / 32px 32px,
+    linear-gradient(180deg, var(--color-pink-light) 0%, var(--color-paper) 100%);
 }
 
 .bg-abstract-light {
-  background:
-    radial-gradient(ellipse 50% 80% at 20% 50%, rgba(245, 235, 235, 0.5) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 40% at 80% 30%, rgba(196, 121, 121, 0.03) 0%, transparent 50%),
-    var(--color-paper);
+  background-color: #FAFAFA;
 }
 
 .bg-abstract-glow {
   background:
-    radial-gradient(ellipse 60% 50% at 50% 20%, rgba(196, 121, 121, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(245, 235, 235, 0.6) 0%, transparent 40%),
-    radial-gradient(ellipse 50% 40% at 80% 60%, rgba(196, 121, 121, 0.02) 0%, transparent 40%),
-    var(--color-paper);
+    linear-gradient(180deg, var(--color-pink-light) 0%, #FFF5F8 50%, var(--color-paper) 100%);
 }
 
 /* ─── Typography ──────────────────────────────────── */
@@ -98,37 +78,38 @@ body {
 
 .section-heading {
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
 }
 
 @media (min-width: 768px) {
   .section-heading {
-    font-size: 3.5rem;
+    font-size: 5rem;
   }
 }
 
 .body-text {
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  line-height: 1.8;
-  max-width: 65ch;
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  line-height: 1.7;
+  max-width: 70ch;
   color: var(--color-ink);
 }
 
 .body-text-large {
-  font-family: var(--font-serif);
-  font-size: 1.125rem;
-  line-height: 1.8;
-  max-width: 65ch;
+  font-family: var(--font-body);
+  font-size: 1.375rem;
+  line-height: 1.7;
+  max-width: 70ch;
 }
 
 .mono-text {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -136,108 +117,33 @@ body {
 
 .pull-quote {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   line-height: 1.3;
-  color: var(--color-ink);
-  background: var(--color-pink-light);
-  padding: 1.5rem 2rem;
-  margin: 2.5rem 0;
+  color: var(--color-pink-dark);
+  margin: 2rem 0;
   max-width: 45ch;
 }
 
 @media (min-width: 768px) {
   .pull-quote {
-    font-size: 2rem;
-    margin: 3rem 0 3rem -1.5rem;
+    font-size: 2.25rem;
+    margin: 2.5rem 0;
   }
 }
 
 /* ─── Layout ──────────────────────────────────────── */
 
 .editorial-section {
-  padding: 5rem 1.5rem;
+  padding: 3rem 1.5rem;
 }
 
 @media (min-width: 768px) {
   .editorial-section {
-    padding: 6rem 3rem;
+    padding: 4rem 3rem;
   }
 }
 
-.editorial-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-}
-
-@media (min-width: 768px) {
-  .editorial-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-  }
-}
-
-.section-spacer {
-  height: 1px;
-  background: var(--color-stone);
-  width: 100%;
-  margin: 0;
-  border: none;
-}
-
-.section-spacer-wrapper {
-  padding: 0 1.5rem;
-  max-width: 64rem;
-  margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  .section-spacer-wrapper {
-    padding: 0 3rem;
-  }
-}
-
-/* ─── Nav ─────────────────────────────────────────── */
-
-.toc-item {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-stone);
-  transition: color 0.3s ease;
-  cursor: pointer;
-  text-decoration: none;
-  display: block;
-  padding: 0.25rem 0;
-}
-
-.toc-item:hover {
-  color: var(--color-ink);
-}
-
-.toc-item.active {
-  color: var(--color-ink);
-}
-
-.mobile-nav-btn {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-ink);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem 0;
-  transition: opacity 0.3s ease;
-}
-
-.mobile-nav-btn:hover {
-  opacity: 0.6;
-}
-
-/* ─── Entry (spacing-only separation) ─────────────── */
+/* ─── Entry ───────────────────────────────────────── */
 
 .entry {
   padding: 2rem 0;
@@ -257,25 +163,26 @@ body {
 
 .entry-title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   line-height: 1.2;
   color: var(--color-ink);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .entry-meta {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-pink);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .entry-desc {
-  font-size: 0.9375rem;
+  font-family: var(--font-body);
+  font-size: 1.25rem;
   line-height: 1.7;
-  max-width: 55ch;
+  max-width: 60ch;
   color: var(--color-charcoal);
 }
 
@@ -284,25 +191,25 @@ body {
 .text-link {
   color: var(--color-ink);
   text-decoration: none;
-  transition: opacity 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .text-link:hover {
-  opacity: 0.6;
+  color: var(--color-pink);
 }
 
 .text-link-arrow {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-ink);
   text-decoration: none;
-  transition: opacity 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .text-link-arrow:hover {
-  opacity: 0.6;
+  color: var(--color-pink);
 }
 
 /* ─── Ink Underline Animation ─────────────────────── */
@@ -337,6 +244,131 @@ body {
 
 .ink-underline.animate::after {
   animation: ink-draw 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* ─── Clipboard / Pinterest Scrapbook ────────────── */
+
+/* Torn paper edge */
+.torn-edge {
+  position: relative;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06));
+}
+
+.torn-edge::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: -4px;
+  right: -4px;
+  height: 12px;
+  background:
+    radial-gradient(ellipse at 10% 100%, transparent 8px, var(--color-paper) 8px),
+    radial-gradient(ellipse at 30% 100%, var(--color-paper) 6px, transparent 6px),
+    radial-gradient(ellipse at 50% 100%, transparent 10px, var(--color-paper) 10px),
+    radial-gradient(ellipse at 70% 100%, var(--color-paper) 5px, transparent 5px),
+    radial-gradient(ellipse at 90% 100%, transparent 9px, var(--color-paper) 9px);
+  background-size: 20px 12px;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+/* Sticky note */
+.sticky-note {
+  position: relative;
+  background: #FFFBEA;
+  padding: 1rem 1.25rem;
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.06),
+    0 4px 12px rgba(0,0,0,0.04);
+  transform-origin: center;
+}
+
+.sticky-note::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.6) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.sticky-note-pink {
+  background: #FFF0F5;
+}
+
+.sticky-note-blue {
+  background: #F0F5FF;
+}
+
+.sticky-note-green {
+  background: #F0FFF4;
+}
+
+.sticky-note-text {
+  font-family: var(--font-handwritten);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--color-ink);
+}
+
+/* Rotations */
+.rotate-1 { transform: rotate(-1deg); }
+.rotate-2 { transform: rotate(-2deg); }
+.rotate-3 { transform: rotate(-3deg); }
+.rotate-n1 { transform: rotate(1deg); }
+.rotate-n2 { transform: rotate(2deg); }
+.rotate-n3 { transform: rotate(3deg); }
+.rotate-n5 { transform: rotate(5deg); }
+.rotate-5 { transform: rotate(-5deg); }
+
+/* Overlapping cluster */
+.cluster-item {
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cluster-item:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* String thread effect */
+.string-thread {
+  position: absolute;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #C2185B 0px,
+    #C2185B 3px,
+    transparent 3px,
+    transparent 6px
+  );
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Corkboard background texture */
+.bg-corkboard {
+  background-color: #FFFBF5;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,0.02) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Subtle corkboard dot texture — for layering on any background */
+.bg-dot-subtle {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,0.015) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+/* Handwritten accent */
+.handwritten {
+  font-family: var(--font-handwritten);
 }
 
 /* ─── Utility ─────────────────────────────────────── */
