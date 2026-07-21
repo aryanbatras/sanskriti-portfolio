@@ -93,7 +93,7 @@ export default function VideoStory() {
         end: () => scrollDistance,
         pin: true,
         pinSpacing: true,
-        scrub: 1.5,
+        scrub: 1.0,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
           const p = self.progress;

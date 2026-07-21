@@ -134,6 +134,7 @@ export default function ProjectEntries() {
                 height={1376}
                 className="object-cover w-full h-auto"
                 sizes="(max-width: 768px) 192px, 224px"
+                loading="lazy"
               />
               {/* Red pin — bottom-left corner */}
               <div className="absolute bottom-1 left-1 z-10 w-6 h-6 md:w-7 md:h-7">

@@ -313,8 +313,10 @@ function ChapterCluster({
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 320px"
+              loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/5" />
+            {/* Light gradient overlay for label readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
             {/* Red pin */}
             <div className={`absolute ${imgPin} z-20 w-7 h-7 md:w-8 md:h-8`}>
               <Image
@@ -323,6 +325,7 @@ function ChapterCluster({
                 width={32}
                 height={32}
                 className="object-contain w-full h-full"
+                loading="lazy"
               />
             </div>
             {/* Handwritten chapter label */}
@@ -348,6 +351,7 @@ function ChapterCluster({
                 width={20}
                 height={20}
                 className="object-contain w-full h-full"
+                loading="lazy"
               />
             </div>
             <p className="handwritten text-sm md:text-base text-ink/80 leading-snug">
@@ -410,9 +414,9 @@ export default function MemoriesStory() {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.9,
+          duration: 0.7,
           ease: "power2.out",
-          stagger: 0.3,
+          stagger: 0.15,
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 80%",
@@ -427,9 +431,9 @@ export default function MemoriesStory() {
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
+          duration: 0.4,
           ease: "power1.out",
-          stagger: 0.2,
+          stagger: 0.1,
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 70%",
@@ -473,6 +477,7 @@ export default function MemoriesStory() {
                 width={48}
                 height={48}
                 className="object-contain w-full h-full"
+                loading="lazy"
               />
             </div>
           </div>
@@ -506,6 +511,7 @@ export default function MemoriesStory() {
                   width={28}
                   height={28}
                   className="object-contain w-full h-full"
+                  loading="lazy"
                 />
               </div>
               <p
@@ -537,6 +543,7 @@ export default function MemoriesStory() {
                   width={20}
                   height={20}
                   className="object-contain w-full h-full"
+                  loading="lazy"
                 />
               </div>
             </div>

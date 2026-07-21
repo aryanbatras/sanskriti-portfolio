@@ -133,6 +133,7 @@ export default function NotesBlock() {
                 height={1376}
                 className="object-cover w-full h-auto"
                 sizes="(max-width: 768px) 192px, 224px"
+                loading="lazy"
               />
               {/* Red pin — bottom-right corner */}
               <div className="absolute bottom-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">

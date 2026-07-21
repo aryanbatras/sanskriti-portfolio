@@ -127,6 +127,7 @@ export default function ContactBlock() {
                 height={1376}
                 className="object-cover w-full h-auto"
                 sizes="(max-width: 768px) 192px, 224px"
+                loading="lazy"
               />
               {/* Red pin — bottom-left corner */}
               <div className="absolute bottom-1 left-1 z-10 w-6 h-6 md:w-7 md:h-7">
@@ -152,6 +153,7 @@ export default function ContactBlock() {
               height={1376}
               className="object-cover w-full h-auto"
               sizes="160px"
+              loading="lazy"
             />
             {/* Red pin — top-right corner */}
             <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
