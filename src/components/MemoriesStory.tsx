@@ -27,6 +27,7 @@ const chapters = [
     title: "The Girl Who Kept Asking Why",
     image: "/animated/Woman_examining_clock_gears_202607210832.jpeg",
     imageAlt: "Sanskriti holding a small gear between her fingers, examining it closely, a disassembled clock on the desk before her",
+    text: "I took things apart to see how they worked. Clocks, remote controls, sentences that meant two things. The question \"why?\" became the thread through everything — from poetry to Python, from competitive programming to deep learning.",
     quote: {
       text: "Curiosity is not a trait — it is a way of seeing the world",
       source: "on what drives everything I do",
@@ -42,6 +43,7 @@ const chapters = [
     title: "The Little Topper",
     image: "/animated/Student_smiling_at_textbook_202607210801.jpeg",
     imageAlt: "A younger Sanskriti sitting at a school desk, smiling softly at an open textbook, a gold medal ribbon draped over the corner",
+    text: "95.8% in ICSE, top 3 in the district. 91.6% in CBSE. My mother raised me with warmth and resilience. Those years taught me discipline — and that the pressure of being \"the best\" doesn't go away, it just changes shape.",
     quote: {
       text: "Excellence is not a destination — it is the discipline of showing up every day",
       source: "on what school taught me",
@@ -57,6 +59,7 @@ const chapters = [
     title: "The College Years",
     image: "/animated/Girl_sitting_with_laptop_college.jpeg",
     imageAlt: "Sanskriti at a college desk, staring at a laptop screen with focused determination",
+    text: "B.Tech in Computer Science and Design at MITS Gwalior. Seven subjects a semester, a Reinforcement Learning course that pushed every limit, and a DSA study group that changed my trajectory.",
     quote: {
       text: "Teaching is the best way to truly understand something",
       source: "on why I lead study groups",
@@ -72,6 +75,7 @@ const chapters = [
     title: "The Curious Scientist",
     image: "/animated/Girl_sitting_at_desk_202607210810.jpeg",
     imageAlt: "Sanskriti sitting at a desk, focused on her work, surrounded by notes and ideas",
+    text: "Research intern at IIT Jammu — speech intelligibility prediction using deep learning. Whisper embeddings, Spectro-Temporal Modulation features, PyTorch. Before this: fraud detection, image captioning, A* pathfinding.",
     quote: {
       text: "Every project is a new problem — and I enjoy the process of solving it",
       source: "on what motivates my work",
@@ -87,6 +91,7 @@ const chapters = [
     title: "The Writer",
     image: "/animated/Writer_thinking_with_pen_202607210810.jpeg",
     imageAlt: "Sanskriti leaning back in her chair, pen touching her chin, eyes looking upward — mid-thought",
+    text: "Writing came before research. Poems, short stories, technical articles — the thread connecting them is making the complicated accessible. At FrameFlicks I write humor and poetry. At Codeveda I wrote about LLMs.",
     quote: {
       text: "Good writing is honest, precise, and says more than it appears to",
       source: "on what makes words effective",
@@ -102,6 +107,7 @@ const chapters = [
     title: "The One Who Understands",
     image: "/animated/Woman_listening_with_understanding_202607210811.jpeg",
     imageAlt: "Sanskriti sitting on a wooden bench, soft gentle expression, listening with understanding",
+    text: "I listen well. When someone opens up, I pay attention — not to respond, but to understand. The best friendships are built on mutual respect, not on being useful to each other.",
     quote: {
       text: "People are not defined by a single moment — they are defined by how they keep going",
       source: "on growth and resilience",
@@ -117,6 +123,7 @@ const chapters = [
     title: "The Dreamer",
     image: "/animated/Dreamer_looking_at_distance_202607210812.jpeg",
     imageAlt: "Sanskriti standing beside a desk, holding a book open but looking into the distance — dreaming",
+    text: "I want to build things that matter — a startup that makes education accessible, research that advances how machines understand language, writing that resonates. The specifics will change. The drive will not.",
     quote: {
       text: "Always up for a meaningful challenge and a cup of coffee",
       source: "me, always",
@@ -132,6 +139,7 @@ const chapters = [
     title: "A Soul Made of Stories",
     image: "/animated/Sanskriti_looking_at_camera_202607210812.jpeg",
     imageAlt: "Sanskriti looking directly at the camera with a warm, confident smile",
+    text: "I see myself in characters who observe quietly and act with purpose. Riley, who feels deeply. Hiro, who builds solutions at a small desk. Violet, who is stronger than she appears.",
     quote: {
       text: "The most important thing you can do with a mind is to keep wondering",
       source: "on what I believe",
@@ -297,15 +305,20 @@ function ChapterCluster({
           </div>
         </div>
 
-        {/* ── Right / Title + Quote ── */}
+        {/* ── Right / Title + Text + Quote ── */}
         <div className="relative flex-1 min-w-0 z-10 flex flex-col justify-center">
           {/* Title */}
           <h3
-            className="handwritten text-3xl md:text-4xl lg:text-5xl text-ink leading-tight mb-8"
+            className="handwritten text-3xl md:text-4xl lg:text-5xl text-ink leading-tight mb-4"
             style={{ transform: `rotate(${-parseFloat(clusterRot)}deg)` }}
           >
             {chapter.title}
           </h3>
+
+          {/* Handwritten text — no background, no border, pageless */}
+          <p className="handwritten text-lg md:text-xl text-charcoal/70 leading-relaxed mb-8 max-w-lg">
+            {chapter.text}
+          </p>
 
           {/* Pull quote sticky */}
           <QuoteSticky
