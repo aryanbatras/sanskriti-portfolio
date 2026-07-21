@@ -357,10 +357,16 @@ export function runStreetFight(
         if (keys["ArrowDown"])  { vy = PLAYER_SPEED;  state.facingY = 1; }
         state.playerX += vx;
         state.playerY += vy;
+        const prevPX = state.playerX;
+        const prevPY = state.playerY;
         if (state.playerX < -30) state.playerX = FIGHT_W + 30;
         if (state.playerX > FIGHT_W + 30) state.playerX = -30;
         if (state.playerY < -30) state.playerY = FIGHT_H + 30;
         if (state.playerY > FIGHT_H + 30) state.playerY = -30;
+        if (prevPX !== state.playerX || prevPY !== state.playerY) {
+          state.hitFlashes.length = 0;
+          state.particles.length = 0;
+        }
 
         // ── Pickup collision ──
         for (let pi = state.pickups.length - 1; pi >= 0; pi--) {
@@ -483,10 +489,15 @@ export function runStreetFight(
             e.x += (dx / dist) * ENEMY_SPEED * speedMult;
             e.y += (dy / dist) * ENEMY_SPEED * speedMult;
           }
+          const prevX = e.x;
+          const prevY = e.y;
           if (e.x < -30) e.x = FIGHT_W + 30;
           if (e.x > FIGHT_W + 30) e.x = -30;
           if (e.y < -30) e.y = FIGHT_H + 30;
           if (e.y > FIGHT_H + 30) e.y = -30;
+          if (prevX !== e.x || prevY !== e.y) {
+            state.enemyTrails.length = 0;
+          }
           if (e.cooldown <= 0 && dist < 35 && state.invincible <= 0 && state.result === "none") {
             state.hearts--;
             state.invincible = 30;

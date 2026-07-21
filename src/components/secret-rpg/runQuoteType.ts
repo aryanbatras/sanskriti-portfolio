@@ -83,7 +83,7 @@ export function runQuoteType(
           state.typed = "";
           state.flashMessage = "✅";
           state.flashTimer = 15;
-          if (state.correctCount >= 5) {
+          if (state.currentWordIndex >= words.length) {
             state.result = "win";
           }
         } else {
@@ -152,7 +152,7 @@ export function runQuoteType(
           if (mobileInput) mobileInput.value = "";
           state.flashMessage = "✅";
           state.flashTimer = 15;
-          if (state.correctCount >= 5) state.result = "win";
+          if (state.currentWordIndex >= words.length) state.result = "win";
         } else {
           state.mistakes++;
           state.typed = "";
@@ -191,7 +191,7 @@ export function runQuoteType(
       ctx.fillText("> QUOTE.EXE — MOTIVATION BOOST", 40, 50);
 
       // Progress
-      const pct = Math.max(0, state.correctCount) / 5;
+      const pct = Math.max(0, state.currentWordIndex) / words.length;
       ctx.fillStyle = "rgba(99,102,241,0.3)";
       ctx.fillRect(40, 60, FIGHT_W - 80, 6);
       ctx.fillStyle = "#ec4899";
@@ -242,7 +242,7 @@ export function runQuoteType(
       ctx.fillStyle = "rgba(255,255,255,0.3)";
       ctx.font = '9px "Press Start 2P", monospace';
       ctx.textAlign = "right";
-      ctx.fillText(`${state.correctCount}/5 WORDS · ${state.mistakes}/3 MISS`, FIGHT_W - 40, 50);
+      ctx.fillText(`${state.currentWordIndex}/${words.length} WORDS · ${state.mistakes}/3 MISS`, FIGHT_W - 40, 50);
 
       // Hint
       ctx.fillStyle = "rgba(255,255,255,0.12)";
@@ -268,10 +268,10 @@ export function runQuoteType(
         ctx.fillStyle = "#fbbf24";
         ctx.font = `bold ${18 * scale}px "Press Start 2P", monospace`;
         ctx.textAlign = "center";
-        ctx.fillText("💪 MOTIVATION RESTORED! 💪", W / 2, H / 2 - 10 * scale);
+        ctx.fillText("💪 QUOTE MASTERED! 💪", W / 2, H / 2 - 10 * scale);
         ctx.fillStyle = "#e2e8f0";
         ctx.font = `${10 * scale}px "Press Start 2P", monospace`;
-        ctx.fillText("You've got this! Quote completed!", W / 2, H / 2 + 25 * scale);
+        ctx.fillText("Every word, every letter — perfect!", W / 2, H / 2 + 25 * scale);
       }
       if (state.result === "lose") {
         ctx.fillStyle = "rgba(0,0,0,0.7)";
