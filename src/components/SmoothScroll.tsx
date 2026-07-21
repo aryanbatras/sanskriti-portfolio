@@ -56,6 +56,23 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       lenis.destroy();
       window.removeEventListener("resize", handleResize);
       ScrollTrigger.getAll().forEach((t) => t.kill());
+      ScrollTrigger.scrollerProxy(document.body, {
+        scrollTop(value) {
+          if (arguments.length) {
+            window.scrollTo(0, value as number);
+          }
+          return window.scrollY;
+        },
+        getBoundingClientRect() {
+          return {
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight,
+          };
+        },
+      });
+      ScrollTrigger.refresh();
     };
   }, []);
 

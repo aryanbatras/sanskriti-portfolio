@@ -68,6 +68,7 @@ export default function NavigationDock() {
   const navigate = useCallback(
     (path: string) => {
       if (path === pathname) return;
+      window.scrollTo(0, 0);
       router.push(path);
     },
     [pathname, router]
