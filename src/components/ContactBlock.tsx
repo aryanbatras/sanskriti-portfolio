@@ -35,7 +35,7 @@ export default function ContactBlock() {
   );
 
   return (
-    <section id="contact" ref={containerRef} className="editorial-section bg-paper bg-dot-subtle">
+    <section id="contact" ref={containerRef} className="editorial-section bg-paper">
       <div className="max-w-6xl mx-auto">
         <div className="relative inline-block mb-6">
           <h2
@@ -44,7 +44,6 @@ export default function ContactBlock() {
           >
             Get in touch
           </h2>
-          {/* Tiny red pin — top-right of heading */}
           <div className="absolute -top-2 -right-4 w-5 h-5 md:w-6 md:h-6 opacity-60">
             <Image
               src="/red_pin.png"
@@ -61,7 +60,7 @@ export default function ContactBlock() {
           from you.
         </p>
 
-        <div className="flex flex-col md:flex-row md:gap-12">
+        <div className="flex flex-col md:flex-row md:gap-12 md:items-start">
           {/* Left: Contact details */}
           <div className="flex-1 space-y-10">
             {/* Email */}
@@ -117,9 +116,9 @@ export default function ContactBlock() {
             </div>
           </div>
 
-          {/* Portrait with red pin — bottom-left */}
+          {/* Portrait with red pin — top-right, pinned hover */}
           <div className="contact-reveal shrink-0 mt-10 md:mt-0 flex justify-center items-start">
-            <div className="relative w-48 md:w-56 h-auto rounded-2xl overflow-hidden bg-pink-light">
+            <div className="relative w-48 md:w-56 h-auto overflow-hidden bg-pink-light pinned-item pinned-tr">
               <Image
                 src="/images/Woman_waving_hi_holding_coffee_202607201927.jpeg"
                 alt="Sanskriti Gupta — say hi!"
@@ -129,8 +128,7 @@ export default function ContactBlock() {
                 sizes="(max-width: 768px) 192px, 224px"
                 loading="lazy"
               />
-              {/* Red pin — bottom-left corner */}
-              <div className="absolute bottom-1 left-1 z-10 w-6 h-6 md:w-7 md:h-7">
+              <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
                 <Image
                   src="/red_pin.png"
                   alt=""
@@ -143,9 +141,9 @@ export default function ContactBlock() {
           </div>
         </div>
 
-        {/* Footer portrait with red pin — top-right */}
+        {/* Footer portrait — pinned hover */}
         <div className="contact-reveal mt-16 flex justify-center">
-          <div className="relative w-40 md:w-48 h-auto rounded-2xl overflow-hidden">
+          <div className="relative w-40 md:w-48 h-auto overflow-hidden pinned-item pinned-tr">
             <Image
               src="/images/wondering-sitting-on-coach.jpeg"
               alt="Always wondering"
@@ -155,7 +153,6 @@ export default function ContactBlock() {
               sizes="160px"
               loading="lazy"
             />
-            {/* Red pin — top-right corner */}
             <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
               <Image
                 src="/red_pin.png"
@@ -167,8 +164,6 @@ export default function ContactBlock() {
             </div>
           </div>
         </div>
-
-
       </div>
     </section>
   );

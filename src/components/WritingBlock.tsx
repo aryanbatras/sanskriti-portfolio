@@ -69,7 +69,7 @@ export default function WritingBlock() {
 
           {/* Portrait with red pin — top-right */}
           <div className="writing-reveal shrink-0 mt-6 md:mt-0 md:order-last">
-            <div className="relative w-48 md:w-56 h-auto rounded-2xl overflow-hidden bg-pink-light">
+            <div className="relative w-48 md:w-56 h-auto overflow-hidden bg-pink-light pinned-item pinned-tr">
               <Image
                 src="/images/Sanskriti_Gupta_looking_at_camera_202607201936.jpeg"
                 alt="Sanskriti Gupta"
