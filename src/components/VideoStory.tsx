@@ -53,11 +53,11 @@ export default function VideoStory() {
       if (!video || !maskEl) return;
 
       const dur = video.duration || 2.833;
-      const MAX_ZOOM = 18000;
-      const scrollDistance = 7500;
+      const MAX_ZOOM = 22000;
+      const scrollDistance = 2000;
 
       // ── Phases (zoom takes full scroll — pin releases when zoom ends) ──
-      const VIDEO_START = 0.30;
+      const VIDEO_START = 0.05;
       const OVERLAY_START = 0.35;
 
       // ── Init mask ──────────────────────────────────────────
@@ -94,7 +94,7 @@ export default function VideoStory() {
         end: scrollDistance,
         pin: true,
         pinSpacing: true,
-        scrub: 1,
+        scrub: 3.5,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
           const p = self.progress;
