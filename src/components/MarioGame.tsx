@@ -73,40 +73,57 @@ const SOUNDS: Record<string, string> = {
 };
 
 const SPRITES: Record<string, string> = {
-  mSmallIdle:  "/mario/Mario_Small_Idle.png",
-  mSmallRun1:  "/mario/Mario_Small_Run1.png",
-  mSmallRun2:  "/mario/Mario_Small_Run2.png",
-  mSmallRun3:  "/mario/Mario_Small_Run3.png",
-  mSmallJump:  "/mario/Mario_Small_Jump.png",
-  mSmallSlide: "/mario/Mario_Small_Slide.png",
-  mSmallDeath: "/mario/Mario_Small_Death.png",
-  mBigIdle:    "/mario/Mario_Big_Idle.png",
-  mBigRun1:    "/mario/Mario_Big_Run1.png",
-  mBigRun2:    "/mario/Mario_Big_Run2.png",
-  mBigRun3:    "/mario/Mario_Big_Run3.png",
-  mBigJump:    "/mario/Mario_Big_Jump.png",
-  mBigSlide:   "/mario/Mario_Big_Slide.png",
-  goomba1:     "/mario/Goomba_Walk1.png",
-  goomba2:     "/mario/Goomba_Walk2.png",
-  goombaFlat:  "/mario/Goomba_Flat.png",
-  koopa1:      "/mario/Koopa_Walk1.png",
-  koopa2:      "/mario/Koopa_Walk2.png",
-  koopaShell:  "/mario/Koopa_Shell.png",
-  ground:      "/mario/GroundBlock.png",
-  brick:       "/mario/Brick.png",
-  hardBlock:   "/mario/HardBlock.png",
-  mystery:     "/mario/MysteryBlock.png",
-  pipeTop:     "/mario/PipeTop.png",
-  pipeBottom:  "/mario/PipeBottom.png",
-  coin:        "/mario/Coin.png",
-  mushroom:    "/mario/MagicMushroom.png",
-  fireFlower:  "/mario/FireFlower.png",
-  flag:        "/mario/Flag.png",
-  flagPole:    "/mario/FlagPole.png",
-  castle:      "/mario/Castle.png",
-  cloud1: "/mario/Cloud1.png", cloud2: "/mario/Cloud2.png", cloud3: "/mario/Cloud3.png",
-  hill1:  "/mario/Hill1.png",  hill2:  "/mario/Hill2.png",
-  bush1:  "/mario/Bush1.png",  bush2:  "/mario/Bush2.png",  bush3:  "/mario/Bush3.png",
+  // ── Character — Small (Sanskriti) ──
+  mSmallIdle:  "/new_game_assets/Sanskriti_Idle.png",
+  mSmallRun1:  "/new_game_assets/Sanskriti_Run.png",
+  mSmallRun2:  "/new_game_assets/Sanskriti_Run.png",
+  mSmallRun3:  "/new_game_assets/Sanskriti_Run.png",
+  mSmallJump:  "/new_game_assets/Sanskriti_Jump.png",
+  mSmallSlide: "/new_game_assets/Sanskriti_Idle.png",
+  mSmallDeath: "/new_game_assets/Sanskriti_Death.png",
+  // ── Character — Big / Powered-Up ──
+  mBigIdle:    "/new_game_assets/Sanskriti_Big_Idle.png",
+  mBigRun1:    "/new_game_assets/Sanskriti_Big_Run1.png",
+  mBigRun2:    "/new_game_assets/Sanskriti_Big_Run2.png",
+  mBigRun3:    "/new_game_assets/Sanskriti_Big_Run3.png",
+  mBigJump:    "/new_game_assets/Sanskriti_Big_Jump.png",
+  mBigSlide:   "/new_game_assets/Sanskriti_Big_Idle.png",
+  // ── Enemies ──
+  goomba1:     "/new_game_assets/Pencil_Enemy.png",
+  goomba2:     "/new_game_assets/Pencil_Enemy.png",
+  goombaFlat:  "/new_game_assets/Pencil_Enemy.png",
+  koopa1:      "/new_game_assets/CoffeeMug_Enemy.png",
+  koopa2:      "/new_game_assets/CoffeeMug_Enemy.png",
+  koopaShell:  "/new_game_assets/CoffeeMug_Enemy.png",
+  // ── Tiles ──
+  ground:      "/new_game_assets/Level_Block.png",
+  brick:       "/new_game_assets/CodeBrick.png",
+  hardBlock:   "/new_game_assets/Level_Block.png",
+  mystery:     "/new_game_assets/MysteryBlock.png",
+  pipeTop:     "/new_game_assets/PipeTop_Books.png",
+  pipeBottom:  "/new_game_assets/PipeBottom_Books.png",
+  // ── Items & Collectibles ──
+  coin:        "/new_game_assets/Phone_Coin.png",
+  coinNote:    "/new_game_assets/Notebook_Coin.png",
+  coinHeart:   "/new_game_assets/Heart_Coin.png",
+  mushroom:    "/new_game_assets/Laptop_PowerUp.png",
+  fireFlower:  "/new_game_assets/CoffeeBean_PowerUp.png",
+  coffee1up:   "/new_game_assets/Coffee_1Up.png",
+  brain:       "/new_game_assets/Brain_PowerUp.png",
+  // ── Goal ──
+  flag:        "/new_game_assets/FlagPole_GradCap.png",
+  flagPole:    "/new_game_assets/FlagPole_GradCap.png",
+  castle:      "/new_game_assets/Library_Castle.png",
+  // ── Background ──
+  bg:          "/new_game_assets/Level_Background.png",
+  cloud1:      "/new_game_assets/Thought_Cloud.png",
+  cloud2:      "/new_game_assets/Thought_Cloud.png",
+  cloud3:      "/new_game_assets/Thought_Cloud.png",
+  hill1:       "/new_game_assets/Book_Hill.png",
+  hill2:       "/new_game_assets/Book_Hill.png",
+  bush1:       "/new_game_assets/Stationery_Bush.png",
+  bush2:       "/new_game_assets/Stationery_Bush.png",
+  bush3:       "/new_game_assets/Stationery_Bush.png",
 };
 
 type GS = "idle" | "playing" | "paused" | "won" | "gameover";
@@ -1123,32 +1140,39 @@ export default function MarioGame() {
     // ══════════════════════════════════════════════════════════════
     const render = () => {
       ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
-      const cam = g.camX;
+      const cam = g.camX | 0; // Floor to prevent sub-pixel gaps between tiles
 
-      // Sky
-      const sky = ctx.createLinearGradient(0, 0, 0, CANVAS_H);
-      sky.addColorStop(0, "#5c94fc"); sky.addColorStop(1, "#87ceeb");
-      ctx.fillStyle = sky; ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+      // Sky — tiling tech background (matrix code rain style)
+      if (images.bg) {
+        const pat = ctx.createPattern(images.bg, "repeat");
+        if (pat) { ctx.fillStyle = pat; ctx.fillRect(0, 0, CANVAS_W, CANVAS_H); }
+      } else {
+        const sky = ctx.createLinearGradient(0, 0, 0, CANVAS_H);
+        sky.addColorStop(0, "#5c94fc"); sky.addColorStop(1, "#87ceeb");
+        ctx.fillStyle = sky; ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+      }
 
-      // Background parallax
+      // Background parallax — bookshelf hills at 0.5x scroll
       for (const hp of [0, 16, 48, 80, 120, 160]) {
         const hx = hp * TILE - cam * 0.5;
         if (hx > -200 && hx < CANVAS_W + 200) {
-          const img = hp % 3 === 0 ? images.hill1 : images.hill2;
-          if (img) ctx.drawImage(img, hx, CANVAS_H - 160, 200, 140);
+          const img = images.hill1;
+          if (img) ctx.drawImage(img, hx, CANVAS_H - 150, 200, 130);
         }
       }
+      // Thought-bubble clouds at 0.3x scroll
       for (let i = 0; i < 8; i++) {
         const cx = [5,18,35,55,75,100,130,160][i] * TILE - cam * 0.3;
         if (cx > -100 && cx < CANVAS_W + 100) {
-          const img = [images.cloud1, images.cloud2, images.cloud3][i % 3];
+          const img = images.cloud1;
           if (img) ctx.drawImage(img, cx, 30 + (i % 3) * 40, 96, 48);
         }
       }
+      // Stationery bushes at full scroll
       for (let i = 0; i < 5; i++) {
         const bx = [10, 30, 60, 90, 140][i] * TILE - cam;
         if (bx > -200 && bx < CANVAS_W + 200) {
-          const img = [images.bush1, images.bush2, images.bush3][i % 3];
+          const img = images.bush1;
           if (img) ctx.drawImage(img, bx, CANVAS_H - 80, 128, 48);
         }
       }
@@ -1178,24 +1202,29 @@ export default function MarioGame() {
         }
       }
 
-      // Castle & flag
+      // Graduation cap flag pole (single 32x192 sprite)
       const fx = 180 * TILE - cam;
       if (fx > -100 && fx < CANVAS_W + 100) {
-        if (images.flagPole) ctx.drawImage(images.flagPole, fx + 8, (LEVEL_ROWS - 10) * TILE, 16, TILE * 8);
-        if (images.flag) ctx.drawImage(images.flag, fx - 8, (LEVEL_ROWS - 10) * TILE, 32, 32);
+        if (images.flagPole) {
+          ctx.drawImage(images.flagPole, fx, (LEVEL_ROWS - 10) * TILE, 32, TILE * 6);
+        }
       }
+      // Library castle
       const cx2 = 185 * TILE - cam;
       if (cx2 > -200 && cx2 < CANVAS_W + 200 && images.castle) {
         ctx.drawImage(images.castle, cx2 - TILE, (LEVEL_ROWS - 5) * TILE, TILE * 3, TILE * 3);
       }
 
-      // Consumable floating coins
-      for (const coin of coins2) {
+      // Consumable floating coins (phone / notebook / heart)
+      const coinImgs = [images.coin, images.coinNote, images.coinHeart];
+      for (let ci = 0; ci < coins2.length; ci++) {
+        const coin = coins2[ci];
         if (coin.collected) continue;
         const dx = coin.x - cam;
         if (dx < -TILE || dx > CANVAS_W + TILE) continue;
-        if (images.coin) {
-          ctx.drawImage(images.coin, dx - TILE / 2, coin.y - TILE, TILE, TILE);
+        const ciImg = coinImgs[ci % 3];
+        if (ciImg) {
+          ctx.drawImage(ciImg, dx - TILE / 2, coin.y - TILE, TILE, TILE);
         }
       }
 
@@ -1256,12 +1285,13 @@ export default function MarioGame() {
         }
       }
 
-      // Fireballs
+      // Fireballs (drawn as small pink hearts)
       for (const fb of fireballs) {
         if (!fb.alive && fb.deadTime === 0) continue;
         const dx = fb.X - cam;
-        if (dx > -TILE && dx < CANVAS_W + TILE && images.coin) {
-          ctx.drawImage(images.coin, dx - 8, fb.Y - 8, 16, 16);
+        if (dx > -TILE && dx < CANVAS_W + TILE) {
+          const h = images.coinHeart || images.coin;
+          if (h) ctx.drawImage(h, dx - 8, fb.Y - 8, 16, 16);
         }
       }
 
@@ -1291,10 +1321,12 @@ export default function MarioGame() {
           if (Math.abs(mario.Xa) > 1) img = big ? images.mBigSlide : images.mSmallSlide;
         }
         if (img) {
-          const sh = TILE;
-          const sw = big ? 48 : TILE;
+          // Sanskriti: small drawn at 40x40 (slightly bigger than tile), big at 32x48
+          const sh = big ? 48 : 40;
+          const sw = big ? 32 : 40;
+          const yOff = big ? 2 : 4; // push sprite down to ground feet
           ctx.save();
-          const drawY = my - sh;
+          const drawY = my - sh + yOff;
           if (mario.facing === -1) {
             ctx.translate(mx + sw / 2, drawY + sh / 2);
             ctx.scale(-1, 1);
@@ -1442,12 +1474,19 @@ export default function MarioGame() {
       const h = cvs.height;
       ctx.clearRect(0, 0, w, h);
 
-      // Sky gradient
-      const sky = ctx.createLinearGradient(0, 0, 0, h);
-      sky.addColorStop(0, "#5c94fc");
-      sky.addColorStop(1, "#87ceeb");
-      ctx.fillStyle = sky;
-      ctx.fillRect(0, 0, w, h);
+      // Sky — use the bg image pattern if loaded, else gradient
+      const bg = new window.Image();
+      bg.src = SPRITES.bg;
+      if (bg.complete && bg.naturalWidth > 0) {
+        const pat = ctx.createPattern(bg, "repeat");
+        if (pat) { ctx.fillStyle = pat; ctx.fillRect(0, 0, w, h); }
+      } else {
+        const sky = ctx.createLinearGradient(0, 0, 0, h);
+        sky.addColorStop(0, "#5c94fc");
+        sky.addColorStop(1, "#87ceeb");
+        ctx.fillStyle = sky;
+        ctx.fillRect(0, 0, w, h);
+      }
 
       // Ground tiles
       const groundY = h - 40;
@@ -1568,51 +1607,48 @@ export default function MarioGame() {
       </button>
 
       {showStart && (
-        <div className="relative w-full flex flex-col items-center justify-center py-6 md:py-10 bg-gradient-to-b from-[#5c94fc] to-[#87ceeb]">
+        <div className="relative w-full flex flex-col items-center justify-center bg-gradient-to-b from-[#5c94fc] to-[#87ceeb]" style={{ minHeight: CANVAS_H }}>
           <style>{`
             @keyframes pulse-text {
               0%, 100% { opacity: 0.4; transform: scale(1); }
               50% { opacity: 1; transform: scale(1.05); }
             }
           `}</style>
-          <div className="relative mb-3">
-            <div className="relative w-32 md:w-40 overflow-hidden">
-              <Image src="/image/logo.png" alt="Sanskriti" width={200} height={80} className="object-contain" />
+          <div className="flex flex-col items-center justify-center gap-4 py-8">
+            {/* Sanskriti character art */}
+            <div className="relative">
+              <div className="w-24 h-24 md:w-32 md:h-32 bg-black/10 rounded-full flex items-center justify-center border-2 border-pink-300/50 shadow-lg">
+                <Image
+                  src="/new_game_assets/Sanskriti_Idle.png"
+                  alt="Sanskriti"
+                  width={64}
+                  height={64}
+                  className="object-contain pixelated"
+                  style={{ imageRendering: "pixelated" }}
+                />
+              </div>
+              {/* 📌 Pin icon */}
+              <span className="absolute -top-1 -right-1 text-lg drop-shadow-lg" style={{ transform: "rotate(15deg)" }}>📌</span>
             </div>
-          </div>
-          <canvas
-            ref={startCanvasRef}
-            width={280}
-            height={140}
-            className="rounded-lg shadow-lg shadow-black/30 mb-4"
-            style={{ imageRendering: "pixelated" }}
-          />
-          {highScore > 0 && (
-            <p className="text-xs text-yellow-300/80 font-pixel mb-2" style={{ fontFamily: '"Press Start 2P", monospace' }}>
-              HIGH SCORE: {String(highScore).padStart(6, "0")}
+            <p className="text-white text-xs md:text-sm font-pixel opacity-60 text-center" style={{ fontFamily: '"Press Start 2P", monospace' }}>
+              Sanskriti's Adventure
             </p>
-          )}
-          <p
-            className="text-white text-sm md:text-base font-pixel mb-4 cursor-pointer select-none"
-            style={{
-              fontFamily: '"Press Start 2P", monospace',
-              animation: "pulse-text 1.5s ease-in-out infinite",
-              textShadow: "0 0 10px rgba(255,255,255,0.5)",
-            }}
-            onClick={handleStart}
-          >
-            PRESS ENTER TO START
-          </p>
-          <button
-            onClick={handleStart}
-            className="px-6 py-2 bg-[#e52521] text-white text-sm md:text-base font-pixel rounded-lg hover:bg-[#c41e1a] active:scale-95 transition-all duration-150 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-black/40 border-b-4 border-[#8c0000] hover:border-[#6a0000] md:hidden"
-            style={{ fontFamily: '"Press Start 2P", monospace' }}
-          >
-            START GAME
-          </button>
-          <p className="mt-3 text-[10px] md:text-xs text-white/50 font-pixel text-center max-w-md" style={{ fontFamily: '"Press Start 2P", monospace' }}>
-            Arrow keys to move · Up/Space to jump · A to run/shoot
-          </p>
+            {highScore > 0 && (
+              <p className="text-xs text-yellow-300/80 font-pixel" style={{ fontFamily: '"Press Start 2P", monospace' }}>
+                HIGH SCORE: {String(highScore).padStart(6, "0")}
+              </p>
+            )}
+            <button
+              onClick={handleStart}
+              className="px-8 py-3 bg-[#e52521] text-white text-sm md:text-base font-pixel rounded-lg hover:bg-[#c41e1a] active:scale-95 transition-all duration-200 shadow-xl shadow-black/40 hover:shadow-2xl hover:shadow-black/50 border-b-4 border-[#8c0000] hover:border-[#6a0000]"
+              style={{
+                fontFamily: '"Press Start 2P", monospace',
+                animation: "pulse-text 1.5s ease-in-out infinite",
+              }}
+            >
+              PRESS START
+            </button>
+          </div>
         </div>
       )}
       {!showStart && (
