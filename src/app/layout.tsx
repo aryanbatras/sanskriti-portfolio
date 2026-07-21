@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Newsreader, Fragment_Mono, Caveat, Fraunces } from "next/font/google";
 import "./globals.css";
+import ClientRoot from "@/components/ClientRoot";
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -67,7 +68,9 @@ export default function RootLayout({
       lang="en"
       className={`${playfairDisplay.variable} ${newsreader.variable} ${fragmentMono.variable} ${caveat.variable} ${fraunces.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <ClientRoot>{children}</ClientRoot>
+      </body>
     </html>
   );
 }
