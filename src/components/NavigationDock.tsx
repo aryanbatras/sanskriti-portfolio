@@ -93,7 +93,7 @@ export default function NavigationDock() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 sm:bottom-6 md:bottom-8"
         >
-          <Dock iconSize={66} iconMagnification={96} iconDistance={150}>
+          <Dock iconSize={52} iconMagnification={72} iconDistance={120}>
             {dockItems.map(({ path, label, Icon }, idx) => {
               const isActive = idx === activeIdx;
               const isHovered = hoveredIdx === idx;
@@ -116,7 +116,7 @@ export default function NavigationDock() {
                     }
                     transition={{ duration: 0.2 }}
                   >
-                    <Icon size={33} />
+                    <Icon size={26} />
                   </motion.div>
 
                   {/* White tooltip */}

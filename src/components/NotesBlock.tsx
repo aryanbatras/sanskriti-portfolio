@@ -148,7 +148,7 @@ export default function NotesBlock() {
         </div>
 
         {/* ── LeetCode Stats ── */}
-        <div className="mt-20 md:mt-28">
+        <div className="mt-20 md:mt-28 pb-24 md:pb-32">
           <div className="relative inline-block mb-10">
             <h3
               className="section-heading text-2xl md:text-3xl font-display-alt"
@@ -188,9 +188,6 @@ export default function NotesBlock() {
                 />
               </div>
             </div>
-            <p className="text-center mt-6 text-charcoal/50 text-sm font-mono tracking-wide">
-              Rating <span className="text-pink">1,652</span> &middot; 457 solved &middot; Top 17.88% &middot; 197 active days
-            </p>
           </div>
         </div>
       </div>

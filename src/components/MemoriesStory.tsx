@@ -27,10 +27,10 @@ const chapters = [
     title: "The Girl Who Kept Asking Why",
     image: "/animated/Woman_examining_clock_gears_202607210832.jpeg",
     imageAlt: "Sanskriti holding a small gear between her fingers, examining it closely, a disassembled clock on the desk before her",
-    text: "I took things apart to see how they worked. Clocks, remote controls, sentences that meant two things. The question \"why?\" became the thread through everything — from poetry to Python, from competitive programming to deep learning.",
+    text: "",
     quote: {
-      text: "Curiosity is not a trait — it is a way of seeing the world",
-      source: "on what drives everything I do",
+      text: "",
+      source: "",
     },
     imgRot: "-3",
     imgZ: 10,
@@ -40,13 +40,13 @@ const chapters = [
   },
   {
     id: "chapter-childhood",
-    title: "The Little Topper",
+    title: "The ICSE topper girl",
     image: "/animated/Student_smiling_at_textbook_202607210801.jpeg",
     imageAlt: "A younger Sanskriti sitting at a school desk, smiling softly at an open textbook, a gold medal ribbon draped over the corner",
-    text: "95.8% in ICSE, top 3 in the district. 91.6% in CBSE. My mother raised me with warmth and resilience. Those years taught me discipline — and that the pressure of being \"the best\" doesn't go away, it just changes shape.",
+    text: "Always tries to be the best while being the best.",
     quote: {
-      text: "Excellence is not a destination — it is the discipline of showing up every day",
-      source: "on what school taught me",
+      text: "",
+      source: "",
     },
     imgRot: "2",
     imgZ: 8,
@@ -56,19 +56,19 @@ const chapters = [
   },
   {
     id: "chapter-college",
-    title: "The College Years",
+    title: "The Multitalented",
     image: "/animated/Girl_sitting_with_laptop_college.jpeg",
     imageAlt: "Sanskriti at a college desk, staring at a laptop screen with focused determination",
-    text: "B.Tech in Computer Science and Design at MITS Gwalior. Seven subjects a semester, a Reinforcement Learning course that pushed every limit, and a DSA study group that changed my trajectory.",
+    text: "Sanskriti is known for being good at everything she sets her mind to. Be it academics, art, story-writing or Photography.",
     quote: {
-      text: "Teaching is the best way to truly understand something",
-      source: "on why I lead study groups",
+      text: "",
+      source: "",
     },
     imgRot: "-1",
     imgZ: 6,
-    noteContent: "B.Tech CS + Design. SGPA 8.55",
+    noteContent: "Many interests, one constant: the drive to learn.",
     noteRot: "3",
-    noteColor: stickyColors[2],
+    noteColor: stickyColors[3],
   },
   {
     id: "chapter-scientist",
@@ -125,7 +125,7 @@ const chapters = [
     imageAlt: "Sanskriti standing beside a desk, holding a book open but looking into the distance — dreaming",
     text: "I want to build things that matter — a startup that makes education accessible, research that advances how machines understand language, writing that resonates. The specifics will change. The drive will not.",
     quote: {
-      text: "Always up for a meaningful challenge and a cup of coffee",
+      text: "Yet so far from where to be",
       source: "me, always",
     },
     imgRot: "1",
@@ -316,16 +316,20 @@ function ChapterCluster({
           </h3>
 
           {/* Handwritten text — no background, no border, pageless */}
-          <p className="handwritten text-xl md:text-2xl lg:text-3xl text-charcoal/70 leading-relaxed mb-8 max-w-2xl">
-            {chapter.text}
-          </p>
+          {chapter.text && (
+            <p className="handwritten text-xl md:text-2xl lg:text-3xl text-charcoal/70 leading-relaxed mb-8 max-w-2xl">
+              {chapter.text}
+            </p>
+          )}
 
           {/* Pull quote sticky */}
-          <QuoteSticky
-            quote={chapter.quote}
-            rotVal={`${(idx % 2 === 0 ? "-" : "")}${1.5 + (idx % 3)}`}
-            colorClass={[stickyColors[0], stickyColors[1], stickyColors[2], stickyColors[3]][(idx + 1) % 4]}
-          />
+          {chapter.quote.text && (
+            <QuoteSticky
+              quote={chapter.quote}
+              rotVal={`${(idx % 2 === 0 ? "-" : "")}${1.5 + (idx % 3)}`}
+              colorClass={[stickyColors[0], stickyColors[1], stickyColors[2], stickyColors[3]][(idx + 1) % 4]}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -390,15 +394,9 @@ export default function MemoriesStory() {
               className="font-display-alt text-5xl md:text-7xl lg:text-8xl text-ink leading-none mb-4"
               style={{ transform: "rotate(-0.5deg)" }}
             >
-              A Clipboard of Memories
+              Words from my Friends
             </h2>
-            <p
-              className="body-text text-charcoal text-base md:text-lg max-w-xl mx-auto mt-6"
-              style={{ transform: "rotate(0.3deg)" }}
-            >
-              The story of a girl who never stopped asking why — told through
-              the moments, the questions, and the quiet victories.
-            </p>
+
             {/* Big decorative pin */}
             <div className="absolute -top-4 -right-2 md:-top-5 md:-right-3 w-10 h-10 md:w-12 md:h-12 z-20">
               <Image
@@ -454,12 +452,10 @@ export default function MemoriesStory() {
                 &ldquo;{personalInfo.pullQuote}&rdquo;
               </p>
             </div>
-
-            <p
-              className="body-text text-charcoal text-base md:text-lg mt-10 max-w-lg mx-auto"
+            <p className="body-text text-charcoal text-base md:text-lg mt-10 max-w-lg mx-auto"
               style={{ transform: "rotate(-0.3deg)" }}
             >
-              A curious kid. A researcher. A writer. A friend. A dreamer.
+              An engineer. A researcher. A thinker. A writer. An ambitious kid.
             </p>
             <p
               className="text-pink text-xs font-mono tracking-widest mt-6 uppercase"

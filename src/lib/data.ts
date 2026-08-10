@@ -18,7 +18,7 @@ export const personalInfo = {
 
   writingIntro: `The thread that runs through everything I do is curiosity. I ask why until I reach the bottom of it. That question is what drove me from competitive programming to deep learning research to writing poetry. All of it is the same thing: trying to understand.`,
 
-  pullQuote: `Always up for a challenge and a cup of coffee`,
+  pullQuote: `Yet so far from where to be`,
 
   work: [
     {
@@ -29,7 +29,6 @@ export const personalInfo = {
       description: [
         "Developed a non-intrusive speech intelligibility prediction framework using self-supervised speech representations from Whisper and Wavelet Scattering Transform features.",
         "Engineered acoustic feature extraction pipelines with Gammatone filterbanks, Whisper embeddings, and PyTorch-based deep learning models for intelligibility assessment.",
-        "Achieved Development RMSE of 21.62, surpassing all reproduced baselines on the evaluation dataset.",
       ],
     },
     {
@@ -67,7 +66,7 @@ export const personalInfo = {
       title: "Speech Intelligibility Prediction Framework",
       tech: "Python, PyTorch, Whisper, MLP",
       description:
-        "Designed and implemented a speech intelligibility prediction system using self-supervised Whisper representations and Spectro-Temporal Modulation features. Development RMSE of 21.62, surpassing all reproduced baselines.",
+        "Designed and implemented a speech intelligibility prediction system using self-supervised Whisper representations and Spectro-Temporal Modulation features.",
       url: null,
     },
     {
@@ -78,11 +77,18 @@ export const personalInfo = {
       url: "https://github.com/sanskriti231/VisionSense",
     },
     {
-      title: "Fraud Detection Pipeline",
-      tech: "Python, Scikit-learn, NLP",
+      title: "Chess Game",
+      tech: "Java",
       description:
-        "Machine learning pipeline for detecting fraudulent job postings. Combined structured job attributes with TF-IDF vectorized text features across multiple classifiers.",
-      url: null,
+        "Built a fully functional Chess Game in Java with a JavaFX-based user interface. Applied OOP principles to implement the game logic and designed a well-structured, modular codebase with separate classes for the board, game, and individual chess pieces.",
+      url: "https://github.com/sanskriti231/Chess-game",
+    },
+    {
+      title: "Snake Game",
+      tech: "HTML, CSS, JavaScript",
+      description:
+        "A classic snake game built using HTML, CSS, and JavaScript.",
+      url: "https://snake-game-three-psi.vercel.app/",
     },
     {
       title: "PDF to Summary",
@@ -134,13 +140,6 @@ export const personalInfo = {
       url: "https://github.com/sanskriti231/tic-tac-toe-minimax",
     },
     {
-      title: "Chess Game",
-      tech: "Java",
-      description:
-        "A chess game implementation in Java with full game logic and piece movement rules.",
-      url: "https://github.com/sanskriti231/Chess-game",
-    },
-    {
       title: "Online Crime Report Management",
       tech: "PHP",
       description:
@@ -148,11 +147,11 @@ export const personalInfo = {
       url: "https://github.com/sanskriti231/Online-Crime-Report-management-System",
     },
     {
-      title: "Snake Game",
-      tech: "Python",
+      title: "Fraud Detection Pipeline",
+      tech: "Python, Scikit-learn, NLP",
       description:
-        "The classic snake game — a terminal-based implementation demonstrating game loops and state management.",
-      url: "https://github.com/sanskriti231/Snake-game",
+        "Machine learning pipeline for detecting fraudulent job postings. Combined structured job attributes with TF-IDF vectorized text features across multiple classifiers.",
+      url: null,
     },
   ],
 
@@ -198,6 +197,7 @@ export const personalInfo = {
   certifications: [
     "Advanced Machine Learning Algorithms \u2014 DeepLearning.AI, Stanford University (Apr 2026)",
     "Supervised Machine Learning: Regression and Classification \u2014 Stanford, DeepLearning.AI (Nov 2025)",
+    "Flipkart Grid 6.0 Level 1 Qualifying Certificate"
   ],
 
   achievements: [
@@ -205,6 +205,8 @@ export const personalInfo = {
     "2+ years experience in C++ through competitive programming and OOP",
     "Research intern at IIT Jammu | Summer Research Internship",
     "100% grade in Andrew Ng\u2019s Advanced Machine Learning Algorithms course",
+    "4th out of 250 in MindHive Intra College Contest conducted by ISTE",
+    "Solved all 12 days of Advent of Code 2025"
   ],
 
   socials: {

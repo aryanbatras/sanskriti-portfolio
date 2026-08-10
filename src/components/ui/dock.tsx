@@ -46,9 +46,9 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
   ) => {
     const mouseX = useMotionValue(Infinity);
     const isMobile = useIsMobile();
-    const effSize = isMobile ? Math.round(iconSize / 1.25) : iconSize;
-    const effMag = isMobile ? Math.round(iconMagnification / 2) : iconMagnification;
-    const effDist = isMobile ? Math.round(iconDistance / 2) : iconDistance;
+    const effSize = isMobile ? Math.round(iconSize / 1.5) : iconSize;
+    const effMag = isMobile ? Math.round(iconMagnification / 2.5) : iconMagnification;
+    const effDist = isMobile ? Math.round(iconDistance / 2.5) : iconDistance;
 
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
@@ -75,9 +75,8 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
           ref={ref}
           onMouseMove={(e) => mouseX.set(e.pageX)}
           onMouseLeave={() => mouseX.set(Infinity)}
-          {...props}
-          className={cn(
-            "mx-auto flex w-max items-center justify-center rounded-2xl bg-white/20 backdrop-blur-md border border-white/25 px-2 py-1.5",
+          {...props}            className={cn(
+            "mx-auto flex w-max items-center justify-center rounded-full bg-white shadow-md border border-gray-100 px-3 py-2",
             {
               "items-start": direction === "top",
               "items-center": direction === "middle",
@@ -113,15 +112,15 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
       >
         <GlassSurface
           width="auto"
-          height={92}
-          borderRadius={28}
-          backgroundOpacity={0.15}
+          height={68}
+          borderRadius={22}
+          backgroundOpacity={0.1}
           brightness={95}
-          blur={12}
-          saturation={1.4}
-          distortionScale={-120}
-          greenOffset={8}
-          blueOffset={16}
+          blur={10}
+          saturation={1.2}
+          distortionScale={-100}
+          greenOffset={6}
+          blueOffset={12}
           className="px-3 py-2"
         >
           <div
