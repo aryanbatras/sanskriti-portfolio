@@ -168,8 +168,8 @@ export default function VideoStory() {
           <PinnedImage
             src="/images/img-contact.jpeg"
             alt="Sanskriti — contact"
-            className="w-[36vw] h-[22vh] md:w-[24vw] md:h-[45vh]"
-            style={{ top: "33vh", left: 0, transform: "rotate(1.5deg)" }}
+            className="w-[30vw] h-[22vh] md:w-[24vw] md:h-[45vh]"
+            style={{ top: "33vh", left: "7vw", transform: "rotate(1.5deg)" }}
           />
 
           {/* Col 2 (center) — 3 portrait images stacked */}
