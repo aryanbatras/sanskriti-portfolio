@@ -166,12 +166,6 @@ export default function VideoStory() {
         <div className="absolute inset-0">
           {/* Col 1 (left) — 3 portrait images stacked */}
           <PinnedImage
-            src="/images/img-home-45deg-tilt.jpeg"
-            alt="Sanskriti — home"
-            className="w-[36vw] h-[36vh] md:w-[34vw] md:h-[35vh]"
-            style={{ top: 0, left: 0, transform: "rotate(-2deg)" }}
-          />
-          <PinnedImage
             src="/images/img-contact.jpeg"
             alt="Sanskriti — contact"
             className="w-[36vw] h-[36vh] md:w-[34vw] md:h-[35vh]"
@@ -184,12 +178,6 @@ export default function VideoStory() {
             alt="Sanskriti — home"
             className="w-[34vw] h-[36vh] md:w-[33vw] md:h-[35vh]"
             style={{ top: "33vh", left: "33vw", transform: "rotate(-1.5deg)" }}
-          />
-          <PinnedImage
-            src="/images/img-home-3.jpeg"
-            alt="Sanskriti — home"
-            className="w-[34vw] h-[36vh] md:w-[33vw] md:h-[35vh]"
-            style={{ top: "66vh", left: "33vw", transform: "rotate(1deg)" }}
           />
 
           {/* Col 3 (right) — 2 landscape images + 1 portrait */}
