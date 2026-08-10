@@ -114,10 +114,19 @@ export default function VideoGallery() {
           {/* Video 1 — larger, tilted (study video) */}
           <div
             className="video-card relative flex-1 mb-8 md:mb-0"
-            style={{ transform: `rotate(${videos[0].rotate}deg)` }}
+            style={{ transform: `rotate(${videos[1].rotate}deg)` }}
           >
             <div className="relative overflow-hidden bg-paper pinned-item pinned-tl">
-              <ScrollVideo src={videos[0].src} alt={videos[0].alt} />
+              {/* <ScrollVideo src={videos[1].src} alt={videos[1].alt} /> */}
+              <video
+                className="w-full h-auto object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                src={videos[1].src} 
+              />
               {/* Red pin — top-left */}
               <div className="absolute top-2 left-2 z-10 w-6 h-6 md:w-7 md:h-7">
                 <Image
@@ -130,15 +139,15 @@ export default function VideoGallery() {
               </div>
             </div>
             {/* Label beneath */}
-            <p className="mt-3 text-sm font-mono text-charcoal/60 tracking-wide" style={{ transform: "rotate(1deg)" }}>
+            {/* <p className="mt-3 text-sm font-mono text-charcoal/60 tracking-wide" style={{ transform: "rotate(1deg)" }}>
               {videos[0].label}
-            </p>
+            </p> */}
           </div>
 
           {/* Video 2 — smaller, opposite tilt (peeking video) */}
           <div
             className="video-card relative w-full md:w-[40%] lg:w-[35%]"
-            style={{ transform: `rotate(${videos[1].rotate}deg)` }}
+            style={{ transform: `rotate(${videos[0].rotate}deg)` }}
           >
             <div className="relative overflow-hidden bg-paper pinned-item pinned-tr">
               <video
@@ -148,7 +157,7 @@ export default function VideoGallery() {
                 muted
                 playsInline
                 preload="auto"
-                src={videos[1].src}
+                src={videos[0].src}
               />
               {/* Red pin — top-right */}
               <div className="absolute top-2 right-2 z-10 w-6 h-6 md:w-7 md:h-7">

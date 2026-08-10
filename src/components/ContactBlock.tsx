@@ -121,12 +121,12 @@ export default function ContactBlock() {
           </div>
         </div>
         <p className="contact-reveal body-text text-charcoal mb-12 max-w-lg">
-          Whether it&rsquo;s a research collaboration, a writing project, or
+          Whether it&rsquo;s a software project, internship, a research collaboration, a writing project, or
           just a conversation about something curious — I&rsquo;d love to hear
           from you.
         </p>
 
-        <div className="flex flex-col md:flex-row md:gap-12 md:items-start">
+        <div className="flex flex-col md:flex-  row md:gap-12 md:items-start">
           {/* Left: Contact details */}
           <div className="flex-1 space-y-10">
             {/* Email */}

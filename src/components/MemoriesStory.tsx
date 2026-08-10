@@ -139,7 +139,7 @@ const chapters = [
     title: "A Soul Made of Stories",
     image: "/animated/Sanskriti_looking_at_camera_202607210812.jpeg",
     imageAlt: "Sanskriti looking directly at the camera with a warm, confident smile",
-    text: "A curious kid who collected questions, built a career around answering them, and discovered that the most important thing you can do with a mind is to keep wondering. This is just the beginning.",
+    text: " ",
     quote: {
       text: "The most important thing you can do with a mind is to keep wondering",
       source: "on what I believe",

@@ -168,7 +168,7 @@ export default function VideoStory() {
           <PinnedImage
             src="/images/img-contact.jpeg"
             alt="Sanskriti — contact"
-            className="w-[36vw] h-[36vh] md:w-[34vw] md:h-[35vh]"
+            className="w-[36vw] h-[22vh] md:w-[24vw] md:h-[45vh]"
             style={{ top: "33vh", left: 0, transform: "rotate(1.5deg)" }}
           />
 
@@ -190,8 +190,8 @@ export default function VideoStory() {
           <PinnedImage
             src="/images/img-contact-2.jpeg"
             alt="Sanskriti — contact"
-            className="w-[35vw] h-[36vh] md:w-[34vw] md:h-[35vh]"
-            style={{ top: "33vh", right: 0, transform: "rotate(2deg)" }}
+            className="w-[35vw] h-[56vh] md:w-[34vw] md:h-[75vh]"
+            style={{ top: "43vh", right: 0, transform: "rotate(2deg)" }}
           />
         </div>
         <span className="sr-only">Hi, I&apos;m Sanskriti Gupta</span>
