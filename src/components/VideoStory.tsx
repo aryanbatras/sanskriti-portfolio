@@ -142,7 +142,7 @@ export default function VideoStory() {
     <section
       id="video"
       ref={sectionRef}
-      className="relative w-full h-screen overflow-hidden bg-paper"
+      className="relative w-full h-screen overflow-hidden" style={{ backgroundColor: "#FFF1F2" }}
     >
       {/* ── Pinterest collage masked by SVG text ──────────────── */}
       <div
@@ -150,58 +150,60 @@ export default function VideoStory() {
         className="absolute inset-0 w-full h-full"
         style={{ willChange: "mask-size, -webkit-mask-size" }}
       >
-        {/* Collage cluster — 8 unique images, scattered, pinned, no repeats */}
+        {/* Collage — 8 images in a calculated 3-column grid, minimal overlap, minimal gaps */}
+        {/*
+          Image dimensions (px):
+          home-45:  1202×1600 (0.75:1)   skills:    900×1600 (0.56:1)
+          home-2:   1202×1600 (0.75:1)   contact:  1202×1600 (0.75:1)
+          projects: 1600×900  (1.78:1)   home-3:   1202×1600 (0.75:1)
+          skills-2: 1202×1600 (0.75:1)   contact-2:1600×1200 (1.33:1)
+
+          Layout: 3 columns × 3 rows
+          Col widths: 34vw, 33vw, 33vw
+          Row heights: 34vh, 33vh, 33vh
+          Each image scaled to fill its cell, slight overlap at edges.
+        */}
         <div className="absolute inset-0">
-          {/* Row 1 — top half */}
+          {/* Col 1 (left) — 3 portrait images stacked */}
           <PinnedImage
             src="/images/img-home-45deg-tilt.jpeg"
             alt="Sanskriti — home"
-            className="w-[28vw] h-[38vh] md:w-[22vw] md:h-[42vh]"
-            style={{ top: "5vh", left: "5vw", transform: "rotate(-4deg)" }}
-          />
-          <PinnedImage
-            src="/images/img-skills.jpeg"
-            alt="Sanskriti — skills"
-            className="w-[24vw] h-[34vh] md:w-[20vw] md:h-[38vh]"
-            style={{ top: "3vh", left: "30vw", transform: "rotate(3deg)" }}
-          />
-          <PinnedImage
-            src="/images/img-home-2.jpeg"
-            alt="Sanskriti — home"
-            className="w-[22vw] h-[32vh] md:w-[18vw] md:h-[36vh]"
-            style={{ top: "8vh", left: "52vw", transform: "rotate(-2deg)" }}
+            className="w-[36vw] h-[36vh] md:w-[34vw] md:h-[35vh]"
+            style={{ top: 0, left: 0, transform: "rotate(-2deg)" }}
           />
           <PinnedImage
             src="/images/img-contact.jpeg"
             alt="Sanskriti — contact"
-            className="w-[20vw] h-[30vh] md:w-[16vw] md:h-[34vh]"
-            style={{ top: "2vh", right: "4vw", transform: "rotate(5deg)" }}
+            className="w-[36vw] h-[36vh] md:w-[34vw] md:h-[35vh]"
+            style={{ top: "33vh", left: 0, transform: "rotate(1.5deg)" }}
           />
 
-          {/* Row 2 — bottom half */}
+          {/* Col 2 (center) — 3 portrait images stacked */}
           <PinnedImage
-            src="/images/img-projects.jpeg"
-            alt="Sanskriti — projects"
-            className="w-[26vw] h-[36vh] md:w-[21vw] md:h-[40vh]"
-            style={{ bottom: "6vh", left: "8vw", transform: "rotate(3deg)" }}
+            src="/images/img-home-2.jpeg"
+            alt="Sanskriti — home"
+            className="w-[34vw] h-[36vh] md:w-[33vw] md:h-[35vh]"
+            style={{ top: "33vh", left: "33vw", transform: "rotate(-1.5deg)" }}
           />
           <PinnedImage
             src="/images/img-home-3.jpeg"
             alt="Sanskriti — home"
-            className="w-[22vw] h-[32vh] md:w-[19vw] md:h-[36vh]"
-            style={{ bottom: "4vh", left: "32vw", transform: "rotate(-5deg)" }}
+            className="w-[34vw] h-[36vh] md:w-[33vw] md:h-[35vh]"
+            style={{ top: "66vh", left: "33vw", transform: "rotate(1deg)" }}
           />
+
+          {/* Col 3 (right) — 2 landscape images + 1 portrait */}
           <PinnedImage
-            src="/images/img-skills-2.jpeg"
-            alt="Sanskriti — skills"
-            className="w-[20vw] h-[30vh] md:w-[17vw] md:h-[34vh]"
-            style={{ bottom: "8vh", right: "20vw", transform: "rotate(2deg)" }}
+            src="/images/img-projects.jpeg"
+            alt="Sanskriti — projects"
+            className="w-[35vw] h-[36vh] md:w-[34vw] md:h-[35vh]"
+            style={{ top: 0, right: 0, transform: "rotate(-1.5deg)" }}
           />
           <PinnedImage
             src="/images/img-contact-2.jpeg"
             alt="Sanskriti — contact"
-            className="w-[18vw] h-[28vh] md:w-[15vw] md:h-[32vh]"
-            style={{ bottom: "3vh", right: "3vw", transform: "rotate(-3deg)" }}
+            className="w-[35vw] h-[36vh] md:w-[34vw] md:h-[35vh]"
+            style={{ top: "33vh", right: 0, transform: "rotate(2deg)" }}
           />
         </div>
         <span className="sr-only">Hi, I&apos;m Sanskriti Gupta</span>
