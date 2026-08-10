@@ -67,26 +67,60 @@ export default function WritingBlock() {
             </p>
           </div>
 
-          {/* Portrait with red pin — top-right */}
-          <div className="writing-reveal shrink-0 mt-6 md:mt-0 md:order-last">
-            <div className="relative w-48 md:w-56 h-auto overflow-hidden bg-pink-light pinned-item pinned-tr">
-              <Image
-                src="/images/Sanskriti_Gupta_looking_at_camera_202607201936.jpeg"
-                alt="Sanskriti Gupta"
-                width={768}
-                height={1376}
-                className="object-cover w-full h-auto"
-                sizes="(max-width: 768px) 192px, 224px"
-              />
-              {/* Red pin — top-right corner */}
-              <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
+          {/* Home images — 3-image collage, dynamic on desktop */}
+          <div className="writing-reveal shrink-0 mt-6 md:mt-0 md:order-last flex justify-center md:justify-end">
+            <div className="relative w-64 h-80 md:w-80 md:h-112 lg:w-96 lg:h-136">
+              {/* Main image — 45-degree tilt (top-right corner up) */}
+              <div
+                className="absolute inset-0 overflow-hidden bg-pink-light"
+                style={{ transform: "rotate(-30deg)" }}
+              >
                 <Image
-                  src="/red_pin.png"
-                  alt=""
-                  width={28}
-                  height={28}
-                  className="object-contain w-full h-full"
+                  src="/images/img-home-45deg-tilt.jpeg"
+                  alt="Sanskriti Gupta — CS student & researcher"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
                 />
+                <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7" style={{ transform: "rotate(30deg)" }}>
+                  <Image src="/red_pin.png" alt="" width={28} height={28} className="object-contain w-full h-full" />
+                </div>
+              </div>
+
+              {/* Supporting image 2 — overlapping from bottom-left */}
+              <div
+                className="absolute -bottom-4 -left-6 md:-bottom-6 md:-left-8 w-32 h-40 md:w-40 md:h-52 overflow-hidden bg-paper"
+                style={{ transform: "rotate(5deg)", zIndex: 11 }}
+              >
+                <Image
+                  src="/images/img-home-2.jpeg"
+                  alt="Sanskriti Gupta — home"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 128px, 160px"
+                  loading="lazy"
+                />
+                <div className="absolute top-1 right-1 z-10 w-5 h-5 md:w-6 md:h-6" style={{ transform: "rotate(-5deg)" }}>
+                  <Image src="/red_pin.png" alt="" width={24} height={24} className="object-contain w-full h-full" />
+                </div>
+              </div>
+
+              {/* Supporting image 3 — overlapping from top-right */}
+              <div
+                className="absolute -top-3 -right-4 md:-top-5 md:-right-6 w-28 h-36 md:w-36 md:h-44 overflow-hidden bg-paper"
+                style={{ transform: "rotate(-4deg)", zIndex: 9 }}
+              >
+                <Image
+                  src="/images/img-home-3.jpeg"
+                  alt="Sanskriti Gupta — home"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 112px, 144px"
+                  loading="lazy"
+                />
+                <div className="absolute top-1 right-1 z-10 w-5 h-5 md:w-6 md:h-6" style={{ transform: "rotate(4deg)" }}>
+                  <Image src="/red_pin.png" alt="" width={24} height={24} className="object-contain w-full h-full" />
+                </div>
               </div>
             </div>
           </div>

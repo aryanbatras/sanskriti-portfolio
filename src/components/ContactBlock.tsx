@@ -182,16 +182,16 @@ export default function ContactBlock() {
             </div>
           </div>
 
-          {/* Portrait with red pin — top-right, pinned hover */}
+          {/* Contact portrait — bigger, dynamic */}
           <div className="contact-reveal shrink-0 mt-10 md:mt-0 flex justify-center items-start">
-            <div className="relative w-48 md:w-56 h-auto overflow-hidden bg-pink-light pinned-item pinned-tr">
+            <div className="relative w-64 md:w-80 lg:w-96 h-auto overflow-hidden bg-pink-light pinned-item pinned-tr">
               <Image
-                src="/images/Woman_waving_hi_holding_coffee_202607201927.jpeg"
+                src="/images/img-contact.jpeg"
                 alt="Sanskriti Gupta — say hi!"
                 width={768}
-                height={1376}
+                height={1024}
                 className="object-cover w-full h-auto"
-                sizes="(max-width: 768px) 192px, 224px"
+                sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
                 loading="lazy"
               />
               <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
@@ -211,17 +211,17 @@ export default function ContactBlock() {
         <div ref={secretSectionRef} className="contact-reveal mt-16">
           {!showRpg ? (
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 justify-center">
-              {/* LEFT: Always wondering pinned image */}
-              <div className="relative w-40 md:w-48 h-auto overflow-hidden pinned-item pinned-tr shrink-0">
-                <Image
-                  src="/images/wondering-sitting-on-coach.jpeg"
-                  alt="Always wondering"
-                  width={768}
-                  height={1376}
-                  className="object-cover w-full h-auto"
-                  sizes="160px"
-                  loading="lazy"
-                />
+              {/* LEFT: Secret image — bigger */}
+              <div className="relative w-48 md:w-56 lg:w-64 h-auto overflow-hidden pinned-item pinned-tr shrink-0">
+              <Image
+                src="/images/img-contact-2.jpeg"
+                alt="Always wondering"
+                width={768}
+                height={1024}
+                className="object-cover w-full h-auto"
+                sizes="(max-width: 768px) 192px, (max-width: 1024px) 224px, 256px"
+                loading="lazy"
+              />
                 <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
                   <Image
                     src="/red_pin.png"

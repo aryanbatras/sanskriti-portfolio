@@ -133,16 +133,16 @@ export default function ProjectEntries() {
             </div>
           </div>
 
-          {/* Portrait with red pin — bottom-left */}
+          {/* Projects portrait — bigger, dynamic */}
           <div className="project-entry shrink-0 mt-8 md:mt-0 flex justify-center md:justify-end items-start">
-            <div className="relative w-48 md:w-56 h-auto overflow-hidden bg-paper pinned-item pinned-tr">
+            <div className="relative w-64 md:w-80 lg:w-96 h-auto overflow-hidden bg-paper pinned-item pinned-tr">
               <Image
-                src="/images/student-drawing-ml.jpeg"
-                alt="ML student sketching ideas"
+                src="/images/img-projects.jpeg"
+                alt="Sanskriti Gupta — building projects"
                 width={768}
-                height={1376}
+                height={1024}
                 className="object-cover w-full h-auto"
-                sizes="(max-width: 768px) 192px, 224px"
+                sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
                 loading="lazy"
               />
               {/* Red pin — top-right corner */}

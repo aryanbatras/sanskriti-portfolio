@@ -122,26 +122,42 @@ export default function NotesBlock() {
             </div>
           </div>
 
-          {/* Portrait with red pin — bottom-right */}
+          {/* Skills images — 2-image collage, dynamic on desktop */}
           <div className="notes-reveal shrink-0 mt-10 md:mt-0 flex justify-center md:justify-end items-start">
-            <div className="relative w-48 md:w-56 h-auto overflow-hidden bg-pink-light pinned-item pinned-tr">
-              <Image
-                src="/images/sanskriti_gupta_smiling_standing_straight-professionally.jpeg"
-                alt="Sanskriti Gupta"
-                width={768}
-                height={1376}
-                className="object-cover w-full h-auto"
-                sizes="(max-width: 768px) 192px, 224px"
-                loading="lazy"
-              />
-              <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
+            <div className="relative w-64 md:w-80 lg:w-96 h-auto">
+              {/* Primary skills image */}
+              <div className="relative w-full overflow-hidden bg-pink-light pinned-item pinned-tr">
                 <Image
-                  src="/red_pin.png"
-                  alt=""
-                  width={28}
-                  height={28}
-                  className="object-contain w-full h-full"
+                  src="/images/img-skills.jpeg"
+                  alt="Sanskriti Gupta — skills & achievements"
+                  width={768}
+                  height={1024}
+                  className="object-cover w-full h-auto"
+                  sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
+                  loading="lazy"
                 />
+                <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
+                  <Image src="/red_pin.png" alt="" width={28} height={28} className="object-contain w-full h-full" />
+                </div>
+              </div>
+
+              {/* Secondary skills image — overlapping from bottom-left */}
+              <div
+                className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-32 md:w-40 overflow-hidden bg-paper"
+                style={{ transform: "rotate(4deg)", zIndex: 11 }}
+              >
+                <Image
+                  src="/images/img-skills-2.jpeg"
+                  alt="Sanskriti Gupta — skills"
+                  width={400}
+                  height={530}
+                  className="object-cover w-full h-auto"
+                  sizes="(max-width: 768px) 128px, 160px"
+                  loading="lazy"
+                />
+                <div className="absolute top-1 right-1 z-10 w-5 h-5 md:w-6 md:h-6" style={{ transform: "rotate(-4deg)" }}>
+                  <Image src="/red_pin.png" alt="" width={24} height={24} className="object-contain w-full h-full" />
+                </div>
               </div>
             </div>
           </div>
