@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useMemo } from "react";
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,28 +9,53 @@ import { personalInfo } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
+/** Pinterest-style pinned image for the hero collage */
+function PinnedImage({
+  src,
+  alt,
+  className,
+  style,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <div
+      className={`absolute overflow-hidden bg-paper ${className ?? ""}`}
+      style={style}
+    >
+      <img src={src} alt={alt} className="w-full h-full object-cover" />
+      {/* Red pin — top-right */}
+      <div className="absolute top-1.5 right-1.5 z-10 w-5 h-5 md:w-6 md:h-6">
+        <Image
+          src="/red_pin.png"
+          alt=""
+          width={24}
+          height={24}
+          className="object-contain w-full h-full"
+        />
+      </div>
+    </div>
+  );
+}
+
 /**
- * VideoStory — Hero with text-mask zoom (no fade).
+ * VideoStory — Hero with Pinterest collage masked by SVG text.
  *
  * Approach:
- *   White bg section. Video is masked by SVG text.
- *   Text = white (video shows through), everything else = transparent (white bg).
- *
- *   mask-size animates from 100% → 5000% so the text characters
+ *   White bg section. A scattered cluster of pinned photos is masked by SVG text.
+ *   Text = white (collage visible through text shapes), everything else = white bg.
+ *   mask-size animates from 100% → 22000% so the text characters
  *   zoom in until individual letter strokes fill the viewport.
- *   You go INSIDE the letters, no fading anywhere.
  */
 export default function VideoStory() {
   const sectionRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const maskRef = useRef<HTMLDivElement>(null);
   const overlayTlRef = useRef<gsap.core.Timeline | null>(null);
-
   const nameRef = useRef<HTMLDivElement>(null);
 
-  // ── SVG text mask  ──────────────────────────────────────────
-  //   rect fill="black"  → everything hidden (white bg shows)
-  //   text  fill="white"  → video visible through text shapes
   const svgMaskUrl = useMemo(() => {
     const svg = [
       `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">`,
@@ -48,19 +74,13 @@ export default function VideoStory() {
 
   useGSAP(
     () => {
-      const video = videoRef.current;
       const maskEl = maskRef.current;
-      if (!video || !maskEl) return;
+      if (!maskEl) return;
 
-      const dur = video.duration || 2.833;
       const MAX_ZOOM = 22000;
       const scrollDistance = 2000;
-
-      // ── Phases (zoom takes full scroll — pin releases when zoom ends) ──
-      const VIDEO_START = 0.05;
       const OVERLAY_START = 0.35;
 
-      // ── Init mask ──────────────────────────────────────────
       maskEl.style.setProperty("-webkit-mask-image", svgMaskUrl);
       maskEl.style.setProperty("mask-image", svgMaskUrl);
       maskEl.style.setProperty("-webkit-mask-position", "center");
@@ -70,10 +90,8 @@ export default function VideoStory() {
       maskEl.style.setProperty("-webkit-mask-size", "100%");
       maskEl.style.setProperty("mask-size", "100%");
 
-      // ── Init text overlay (hidden) ────────────────────────
       gsap.set(nameRef.current, { autoAlpha: 0, y: 20 });
 
-      // ── Simple fade-in-up for the name ─────────────────────
       const overlayTl = gsap.timeline({ paused: true });
       overlayTl.to(nameRef.current, {
         autoAlpha: 1,
@@ -83,11 +101,8 @@ export default function VideoStory() {
       });
       overlayTlRef.current = overlayTl;
 
-      // ── Exponential scale ease (manual — same curve as GSAP's expoScale(0.5, 7, "none")) ─
-      //     value = start * (end/start)^progress
-      const expoEase = (t: number) => 0.5 * Math.pow(7 / 0.5, t); // 0.5 → 7
+      const expoEase = (t: number) => 0.5 * Math.pow(7 / 0.5, t);
 
-      // ── ScrollTrigger ──────────────────────────────────────
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
@@ -99,34 +114,20 @@ export default function VideoStory() {
         onUpdate: (self) => {
           const p = self.progress;
 
-          // ── Zoom: mask-size 100% → 18000% (takes full scroll) ─
           {
-            const raw = expoEase(p);                 // 0.5 → 7
-            const normalized = (raw - 0.5) / (7 - 0.5); // 0 → 1
+            const raw = expoEase(p);
+            const normalized = (raw - 0.5) / (7 - 0.5);
             const scale = 100 + normalized * (MAX_ZOOM - 100);
             maskEl.style.setProperty("-webkit-mask-size", `${scale}%`);
             maskEl.style.setProperty("mask-size", `${scale}%`);
           }
 
-          // ── Video: scroll-driven seeking ────────────────────
-          if (p > VIDEO_START) {
-            const videoP = (p - VIDEO_START) / (1 - VIDEO_START);
-            if (video.readyState >= 2) {
-              video.currentTime = Math.min(videoP * dur, dur);
-            }
-          } else {
-            video.currentTime = 0;
-          }
-
-          // ── Text overlays (after zoom is complete) ──────────
           if (p > OVERLAY_START) {
             const overlayP = (p - OVERLAY_START) / (1 - OVERLAY_START);
             overlayTl.progress(overlayP);
           } else {
             overlayTl.progress(0);
           }
-
-
         },
       });
 
@@ -143,23 +144,66 @@ export default function VideoStory() {
       ref={sectionRef}
       className="relative w-full h-screen overflow-hidden bg-paper"
     >
-      {/* ── Video masked by SVG text ───────────────────────────
-          text shapes = video visible, everywhere else = white bg ── */}
+      {/* ── Pinterest collage masked by SVG text ──────────────── */}
       <div
         ref={maskRef}
         className="absolute inset-0 w-full h-full"
-        style={{
-          willChange: "mask-size, -webkit-mask-size",
-        }}
+        style={{ willChange: "mask-size, -webkit-mask-size" }}
       >
-        <video
-          ref={videoRef}
-          className="w-full h-full object-cover"
-          preload="auto"
-          muted
-          playsInline
-          src="/videos/video-story.mp4"
-        />
+        {/* Collage cluster — 8 unique images, scattered, pinned, no repeats */}
+        <div className="absolute inset-0">
+          {/* Row 1 — top half */}
+          <PinnedImage
+            src="/images/img-home-45deg-tilt.jpeg"
+            alt="Sanskriti — home"
+            className="w-[28vw] h-[38vh] md:w-[22vw] md:h-[42vh]"
+            style={{ top: "5vh", left: "5vw", transform: "rotate(-4deg)" }}
+          />
+          <PinnedImage
+            src="/images/img-skills.jpeg"
+            alt="Sanskriti — skills"
+            className="w-[24vw] h-[34vh] md:w-[20vw] md:h-[38vh]"
+            style={{ top: "3vh", left: "30vw", transform: "rotate(3deg)" }}
+          />
+          <PinnedImage
+            src="/images/img-home-2.jpeg"
+            alt="Sanskriti — home"
+            className="w-[22vw] h-[32vh] md:w-[18vw] md:h-[36vh]"
+            style={{ top: "8vh", left: "52vw", transform: "rotate(-2deg)" }}
+          />
+          <PinnedImage
+            src="/images/img-contact.jpeg"
+            alt="Sanskriti — contact"
+            className="w-[20vw] h-[30vh] md:w-[16vw] md:h-[34vh]"
+            style={{ top: "2vh", right: "4vw", transform: "rotate(5deg)" }}
+          />
+
+          {/* Row 2 — bottom half */}
+          <PinnedImage
+            src="/images/img-projects.jpeg"
+            alt="Sanskriti — projects"
+            className="w-[26vw] h-[36vh] md:w-[21vw] md:h-[40vh]"
+            style={{ bottom: "6vh", left: "8vw", transform: "rotate(3deg)" }}
+          />
+          <PinnedImage
+            src="/images/img-home-3.jpeg"
+            alt="Sanskriti — home"
+            className="w-[22vw] h-[32vh] md:w-[19vw] md:h-[36vh]"
+            style={{ bottom: "4vh", left: "32vw", transform: "rotate(-5deg)" }}
+          />
+          <PinnedImage
+            src="/images/img-skills-2.jpeg"
+            alt="Sanskriti — skills"
+            className="w-[20vw] h-[30vh] md:w-[17vw] md:h-[34vh]"
+            style={{ bottom: "8vh", right: "20vw", transform: "rotate(2deg)" }}
+          />
+          <PinnedImage
+            src="/images/img-contact-2.jpeg"
+            alt="Sanskriti — contact"
+            className="w-[18vw] h-[28vh] md:w-[15vw] md:h-[32vh]"
+            style={{ bottom: "3vh", right: "3vw", transform: "rotate(-3deg)" }}
+          />
+        </div>
         <span className="sr-only">Hi, I&apos;m Sanskriti Gupta</span>
       </div>
 
@@ -172,7 +216,6 @@ export default function VideoStory() {
           {personalInfo.name}
         </h1>
       </div>
-
     </section>
   );
 }

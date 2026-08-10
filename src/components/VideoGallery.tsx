@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -11,15 +11,52 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 const videos = [
   {
     src: "/videos/sanskriti-reel-1.mp4",
-    alt: "Sanskriti Gupta — reel 1",
+    alt: "Sanskriti studying",
     rotate: "-2",
+    label: "Study mode 📚",
   },
   {
     src: "/videos/sanskriti-reel-2.mp4",
-    alt: "Sanskriti Gupta — reel 2",
+    alt: "Sanskriti peeking",
     rotate: "3",
+    label: "Just peeking 👀",
   },
 ];
+
+function ScrollVideo({ src, alt }: { src: string; alt: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.play().catch(() => {});
+        } else {
+          el.pause();
+          el.currentTime = 0;
+        }
+      },
+      { threshold: 0.4 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      className="w-full h-auto object-cover"
+      muted
+      playsInline
+      preload="metadata"
+      src={src}
+    />
+  );
+}
 
 export default function VideoGallery() {
   const containerRef = useRef<HTMLElement>(null);
@@ -74,26 +111,13 @@ export default function VideoGallery() {
 
         {/* Videos — asymmetric collage layout */}
         <div className="flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-12">
-          {/* Video 1 — larger, tilted */}
+          {/* Video 1 — larger, tilted (study video) */}
           <div
             className="video-card relative flex-1 mb-8 md:mb-0"
             style={{ transform: `rotate(${videos[0].rotate}deg)` }}
           >
             <div className="relative overflow-hidden bg-paper pinned-item pinned-tl">
-              <video
-                className="w-full h-auto object-cover"
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                onMouseEnter={(e) => (e.target as HTMLVideoElement).play()}
-                onMouseLeave={(e) => {
-                  const v = e.target as HTMLVideoElement;
-                  v.pause();
-                  v.currentTime = 0;
-                }}
-                src={videos[0].src}
-              />
+              <ScrollVideo src={videos[0].src} alt={videos[0].alt} />
               {/* Red pin — top-left */}
               <div className="absolute top-2 left-2 z-10 w-6 h-6 md:w-7 md:h-7">
                 <Image
@@ -105,9 +129,13 @@ export default function VideoGallery() {
                 />
               </div>
             </div>
+            {/* Label beneath */}
+            <p className="mt-3 text-sm font-mono text-charcoal/60 tracking-wide" style={{ transform: "rotate(1deg)" }}>
+              {videos[0].label}
+            </p>
           </div>
 
-          {/* Video 2 — smaller, opposite tilt */}
+          {/* Video 2 — smaller, opposite tilt (peeking video) */}
           <div
             className="video-card relative w-full md:w-[40%] lg:w-[35%]"
             style={{ transform: `rotate(${videos[1].rotate}deg)` }}
@@ -115,16 +143,11 @@ export default function VideoGallery() {
             <div className="relative overflow-hidden bg-paper pinned-item pinned-tr">
               <video
                 className="w-full h-auto object-cover"
-                muted
+                autoPlay
                 loop
+                muted
                 playsInline
-                preload="metadata"
-                onMouseEnter={(e) => (e.target as HTMLVideoElement).play()}
-                onMouseLeave={(e) => {
-                  const v = e.target as HTMLVideoElement;
-                  v.pause();
-                  v.currentTime = 0;
-                }}
+                preload="auto"
                 src={videos[1].src}
               />
               {/* Red pin — top-right */}
@@ -155,7 +178,7 @@ export default function VideoGallery() {
                 />
               </div>
               <p className="handwritten text-sm md:text-base text-ink/80 leading-snug">
-                Moments from my world ✨
+                {videos[1].label}
               </p>
             </div>
           </div>
