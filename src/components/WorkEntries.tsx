@@ -105,7 +105,7 @@ export default function WorkEntries() {
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
-                    <div className="entry-title text-2xl md:text-3xl">{edu.degree}</div>
+                    <div className="entry-title">{edu.degree}</div>
                     <div className="entry-meta text-charcoal flex items-center gap-2 flex-wrap normal-case">
                       <span>{edu.school}</span>
                       <span className="text-stone">&middot;</span>

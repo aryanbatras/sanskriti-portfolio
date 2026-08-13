@@ -166,7 +166,7 @@ export default function VideoStory() {
         <div className="absolute inset-0">
           {/* Col 1 (left) — 3 portrait images stacked */}
           <PinnedImage
-            src="/images/img-contact.jpeg"
+            src="/images/img-contact-2.jpeg"
             alt="Sanskriti — contact"
             className="w-[30vw] h-[22vh] md:w-[24vw] md:h-[45vh]"
             style={{ top: "33vh", left: "7vw", transform: "rotate(1.5deg)" }}
@@ -174,7 +174,7 @@ export default function VideoStory() {
 
           {/* Col 2 (center) — 3 portrait images stacked */}
           <PinnedImage
-            src="/images/img-home-2.jpeg"
+            src="/images/img-projects.jpeg"
             alt="Sanskriti — home"
             className="w-[34vw] h-[36vh] md:w-[33vw] md:h-[35vh]"
             style={{ top: "33vh", left: "33vw", transform: "rotate(-1.5deg)" }}
