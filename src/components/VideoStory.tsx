@@ -169,29 +169,29 @@ export default function VideoStory() {
             src="/images/img-contact-2.jpeg"
             alt="Sanskriti — contact"
             className="w-[30vw] h-[22vh] md:w-[24vw] md:h-[45vh]"
-            style={{ top: "33vh", left: "7vw", transform: "rotate(1.5deg)" }}
+            style={{ top: "33vh", left: "1.5vw", transform: "rotate(1.5deg)" }}
           />
 
           {/* Col 2 (center) — 3 portrait images stacked */}
           <PinnedImage
             src="/images/img-projects.jpeg"
             alt="Sanskriti — home"
-            className="w-[34vw] h-[36vh] md:w-[33vw] md:h-[35vh]"
-            style={{ top: "33vh", left: "33vw", transform: "rotate(-1.5deg)" }}
+            className="w-[45vw] h-[22vh] md:w-[33vw] md:h-[35vh]"
+            style={{ top: "33vh", left: "30vw", transform: "rotate(-1.5deg)" }}
           />
 
           {/* Col 3 (right) — 2 landscape images + 1 portrait */}
           <PinnedImage
             src="/images/img-projects.jpeg"
             alt="Sanskriti — projects"
-            className="w-[35vw] h-[36vh] md:w-[34vw] md:h-[35vh]"
+            className="w-[30vw] h-[26vh] md:w-[34vw] md:h-[35vh]"
             style={{ top: 0, right: 0, transform: "rotate(-1.5deg)" }}
           />
           <PinnedImage
             src="/images/img-contact-2.jpeg"
             alt="Sanskriti — contact"
-            className="w-[35vw] h-[56vh] md:w-[34vw] md:h-[75vh]"
-            style={{ top: "43vh", right: 0, transform: "rotate(2deg)" }}
+            className="w-[30vw] h-[22vh] md:w-[34vw] md:h-[75vh]"
+            style={{ top: "43vh", right: "2vw", transform: "rotate(2deg)" }}
           />
         </div>
         <span className="sr-only">Hi, I&apos;m Sanskriti Gupta</span>
@@ -202,7 +202,7 @@ export default function VideoStory() {
         ref={nameRef}
         className="absolute top-8 left-5 md:top-16 md:left-10 pointer-events-none max-w-4xl z-20"
       >
-        <h1 className="text-[var(--color-ink)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display-alt leading-none tracking-tight">
+        <h1 className="text-(--color-ink) text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display-alt leading-none tracking-tight">
           {personalInfo.name}
         </h1>
       </div>
