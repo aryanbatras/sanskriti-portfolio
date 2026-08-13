@@ -82,13 +82,13 @@ export default function ContactBlock() {
     () => {
       gsap.fromTo(
         ".contact-reveal",
-        { opacity: 0, y: 20 },
+        { opacity: 0, y: 16 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
-          ease: "power3.out",
-          stagger: 0.12,
+          duration: 0.35,
+          ease: "power2.out",
+          stagger: 0.04,
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 80%",
@@ -106,7 +106,7 @@ export default function ContactBlock() {
         <div className="flex flex-col md:flex-row md:gap-12 md:items-start">
           {/* Left: all content — heading, intro, details, secret game */}
           <div className="flex-1 min-w-0">
-            <div className="relative inline-block mb-6">
+            <div className="contact-reveal relative inline-block mb-6">
               <h2
                 className="section-heading"
                 style={{ transform: "rotate(-0.2deg)" }}

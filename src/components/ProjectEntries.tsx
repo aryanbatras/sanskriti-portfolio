@@ -50,9 +50,9 @@ export default function ProjectEntries() {
         {
           opacity: 1,
           y: 0,
-          duration: 0.45,
+          duration: 0.35,
           ease: "power2.out",
-          stagger: 0.06,
+          stagger: 0.04,
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 75%",
@@ -67,7 +67,7 @@ export default function ProjectEntries() {
   return (
     <section id="projects" ref={containerRef} className="editorial-section bg-corkboard">
       <div className="max-w-6xl mx-auto">
-        <div className="relative inline-block mb-14">
+        <div className="project-entry relative inline-block mb-14">
           <h2
             className="section-heading"
             style={{ transform: "rotate(-0.3deg)" }}
@@ -133,28 +133,36 @@ export default function ProjectEntries() {
             </div>
           </div>
 
-          {/* Projects portrait — bigger, dynamic */}
+          {/* Projects image — my workspace */}
           <div className="project-entry shrink-0 mt-8 md:mt-0 flex justify-center md:justify-end items-start">
-            <div className="relative w-64 md:w-80 lg:w-96 h-auto overflow-hidden bg-paper pinned-item pinned-tr">
-              <Image
-                src="/images/img-projects.jpeg"
-                alt="Sanskriti Gupta — building projects"
-                width={768}
-                height={1024}
-                className="object-cover w-full h-auto"
-                sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
-                loading="lazy"
-              />
-              {/* Red pin — top-right corner */}
-              <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
+            <div className="relative w-64 md:w-80 lg:w-96">
+              <div className="relative w-full overflow-hidden bg-paper pinned-item pinned-tr">
                 <Image
-                  src="/red_pin.png"
-                  alt=""
-                  width={28}
-                  height={28}
-                  className="object-contain w-full h-full"
+                  src="/images/workspace.jpeg"
+                  alt="Sanskriti Gupta — my workspace, my setup & comfort space"
+                  width={1280}
+                  height={960}
+                  className="object-cover w-full h-auto"
+                  sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
+                  loading="lazy"
                 />
+                {/* Red pin — top-right corner */}
+                <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
+                  <Image
+                    src="/red_pin.png"
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
               </div>
+              <p
+                className="text-pink mt-3 text-center tracking-wide font-mono text-sm"
+                style={{ textTransform: "none" }}
+              >
+                My Workspace &mdash; My Setup or Comfort Space
+              </p>
             </div>
           </div>
         </div>

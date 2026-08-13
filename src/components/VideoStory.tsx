@@ -109,7 +109,7 @@ export default function VideoStory() {
         end: scrollDistance,
         pin: true,
         pinSpacing: true,
-        scrub: 3.5,
+        scrub: 2.5,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
           const p = self.progress;
@@ -169,29 +169,29 @@ export default function VideoStory() {
             src="/images/img-contact-2.jpeg"
             alt="Sanskriti — contact"
             className="w-[30vw] h-[22vh] md:w-[24vw] md:h-[45vh]"
-            style={{ top: "33vh", left: "1.5vw", transform: "rotate(1.5deg)" }}
+            style={{ top: "32vh", left: "0vw", transform: "rotate(1.5deg)" }}
           />
 
           {/* Col 2 (center) — 3 portrait images stacked */}
           <PinnedImage
             src="/images/img-projects.jpeg"
             alt="Sanskriti — home"
-            className="w-[45vw] h-[22vh] md:w-[33vw] md:h-[35vh]"
-            style={{ top: "33vh", left: "30vw", transform: "rotate(-1.5deg)" }}
+            className="w-[52vw] h-[32vh] md:w-[42vw] md:h-[40vh]"
+            style={{ top: "33vh", left: "25vw", transform: "rotate(-1.5deg)" }}
           />
 
           {/* Col 3 (right) — 2 landscape images + 1 portrait */}
           <PinnedImage
             src="/images/img-projects.jpeg"
             alt="Sanskriti — projects"
-            className="w-[30vw] h-[26vh] md:w-[34vw] md:h-[35vh]"
+            className="w-[30vw] h-[36vh] md:w-[34vw] md:h-[35vh]"
             style={{ top: 0, right: 0, transform: "rotate(-1.5deg)" }}
           />
           <PinnedImage
             src="/images/img-contact-2.jpeg"
             alt="Sanskriti — contact"
             className="w-[30vw] h-[22vh] md:w-[34vw] md:h-[75vh]"
-            style={{ top: "43vh", right: "2vw", transform: "rotate(2deg)" }}
+            style={{ top: "46vh", right: "2vw", transform: "rotate(2deg)" }}
           />
         </div>
         <span className="sr-only">Hi, I&apos;m Sanskriti Gupta</span>

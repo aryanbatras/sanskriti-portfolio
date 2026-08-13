@@ -16,13 +16,13 @@ export default function NotesBlock() {
     () => {
       gsap.fromTo(
         ".notes-reveal",
-        { opacity: 0, y: 20 },
+        { opacity: 0, y: 16 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
-          ease: "power3.out",
-          stagger: 0.1,
+          duration: 0.35,
+          ease: "power2.out",
+          stagger: 0.04,
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 75%",
@@ -37,7 +37,7 @@ export default function NotesBlock() {
   return (
     <section id="notes" ref={containerRef} className="editorial-section bg-paper">
       <div className="max-w-6xl mx-auto">
-        <div className="relative inline-block mb-14">
+        <div className="notes-reveal relative inline-block mb-14">
           <h2
             className="section-heading"
             style={{ transform: "rotate(0.2deg)" }}
@@ -145,7 +145,7 @@ export default function NotesBlock() {
 
         {/* ── LeetCode Stats ── */}
         <div className="mt-20 md:mt-28 pb-24 md:pb-32">
-          <div className="relative inline-block mb-10">
+          <div className="notes-reveal relative inline-block mb-10">
             <h3
               className="section-heading text-2xl md:text-3xl font-display-alt"
               style={{ transform: "rotate(-0.3deg)" }}

@@ -16,13 +16,13 @@ export default function WorkEntries() {
     () => {
       gsap.fromTo(
         ".work-entry",
-        { opacity: 0, y: 24 },
+        { opacity: 0, y: 16 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.7,
-          ease: "power3.out",
-          stagger: 0.15,
+          duration: 0.35,
+          ease: "power2.out",
+          stagger: 0.04,
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 75%",
@@ -38,7 +38,7 @@ export default function WorkEntries() {
     <section id="work" ref={containerRef} className="editorial-section">
       <div className="max-w-6xl mx-auto">
         <div>
-          <h2 className="section-heading mb-14 font-display-alt">
+          <h2 className="work-entry section-heading mb-14 font-display-alt">
             Work <span className="text-pink">&amp;</span> Research
           </h2>
         </div>
@@ -82,7 +82,7 @@ export default function WorkEntries() {
 
         {/* Education — pageless flow */}
         <div className="mt-24 md:mt-32">
-          <h3 className="section-heading text-2xl md:text-3xl mb-10 font-display-alt">
+          <h3 className="work-entry section-heading text-2xl md:text-3xl mb-10 font-display-alt">
             Education
           </h3>
 

@@ -24,8 +24,8 @@ export default function WritingBlock() {
 
       tl.fromTo(
         ".writing-reveal",
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.15 },
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.35, ease: "power2.out", stagger: 0.04 },
       );
     },
     { scope: containerRef },
