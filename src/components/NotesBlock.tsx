@@ -122,14 +122,13 @@ export default function NotesBlock() {
             </div>
           </div>
 
-          {/* Skills images — 2-image collage, dynamic on desktop */}
+          {/* Skills image */}
           <div className="notes-reveal shrink-0 mt-10 md:mt-0 flex justify-center md:justify-end items-start">
             <div className="relative w-64 md:w-80 lg:w-96 h-auto">
-              {/* Primary skills image */}
               <div className="relative w-full overflow-hidden bg-pink-light pinned-item pinned-tr">
                 <Image
-                  src="/animated/Girl_sitting_at_desk_202607210810.jpeg"
-                  alt="Sanskriti Gupta — illustration at her desk, skills & achievements"
+                  src="/animated/Sanskriti_looking_at_camera_202607210812.jpeg"
+                  alt="Sanskriti Gupta — illustration looking at the camera, skills & achievements"
                   width={768}
                   height={1376}
                   className="object-cover w-full h-auto"
@@ -138,25 +137,6 @@ export default function NotesBlock() {
                 />
                 <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
                   <Image src="/red_pin.png" alt="" width={28} height={28} className="object-contain w-full h-full" />
-                </div>
-              </div>
-
-              {/* Secondary skills image — overlapping from bottom-left */}
-              <div
-                className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-32 md:w-40 overflow-hidden bg-paper"
-                style={{ transform: "rotate(4deg)", zIndex: 11 }}
-              >
-                <Image
-                  src="/animated/Girl_sitting_with_laptop_college.jpeg"
-                  alt="Sanskriti Gupta — illustration at her college desk"
-                  width={768}
-                  height={1376}
-                  className="object-cover w-full h-auto"
-                  sizes="(max-width: 768px) 128px, 160px"
-                  loading="lazy"
-                />
-                <div className="absolute top-1 right-1 z-10 w-5 h-5 md:w-6 md:h-6" style={{ transform: "rotate(-4deg)" }}>
-                  <Image src="/red_pin.png" alt="" width={24} height={24} className="object-contain w-full h-full" />
                 </div>
               </div>
             </div>

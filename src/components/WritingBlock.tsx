@@ -26,14 +26,6 @@ export default function WritingBlock() {
         ".writing-reveal",
         { opacity: 0, y: 24 },
         { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.15 },
-      ).call(
-        () => {
-          containerRef.current
-            ?.querySelectorAll(".ink-underline")
-            .forEach((el) => el.classList.add("animate"));
-        },
-        [],
-        "+=0.2",
       );
     },
     { scope: containerRef },
@@ -46,22 +38,21 @@ export default function WritingBlock() {
         <div className="flex flex-col md:flex-row md:items-start md:gap-10">
           <div className="flex-1 space-y-6">
             <p className="writing-reveal body-text-large">
-              Hi, I&rsquo;m{" "}
-              <span className="ink-underline">
-                Sanskriti &mdash; a computer science student who enjoys building
-                things, solving problems
+              Hi, I&rsquo;m Sanskriti &mdash;{" "}
+              <span className="text-highlight">
+                a computer science student who enjoys building things, solving
+                problems
               </span>
               , and understanding how they work under the hood.
             </p>
 
             <p className="writing-reveal body-text">
               My work sits at the intersection of{" "}
-              <span className="italic text-pink-dark">
-                software engineering and AI
-              </span>
+              <span className="text-highlight">software engineering and AI</span>
               . I work with{" "}
-              <span className="italic text-pink-dark">
-                machine learning, deep learning, and data structures &amp; algorithms
+              <span className="text-highlight">
+                machine learning, deep learning, and data structures &amp;
+                algorithms
               </span>
               , and I enjoy taking an idea from a problem statement to something
               that actually works. I&rsquo;ve also been exploring research through
@@ -71,7 +62,7 @@ export default function WritingBlock() {
 
             <p className="writing-reveal body-text">
               I&rsquo;m particularly interested in opportunities where I can combine{" "}
-              <span className="italic text-pink-dark">
+              <span className="text-highlight">
                 strong problem-solving with engineering and research
               </span>{" "}
               &mdash; whether that means building reliable software, working on

@@ -96,7 +96,7 @@ body {
 
 .body-text {
   font-family: var(--font-body);
-  font-size: 1.25rem;
+  font-size: 1.375rem;
   line-height: 1.8;
   max-width: 65ch;
   color: var(--color-ink);
@@ -105,8 +105,8 @@ body {
 
 .body-text-large {
   font-family: var(--font-body);
-  font-size: 1.375rem;
-  line-height: 1.85;
+  font-size: 1.5rem;
+  line-height: 1.8;
   max-width: 65ch;
   letter-spacing: 0.01em;
 }
@@ -177,7 +177,7 @@ body {
 
 .entry-title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   line-height: 1.25;
   color: var(--color-ink);
   margin-bottom: 0.25rem;
@@ -186,7 +186,7 @@ body {
 
 .entry-meta {
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-pink);
@@ -195,9 +195,9 @@ body {
 
 .entry-desc {
   font-family: var(--font-body);
-  font-size: 1.125rem;
-  line-height: 1.75;
-  max-width: 58ch;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  max-width: 60ch;
   color: var(--color-charcoal);
   letter-spacing: 0.01em;
 }
@@ -260,6 +260,16 @@ body {
 
 .ink-underline.animate::after {
   animation: ink-draw 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* ─── Text Highlight (marker-style emphasis) ──────── */
+
+.text-highlight {
+  background-color: var(--color-pink-light);
+  color: var(--color-ink);
+  padding: 0.08em 0.3em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 /* ─── Clipboard / Pinterest Scrapbook ────────────── */

@@ -103,93 +103,154 @@ export default function ContactBlock() {
   return (
     <section id="contact" ref={containerRef} className="editorial-section bg-paper">
       <div className="max-w-6xl mx-auto">
-        <div className="relative inline-block mb-6">
-          <h2
-            className="section-heading"
-            style={{ transform: "rotate(-0.2deg)" }}
-          >
-            Get in touch
-          </h2>
-          <div className="absolute -top-2 -right-4 w-5 h-5 md:w-6 md:h-6 opacity-60">
-            <Image
-              src="/red_pin.png"
-              alt=""
-              width={24}
-              height={24}
-              className="object-contain w-full h-full"
-            />
-          </div>
-        </div>
-        <p className="contact-reveal body-text text-charcoal mb-12 max-w-lg">
-          Whether it&rsquo;s a software project, internship, a research collaboration, a writing project, or
-          just a conversation about something curious — I&rsquo;d love to hear
-          from you.
-        </p>
+        <div className="flex flex-col md:flex-row md:gap-12 md:items-start">
+          {/* Left: all content — heading, intro, details, secret game */}
+          <div className="flex-1 min-w-0">
+            <div className="relative inline-block mb-6">
+              <h2
+                className="section-heading"
+                style={{ transform: "rotate(-0.2deg)" }}
+              >
+                Get in touch
+              </h2>
+              <div className="absolute -top-2 -right-4 w-5 h-5 md:w-6 md:h-6 opacity-60">
+                <Image
+                  src="/red_pin.png"
+                  alt=""
+                  width={24}
+                  height={24}
+                  className="object-contain w-full h-full"
+                />
+              </div>
+            </div>
+            <p className="contact-reveal body-text text-charcoal mb-12 max-w-lg">
+              Whether it&rsquo;s a software project, internship, a research collaboration, a writing project, or
+              just a conversation about something curious — I&rsquo;d love to hear
+              from you.
+            </p>
 
-        <div className="flex flex-col md:flex-  row md:gap-12 md:items-start">
-          {/* Left: Contact details */}
-          <div className="flex-1 space-y-10">
-            {/* Email */}
-            <div className="contact-reveal">
-              <p className="mono-text text-pink mb-2 text-[11px] tracking-[0.15em]">
-                Email
-              </p>
-              <p className="body-text text-xl md:text-2xl">
-                <a
-                  href={`mailto:${personalInfo.email}`}
-                  className="text-ink hover:text-pink-dark transition-colors duration-300"
-                >
-                  {personalInfo.email}
-                </a>
-              </p>
+            <div className="space-y-10">
+              {/* Email */}
+              <div className="contact-reveal">
+                <p className="mono-text text-pink mb-2 text-[11px] tracking-[0.15em]">
+                  Email
+                </p>
+                <p className="body-text text-xl md:text-2xl">
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="text-ink hover:text-pink-dark transition-colors duration-300"
+                  >
+                    {personalInfo.email}
+                  </a>
+                </p>
+              </div>
+
+              {/* Socials */}
+              <div className="contact-reveal">
+                <p className="mono-text text-pink mb-4 text-[11px] tracking-[0.15em]">
+                  Elsewhere
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  {Object.entries(personalInfo.socials).map(([key, url]) => {
+                    if (!url) return null;
+                    const label = key.charAt(0).toUpperCase() + key.slice(1);
+                    return (
+                      <a
+                        key={key}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-2 px-5 py-3 bg-pink-light hover:bg-pink transition-all duration-300"
+                      >
+                        <span className="mono-text text-sm text-ink group-hover:text-white transition-colors duration-300">
+                          {label}
+                        </span>
+                        <span className="text-pink group-hover:text-white transition-all duration-300 group-hover:translate-x-0.5">
+                          &rarr;
+                        </span>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="contact-reveal pt-4">
+                <div className="flex items-center gap-2 text-charcoal text-sm font-mono tracking-wide">
+                  <span>&mdash;</span>
+                  <span>{personalInfo.location}</span>
+                </div>
+              </div>
             </div>
 
-            {/* Socials */}
-            <div className="contact-reveal">
-              <p className="mono-text text-pink mb-4 text-[11px] tracking-[0.15em]">
-                Elsewhere
-              </p>
-              <div className="flex flex-wrap gap-4">
-                {Object.entries(personalInfo.socials).map(([key, url]) => {
-                  if (!url) return null;
-                  const label = key.charAt(0).toUpperCase() + key.slice(1);
-                  return (
-                    <a
-                      key={key}
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2 px-5 py-3 bg-pink-light hover:bg-pink transition-all duration-300"
+            {/* ═══ SECRET SECTION: Press Start ═══ */}
+            <div ref={secretSectionRef} className="contact-reveal mt-16">
+              {!showRpg ? (
+                <div className="flex justify-start">
+                  {/* "You found a secret!" + Press Start button */}
+                  <div className="flex flex-col items-start justify-center gap-3 py-2">
+                    <style>{`
+                      @keyframes pulse-glow {
+                        0%, 100% { box-shadow: 0 0 15px rgba(225,29,72,0.3); }
+                        50% { box-shadow: 0 0 30px rgba(225,29,72,0.6), 0 0 60px rgba(244,63,94,0.2); }
+                      }
+                      @keyframes blink {
+                        0%, 100% { opacity: 1; }
+                        50% { opacity: 0; }
+                      }
+                    `}</style>
+
+                    <p
+                      className="text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-red-300 to-rose-200 text-xs md:text-sm leading-relaxed text-left"
+                      style={{ fontFamily: '"Press Start 2P", monospace' }}
                     >
-                      <span className="mono-text text-sm text-ink group-hover:text-white transition-colors duration-300">
-                        {label}
-                      </span>
-                      <span className="text-pink group-hover:text-white transition-all duration-300 group-hover:translate-x-0.5">
-                        &rarr;
-                      </span>
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
+                      🎯 You found<br />a secret!
+                    </p>
 
-            {/* Location */}
-            <div className="contact-reveal pt-4">
-              <div className="flex items-center gap-2 text-charcoal text-sm font-mono tracking-wide">
-                <span>&mdash;</span>
-                <span>{personalInfo.location}</span>
-              </div>
+                    <button
+                      onClick={handleStartGame}
+                      onMouseEnter={() => { preload(); play("hover", 0.2); }}
+                      className="relative group cursor-pointer"
+                      style={{ animation: "pulse-glow 2s ease-in-out infinite" }}
+                    >
+                      {/* 3D pixel bevel */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-rose-700 to-red-900 rounded-lg translate-y-[4px]" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-rose-600 to-red-600 rounded-lg group-hover:from-rose-500 group-hover:to-red-500 transition-all duration-200" />
+                      {/* Button inner face */}
+                      <div className="relative px-8 py-3.5 md:px-10 md:py-4 bg-gradient-to-r from-rose-600 to-red-600 rounded-lg overflow-hidden active:translate-y-[2px] active:transition-all duration-75"
+                        style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.15)" }}>
+                        <span
+                          className="text-white text-[10px] md:text-xs tracking-widest relative z-10"
+                          style={{ fontFamily: '"Press Start 2P", monospace', textShadow: "0 1px 2px rgba(0,0,0,0.3)" }}
+                        >
+                          ▶  PRESS START
+                        </span>
+                      </div>
+                    </button>
+
+                    <p
+                      className="text-white/20 text-[8px]"
+                      style={{ fontFamily: '"Press Start 2P", monospace' }}
+                    >
+                      <span style={{ animation: "blink 1s step-end infinite" }}>▌</span> ENTER the story
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                /* RPG Story Game */
+                <SecretRpg onClose={handleCloseRpg} />
+              )}
             </div>
           </div>
 
-          {/* Contact portrait — bigger, dynamic */}
-          <div className="contact-reveal shrink-0 mt-10 md:mt-0 flex justify-center items-start">
+          {/* Right: portrait — skills-style image on the right side */}
+          <div className="contact-reveal shrink-0 mt-10 md:mt-0 flex justify-center md:justify-end items-start">
             <div className="relative w-64 md:w-80 lg:w-96 h-auto overflow-hidden bg-pink-light pinned-item pinned-tr">
               <Image
-                src="/images/img-contact.jpeg"
-                alt="Sanskriti Gupta — say hi!"
+                src="/animated/Woman_listening_with_understanding_202607210811.jpeg"
+                alt="Sanskriti Gupta — illustration listening with understanding, say hi!"
                 width={768}
-                height={1024}
+                height={1376}
                 className="object-cover w-full h-auto"
                 sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
                 loading="lazy"
@@ -205,87 +266,6 @@ export default function ContactBlock() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* ═══ SECRET SECTION: Pinned Image + Press Start ═══ */}
-        <div ref={secretSectionRef} className="contact-reveal mt-16">
-          {!showRpg ? (
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 justify-center">
-              {/* LEFT: Secret image — bigger */}
-              <div className="relative w-48 md:w-56 lg:w-64 h-auto overflow-hidden pinned-item pinned-tr shrink-0">
-              <Image
-                src="/animated/Woman_examining_clock_gears_202607210832.jpeg"
-                alt="Always wondering — illustration of Sanskriti examining clock gears"
-                width={768}
-                height={1376}
-                className="object-cover w-full h-auto"
-                sizes="(max-width: 768px) 192px, (max-width: 1024px) 224px, 256px"
-                loading="lazy"
-              />
-                <div className="absolute top-1 right-1 z-10 w-6 h-6 md:w-7 md:h-7">
-                  <Image
-                    src="/red_pin.png"
-                    alt=""
-                    width={28}
-                    height={28}
-                    className="object-contain w-full h-full"
-                  />
-                </div>
-              </div>
-
-              {/* RIGHT: "You found a secret!" + Press Start button */}
-              <div className="flex flex-col items-center md:items-start justify-center gap-4 py-4">
-                <style>{`
-                  @keyframes pulse-glow {
-                    0%, 100% { box-shadow: 0 0 15px rgba(225,29,72,0.3); }
-                    50% { box-shadow: 0 0 30px rgba(225,29,72,0.6), 0 0 60px rgba(244,63,94,0.2); }
-                  }
-                  @keyframes blink {
-                    0%, 100% { opacity: 1; }
-                    50% { opacity: 0; }
-                  }
-                `}</style>
-
-                <p
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-red-300 to-rose-200 text-xs md:text-sm leading-relaxed text-center md:text-left"
-                  style={{ fontFamily: '"Press Start 2P", monospace' }}
-                >
-                  🎯 You found<br />a secret!
-                </p>
-
-                <button
-                  onClick={handleStartGame}
-                  onMouseEnter={() => { preload(); play("hover", 0.2); }}
-                  className="relative group cursor-pointer"
-                  style={{ animation: "pulse-glow 2s ease-in-out infinite" }}
-                >
-                  {/* 3D pixel bevel */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-rose-700 to-red-900 rounded-lg translate-y-[4px]" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-rose-600 to-red-600 rounded-lg group-hover:from-rose-500 group-hover:to-red-500 transition-all duration-200" />
-                  {/* Button inner face */}
-                  <div className="relative px-8 py-3.5 md:px-10 md:py-4 bg-gradient-to-r from-rose-600 to-red-600 rounded-lg overflow-hidden active:translate-y-[2px] active:transition-all duration-75"
-                    style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.15)" }}>
-                    <span
-                      className="text-white text-[10px] md:text-xs tracking-widest relative z-10"
-                      style={{ fontFamily: '"Press Start 2P", monospace', textShadow: "0 1px 2px rgba(0,0,0,0.3)" }}
-                    >
-                      ▶  PRESS START
-                    </span>
-                  </div>
-                </button>
-
-                <p
-                  className="text-white/20 text-[8px]"
-                  style={{ fontFamily: '"Press Start 2P", monospace' }}
-                >
-                  <span style={{ animation: "blink 1s step-end infinite" }}>▌</span> ENTER the story
-                </p>
-              </div>
-            </div>
-          ) : (
-            /* RPG Story Game */
-            <SecretRpg onClose={handleCloseRpg} />
-          )}
         </div>
       </div>
     </section>

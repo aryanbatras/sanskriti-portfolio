@@ -46,13 +46,13 @@ export default function ProjectEntries() {
     () => {
       gsap.fromTo(
         ".project-entry",
-        { opacity: 0, y: 24 },
+        { opacity: 0, y: 16 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.7,
-          ease: "power3.out",
-          stagger: 0.15,
+          duration: 0.45,
+          ease: "power2.out",
+          stagger: 0.06,
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 75%",
@@ -89,11 +89,11 @@ export default function ProjectEntries() {
         {/* First 2 projects + portrait */}
         <div className="flex flex-col md:flex-row md:gap-10 mb-10">
           <div className="flex-1">
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-8 md:grid-cols-2">
               {personalInfo.projects.slice(0, 2).map((project, i) => (
                 <div
                   key={i}
-                  className="project-entry group bg-paper p-6 md:p-8 transition-all duration-300 "
+                  className="project-entry group bg-paper p-8 md:p-10 transition-all duration-300 "
                 >
 
                   <div className="entry-title text-xl md:text-2xl mb-1">
@@ -160,11 +160,11 @@ export default function ProjectEntries() {
         </div>
 
         {/* Remaining projects */}
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2">
           {personalInfo.projects.slice(2).map((project, i) => (
             <div
               key={i}
-              className="project-entry group relative bg-paper p-6 md:p-8 transition-all duration-300"
+              className="project-entry group relative bg-paper p-8 md:p-10 transition-all duration-300"
             >
               <div className="entry-title text-xl md:text-2xl mb-1">
                 {project.title}

@@ -36,7 +36,7 @@ export default function WorkEntries() {
 
   return (
     <section id="work" ref={containerRef} className="editorial-section">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div>
           <h2 className="section-heading mb-14 font-display-alt">
             Work <span className="text-pink">&amp;</span> Research
@@ -105,7 +105,7 @@ export default function WorkEntries() {
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
-                    <div className="entry-title text-xl">{edu.degree}</div>
+                    <div className="entry-title text-2xl md:text-3xl">{edu.degree}</div>
                     <div className="entry-meta text-charcoal flex items-center gap-2 flex-wrap normal-case">
                       <span>{edu.school}</span>
                       <span className="text-stone">&middot;</span>

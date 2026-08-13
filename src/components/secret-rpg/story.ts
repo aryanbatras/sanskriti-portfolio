@@ -5,9 +5,9 @@ const S = "/new_game_assets/Sanskriti_Idle.png";
 export const STORY: Record<string, Scene> = {
   start: {
     id: "start",
-    text: `📚 SANSKRITI'S FIRST DAY 📚
+    text: `📚 ELISA'S FIRST DAY 📚
 
-Her name is Sanskriti. She's 19, loves ML/AI, carries a silver MacBook everywhere, and drinks way too much coffee. Today is her FIRST DAY of college.
+Her name is Elisa. She's 19, loves ML/AI, carries a silver MacBook everywhere, and drinks way too much coffee. Today is her FIRST DAY of college.
 
 She stands in front of the mirror, adjusts her navy blazer over her white top, and gives herself a confident nod.
 
@@ -28,13 +28,13 @@ But first... caffeine or knowledge?`,
     id: "cafeteria",
     text: `The campus cafeteria is CHAOS. Students everywhere — laptops open, notebooks scattered, someone is furiously debugging Python at a corner table.
 
-Sanskriti spots a free table by the window. Perfect lighting, close to an outlet, great study spot.
+Elisa spots a free table by the window. Perfect lighting, close to an outlet, great study spot.
 
 But a ROGUE COFFEE MUG blocks her path! It's steaming angrily, hopping from foot to foot, ceramic body shaking with rage.
 
 "Caffeine is MINE!" it seems to scream. "You shall not pass without proving yourself!"
 
-Sanskriti sighs. "The cafeterias at this college are really something else..."
+Elisa sighs. "The cafeterias at this college are really something else..."
 
 She takes a stance, ready to catch some flying cups.`,
     img: S,
@@ -47,7 +47,7 @@ She takes a stance, ready to catch some flying cups.`,
 
   coffeeFight: {
     id: "coffeeFight",
-    text: `Coffee cups RAIN from the ceiling! Sanskriti dashes left and right, catching them mid-air. Pencils fall too — she dodges those like a total pro.
+    text: `Coffee cups RAIN from the ceiling! Elisa dashes left and right, catching them mid-air. Pencils fall too — she dodges those like a total pro.
 
 After an intense caffeine-catching session, she emerges VICTORIOUS, clutching a fresh cup of steaming coffee. The aroma alone gives her +10 CONFIDENCE.
 
@@ -66,7 +66,7 @@ Now — should she head straight to the library, or does she need a moment to sa
 
   library: {
     id: "library",
-    text: `Sanskriti pushes open the heavy oak doors. The library smells like old books, dust, and ambition — her FAVORITE combination. She breathes it in.
+    text: `Elisa pushes open the heavy oak doors. The library smells like old books, dust, and ambition — her FAVORITE combination. She breathes it in.
 
 "Ahhh. Knowledge."
 
@@ -74,7 +74,7 @@ But something blocks her path. A walking PENCIL — yellow body, angry eyes, pin
 
 "SHARPEN THIS!" it squeaks, brandishing its pointy graphite tip.
 
-Sanskriti raises an eyebrow. "You're literally made of wood and graphite. What are you gonna do, write me to death?"
+Elisa raises an eyebrow. "You're literally made of wood and graphite. What are you gonna do, write me to death?"
 
 The pencil trembles with rage. It does NOT appreciate being mocked.`,
     img: S,
@@ -87,15 +87,15 @@ The pencil trembles with rage. It does NOT appreciate being mocked.`,
 
   patternFight: {
     id: "patternFight",
-    text: `Sanskriti challenges the Pencil to a PATTERN MATCHING duel!
+    text: `Elisa challenges the Pencil to a PATTERN MATCHING duel!
 
-The pencil shows arrow sequences — she has to repeat them perfectly. It starts simple, then gets harder. But Sanskriti's brain is WIRED for pattern recognition.
+The pencil shows arrow sequences — she has to repeat them perfectly. It starts simple, then gets harder. But Elisa's brain is WIRED for pattern recognition.
 
 "Left, up, right, down... Child's play."
 
 After three rounds, the pencil's graphite brain OVERHEATS. It snaps in half, defeated!
 
-Sanskriti blows on her fingers like a gunslinger. "Pattern recognition. That's literally what I study. Did you think I'd lose?"
+Elisa blows on her fingers like a gunslinger. "Pattern recognition. That's literally what I study. Did you think I'd lose?"
 
 The pencil half hops away. "I'LL BE BACK IN CHAPTER 2!"`,
     img: S,
@@ -107,11 +107,11 @@ The pencil half hops away. "I'LL BE BACK IN CHAPTER 2!"`,
 
   phoneDistract: {
     id: "phoneDistract",
-    text: `Sanskriti whips out her phone and opens Instagram. The Pencil Enemy's eyes go WIDE.
+    text: `Elisa whips out her phone and opens Instagram. The Pencil Enemy's eyes go WIDE.
 
 "OOH, REELS!" it squeaks, completely forgetting the fight. It scurries off to watch cat compilations.
 
-Sanskriti grins. "Works every time."
+Elisa grins. "Works every time."
 
 She wipes graphite fingerprints off her screen and walks into the library.
 
@@ -127,7 +127,7 @@ She wipes graphite fingerprints off her screen and walks into the library.
     id: "libraryB",
     text: `CAFFEINE BUZZ ACTIVE! ☕⚡
 
-Sanskriti strides into the library like she owns the place. The bookshelves seem taller. The silence seems quieter. She feels... POWERFUL.
+Elisa strides into the library like she owns the place. The bookshelves seem taller. The silence seems quieter. She feels... POWERFUL.
 
 She pulls out her silver MacBook and opens a terminal. Green code cascades down the screen like digital rain.
 
@@ -148,13 +148,13 @@ Too late. She's already in the zone.`,
 
   codeType: {
     id: "codeType",
-    text: `Sanskriti FLIPS open her laptop and starts TYPING. Her fingers fly across the keyboard — she's in the ZONE.
+    text: `Elisa FLIPS open her laptop and starts TYPING. Her fingers fly across the keyboard — she's in the ZONE.
 
 Green code cascades like digital rain. PYTHON. ALGORITHM. NEURAL. TENSOR. DEBUG. She types each word with precision.
 
 The Pencil Enemy stares, mesmerized... then SHORT-CIRCUITS! Sparks fly from its graphite tip as it collapses into a pile of sawdust.
 
-Sanskriti closes her laptop with a SNAP.
+Elisa closes her laptop with a SNAP.
 
 "That's what happens when you bring a pencil to a coding fight."
 
@@ -168,7 +168,7 @@ Sanskriti closes her laptop with a SNAP.
 
   pencilFightWin: {
     id: "pencilFightWin",
-    text: `Sanskriti YEETS a heavy textbook at the Pencil Enemy. It doesn't see it coming — THWACK! The pencil shatters into splinters of wood and graphite.
+    text: `Elisa YEETS a heavy textbook at the Pencil Enemy. It doesn't see it coming — THWACK! The pencil shatters into splinters of wood and graphite.
 
 "NOTE TO SELF: don't mess with a caffeinated CS student armed with 'Introduction to Algorithms.'"
 
@@ -184,7 +184,7 @@ Nothing can stop her now. Not pencils, not coffee mugs, not even her own imposte
 
   bugEntrance: {
     id: "bugEntrance",
-    text: `Deep in the library, Sanskriti finds the PERFECT spot. A quiet corner, a window overlooking the campus, an empty desk with just enough space for her laptop and coffee.
+    text: `Deep in the library, Elisa finds the PERFECT spot. A quiet corner, a window overlooking the campus, an empty desk with just enough space for her laptop and coffee.
 
 She's about to sit down when...
 
@@ -192,7 +192,7 @@ SPLAT.
 
 A Bug Enemy drops from the ceiling! It's a nasty CODE BUG — angry red eyes, six creepy legs, antennae twitching wildly. It's feeding on a pile of corrupted Python scripts.
 
-Sanskriti sighs. "Of course. Right when I found the good seat."
+Elisa sighs. "Of course. Right when I found the good seat."
 
 The bug hisses menacingly. "YOUR CODE HAS ERRORS. LET ME FIX THEM... PERMANENTLY."
 
@@ -207,13 +207,13 @@ She cracks her knuckles and puts down her coffee. "You're about to be debugged."
 
   bugFight: {
     id: "bugFight",
-    text: `Sanskriti grabs 'Introduction to Algorithms' (1200 pages of pure academic warfare) and enters the arena!
+    text: `Elisa grabs 'Introduction to Algorithms' (1200 pages of pure academic warfare) and enters the arena!
 
 The Bug Enemy scurries around the dark room, leaving a trail of corrupted code behind it. She moves, dodges, throws items, and punches when it gets close.
 
 After an intense battle, she brings the book down with a satisfying THWACK! The bug scatters into binary confetti!
 
-Sanskriti wipes her brow. "Debugged."
+Elisa wipes her brow. "Debugged."
 
 She turns around — and the bookshelf behind her glows warm gold. Something's calling to her...
 
@@ -228,7 +228,7 @@ But first, she needs a moment. The fight took a lot out of her.`,
 
   logicPuzzle: {
     id: "logicPuzzle",
-    text: `The Bug Enemy tries to compute her next move. But Sanskriti's LOGIC is QUICKER!
+    text: `The Bug Enemy tries to compute her next move. But Elisa's LOGIC is QUICKER!
 
 It throws AI trivia at her — she catches every question and fires back the correct answer before it can blink.
 
@@ -238,7 +238,7 @@ It throws AI trivia at her — she catches every question and fires back the cor
 
 Its tiny bug brain overheats! 💥 It explodes into confetti of ones and zeroes.
 
-Sanskriti smiles. "I've been studying for this my whole life."
+Elisa smiles. "I've been studying for this my whole life."
 
 +999 IQ! The study spot is almost hers. She feels a surge of energy but also a bit drained...
 
@@ -253,11 +253,11 @@ Just a little more motivation and she'll be ready for that glowing shelf.`,
 
   quoteFight: {
     id: "quoteFight",
-    text: `Sanskriti sits down, closes her eyes, and takes a deep breath. The bug fight drained her, but she knows exactly what she needs to hear.
+    text: `Elisa sits down, closes her eyes, and takes a deep breath. The bug fight drained her, but she knows exactly what she needs to hear.
 
 Green text appears on her laptop screen — a quote, glowing in the dark. She needs to type it, word by word, to absorb its power.
 
-"Come on, Sanskriti. You've survived every hard day so far. This is just another one."
+"Come on, Elisa. You've survived every hard day so far. This is just another one."
 
 She cracks her fingers and starts typing. Each word is a step forward. Each correct word fills her with more energy.
 
@@ -273,7 +273,7 @@ She's not just coding — she's RECLAIMING her confidence.`,
     id: "quoteType",
     text: `The motivational quote flows through her fingers. Each word she types correctly lights up her heart. Mistakes just make her more determined.
 
-After completing the quote, Sanskriti feels a warmth spread through her chest. She's ready. NO — she's MORE than ready.
+After completing the quote, Elisa feels a warmth spread through her chest. She's ready. NO — she's MORE than ready.
 
 The glowing bookshelf calls to her. Whatever's behind it... she can face it.
 
@@ -287,13 +287,13 @@ The glowing bookshelf calls to her. Whatever's behind it... she can face it.
 
   professorEncounter: {
     id: "professorEncounter",
-    text: `Sanskriti steps behind the glowing bookshelf. The world shifts — warm candlelight, old books, the smell of coffee and ink.
+    text: `Elisa steps behind the glowing bookshelf. The world shifts — warm candlelight, old books, the smell of coffee and ink.
 
 A man sits behind a mahogany desk. Grey-streaked beard, kind eyes behind round glasses, a worn tweed blazer. This is PROFESSOR SHARMA, the legendary CS professor.
 
 He looks up and smiles. "Ah. The one who defeated the Bug Enemy. I've been expecting you."
 
-Sanskriti blinks. "You... have?"
+Elisa blinks. "You... have?"
 
 "Of course. Every semester, a student finds this place. It's a rite of passage. But to earn the SEAT — that perfect study spot by the window — you must pass one final test."
 
@@ -317,7 +317,7 @@ Use your items wisely. Throw your phone, your laptop, your coffee. Punch when he
     id: "professorFight",
     text: `The final battle was LEGENDARY.
 
-Sanskriti dodged flying research papers, threw her coffee mug at the professor's head, and landed a textbook-perfect punch right as he was explaining a bug in her code.
+Elisa dodged flying research papers, threw her coffee mug at the professor's head, and landed a textbook-perfect punch right as he was explaining a bug in her code.
 
 Professor Sharma staggers back, laughing. "WELL PLAYED!"
 
@@ -325,7 +325,7 @@ With a final THWACK of 'Introduction to Algorithms,' he goes down — but he's s
 
 "You've earned it," he says, pulling a glowing BRAIN keychain from his pocket. It pulses with warm pink light — the legendary BRAIN POWER-UP, representing her AI/ML knowledge.
 
-Sanskriti catches it. A surge of energy flows through her. She feels invincible.
+Elisa catches it. A surge of energy flows through her. She feels invincible.
 
 "Now go," the Professor says, vanishing into the shadows. "That study spot isn't going to claim itself."
 
@@ -341,7 +341,7 @@ Sanskriti catches it. A surge of energy flows through her. She feels invincible.
     id: "victory",
     text: `The glowing shelf reveals a quiet corner by the window — THE perfect study spot. Sunlight spills across an empty wooden desk.
 
-Sanskriti sits down, places her coffee to the right, opens her MacBook, and pulls out a fresh notebook. On the first page, a line is already written:
+Elisa sits down, places her coffee to the right, opens her MacBook, and pulls out a fresh notebook. On the first page, a line is already written:
 
 "The journey of a thousand lines of code begins with a single 'Hello, World.'"
 
