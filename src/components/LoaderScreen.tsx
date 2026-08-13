@@ -59,7 +59,7 @@ export default function LoaderScreen({ onFinish }: LoaderScreenProps) {
         <CountUp
           from={0}
           to={100}
-          duration={2.5}
+          duration={0.5}
           startWhen={true}
           onEnd={handleCountEnd}
         />

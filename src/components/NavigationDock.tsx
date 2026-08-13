@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { Dock, DockIcon } from "@/components/ui/dock";
 import { HomeIcon } from "@/components/ui/icons/home";
@@ -18,7 +18,6 @@ const dockItems = [
 
 export default function NavigationDock() {
   const pathname = usePathname();
-  const router = useRouter();
   const isHome = pathname === "/";
   const prevPathRef = useRef(pathname);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
@@ -63,16 +62,14 @@ export default function NavigationDock() {
     prevPathRef.current = pathname;
   }, [isHome, pathname]);
 
+  // Full page load on every navigation so the destination page
+  // properly mounts and remounts (same behavior as the contact page).
   const navigate = useCallback(
     (path: string) => {
       if (path === pathname) return;
-      if (path === "/contact") {
-        window.location.href = path;
-        return;
-      }
-      router.push(path);
+      window.location.href = path;
     },
-    [pathname, router]
+    [pathname]
   );
 
   const activeIdx = useMemo(
