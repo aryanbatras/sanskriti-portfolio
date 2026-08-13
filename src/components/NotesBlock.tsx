@@ -128,10 +128,10 @@ export default function NotesBlock() {
               {/* Primary skills image */}
               <div className="relative w-full overflow-hidden bg-pink-light pinned-item pinned-tr">
                 <Image
-                  src="/images/img-skills.jpeg"
-                  alt="Sanskriti Gupta — skills & achievements"
+                  src="/animated/Girl_sitting_at_desk_202607210810.jpeg"
+                  alt="Sanskriti Gupta — illustration at her desk, skills & achievements"
                   width={768}
-                  height={1024}
+                  height={1376}
                   className="object-cover w-full h-auto"
                   sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
                   loading="lazy"
@@ -147,10 +147,10 @@ export default function NotesBlock() {
                 style={{ transform: "rotate(4deg)", zIndex: 11 }}
               >
                 <Image
-                  src="/images/img-skills-2.jpeg"
-                  alt="Sanskriti Gupta — skills"
-                  width={400}
-                  height={530}
+                  src="/animated/Girl_sitting_with_laptop_college.jpeg"
+                  alt="Sanskriti Gupta — illustration at her college desk"
+                  width={768}
+                  height={1376}
                   className="object-cover w-full h-auto"
                   sizes="(max-width: 768px) 128px, 160px"
                   loading="lazy"

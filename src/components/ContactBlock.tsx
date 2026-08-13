@@ -214,10 +214,10 @@ export default function ContactBlock() {
               {/* LEFT: Secret image — bigger */}
               <div className="relative w-48 md:w-56 lg:w-64 h-auto overflow-hidden pinned-item pinned-tr shrink-0">
               <Image
-                src="/images/img-contact-2.jpeg"
-                alt="Always wondering"
+                src="/animated/Woman_examining_clock_gears_202607210832.jpeg"
+                alt="Always wondering — illustration of Sanskriti examining clock gears"
                 width={768}
-                height={1024}
+                height={1376}
                 className="object-cover w-full h-auto"
                 sizes="(max-width: 768px) 192px, (max-width: 1024px) 224px, 256px"
                 loading="lazy"

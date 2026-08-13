@@ -5,14 +5,12 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { Dock, DockIcon } from "@/components/ui/dock";
 import { HomeIcon } from "@/components/ui/icons/home";
-import { HeartIcon } from "@/components/ui/icons/heart";
 import { FolderGit2Icon } from "@/components/ui/icons/folder-git-2";
 import { BriefcaseBusinessIcon } from "@/components/ui/icons/briefcase-business";
 import { AtSignIcon } from "@/components/ui/icons/at-sign";
 
 const dockItems = [
   { path: "/", label: "Home", Icon: HomeIcon },
-  { path: "/memories", label: "Memories", Icon: HeartIcon },
   { path: "/projects", label: "Projects", Icon: FolderGit2Icon },
   { path: "/skills", label: "Skills", Icon: BriefcaseBusinessIcon },
   { path: "/contact", label: "Contact", Icon: AtSignIcon },

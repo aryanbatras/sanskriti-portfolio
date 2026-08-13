@@ -176,7 +176,7 @@ export const personalInfo = {
       school: "Madhav Institute of Technology and Science, Gwalior",
       logo: "/madhav_institute_of_technology_and_science_gole_ka_mandir_po_residency_gwalior_474005_logo.jpeg",
       year: "2023 - 2027",
-      detail: "SGPA: 8.55",
+      detail: "SGPA: 8.20",
     },
     {
       degree: "Grade 12 (CBSE)",
@@ -190,7 +190,7 @@ export const personalInfo = {
       school: "St. Joseph Vaz",
       logo: null,
       year: "2020",
-      detail: "95.8% (Top 3 in district)",
+      detail: "95.8%",
     },
   ],
 

@@ -44,26 +44,45 @@ export default function WritingBlock() {
       <div className="max-w-6xl mx-auto">
         {/* Intro + Journey paragraphs side by side with image on desktop */}
         <div className="flex flex-col md:flex-row md:items-start md:gap-10">
-          <div className="flex-1">
-            <p className="writing-reveal body-text-large mb-6">
-              <span className="ink-underline">I am a computer science and design
-              student</span> at Madhav Institute of Technology and Science, Gwalior.
-              My research focuses on speech intelligibility prediction, deep
-              learning, and the space where language meets code. I think of myself
-              as a{" "}
-              <span className="italic text-pink-dark">
-                curious kid who never stopped asking why
+          <div className="flex-1 space-y-6">
+            <p className="writing-reveal body-text-large">
+              Hi, I&rsquo;m{" "}
+              <span className="ink-underline">
+                Sanskriti &mdash; a computer science student who enjoys building
+                things, solving problems
               </span>
-              .
+              , and understanding how they work under the hood.
             </p>
 
-            {/* Journey paragraph — moved inside flex-1 to eliminate gap */}
             <p className="writing-reveal body-text">
-              Before my research at IIT Jammu, I developed a machine learning
-              pipeline to detect fraudulent job postings at 3Skill, and built a
-              real-time image captioning application called VisionSense. I have also
-              written technical content for Codeveda and creative pieces for
-              FrameFlicks.
+              My work sits at the intersection of{" "}
+              <span className="italic text-pink-dark">
+                software engineering and AI
+              </span>
+              . I work with{" "}
+              <span className="italic text-pink-dark">
+                machine learning, deep learning, and data structures &amp; algorithms
+              </span>
+              , and I enjoy taking an idea from a problem statement to something
+              that actually works. I&rsquo;ve also been exploring research through
+              hands-on work in deep learning, where I&rsquo;ve worked with real-world
+              data, model architectures, feature extraction, and experimentation.
+            </p>
+
+            <p className="writing-reveal body-text">
+              I&rsquo;m particularly interested in opportunities where I can combine{" "}
+              <span className="italic text-pink-dark">
+                strong problem-solving with engineering and research
+              </span>{" "}
+              &mdash; whether that means building reliable software, working on
+              intelligent systems, or digging into a problem that doesn&rsquo;t have
+              an obvious solution.
+            </p>
+
+            <p className="writing-reveal body-text">
+              I like learning things deeply, I&rsquo;m comfortable figuring things out
+              on my own, and I&rsquo;m always looking for problems that are a little
+              harder than what I already know.
             </p>
           </div>
 
